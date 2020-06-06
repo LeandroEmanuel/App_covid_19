@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_doencas_conhecidas" >
+
+    <TextView
+        android:id="@+id/textViewDoencasConhecidas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/doencas_conhecidas"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxCardiovascular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBoxCardiovascular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/doencas_cardiovsaculares"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxDiabetes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDoencasConhecidas" />
+
+    <CheckBox
+        android:id="@+id/checkBoxDiabetes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/diabetes"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox3"
+        app:layout_constraintEnd_toEndOf="@+id/checkBoxCardiovascular"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxCardiovascular"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxCardiovascular" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/doencas_respiratorias"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxHipertensao"
+        app:layout_constraintEnd_toEndOf="@+id/checkBoxDiabetes"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxDiabetes"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxDiabetes" />
+
+    <CheckBox
+        android:id="@+id/checkBoxHipertensao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hipertensao"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxDoencasOncologicas"
+        app:layout_constraintEnd_toEndOf="@+id/checkBox3"
+        app:layout_constraintStart_toStartOf="@+id/checkBox3"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+
+    <CheckBox
+        android:id="@+id/checkBoxDoencasOncologicas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/doencas_oncologicas"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="@+id/checkBoxHipertensao"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxHipertensao"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxHipertensao" />
+
+    <Button
+        android:id="@+id/buttonGuardarDoencasConhecidas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/guardar_doencas_conhecidas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancelarDoencasConhecidas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGuardarDoencasConhecidas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxDoencasOncologicas">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextOutrasDoencas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/outras_doencas" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonCancelarDoencasConhecidas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@android:string/cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonGuardarDoencasConhecidas"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

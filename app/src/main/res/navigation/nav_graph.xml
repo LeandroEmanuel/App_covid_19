@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_menu_principal">
+
+    <fragment
+        android:id="@+id/fragment_menu_principal"
+        android:name="com.example.app_covid_19.fragment_menu_principal"
+        android:label="fragment_menu_principal"
+        tools:layout="@layout/fragment_menu_principal">
+
+        <action
+            android:id="@+id/to_gestao_dados"
+            app:destination="@id/fragment_gestao_dados" />
+        <action
+            android:id="@+id/to_selecionar_perfil"
+            app:destination="@id/fragment_selecionar_perfil2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_gestao_dados"
+        android:name="com.example.app_covid_19.fragment_gestao_dados"
+        android:label="@string/titulo_gestao_dados"
+        tools:layout="@layout/fragment_gestao_dados">
+
+        <action
+            android:id="@+id/to_menu_principal"
+            app:destination="@id/fragment_menu_principal" />
+        <action
+            android:id="@+id/to_dados_pessoais"
+            app:destination="@id/fragment_dados_pessoais2" />
+        <action
+            android:id="@+id/to_doencas_conhecidas"
+            app:destination="@id/fragment_doencas_conhecidas2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_dados_pessoais2"
+        android:name="com.example.app_covid_19.fragment_dados_pessoais"
+        android:label="fragment_dados_pessoais"
+        tools:layout="@layout/fragment_dados_pessoais" >
+        <action
+            android:id="@+id/to_menu_principal"
+            app:destination="@id/fragment_menu_principal" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_doencas_conhecidas2"
+        android:name="com.example.app_covid_19.fragment_doencas_conhecidas"
+        android:label="fragment_doencas_conhecidas"
+        tools:layout="@layout/fragment_doencas_conhecidas" >
+        <action
+            android:id="@+id/to_menu_principal"
+            app:destination="@id/fragment_menu_principal" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_editar_perfis2"
+        android:name="com.example.app_covid_19.fragment_editar_perfis"
+        android:label="fragment_editar_perfis"
+        tools:layout="@layout/fragment_editar_perfis" >
+        <action
+            android:id="@+id/to_registo_diario"
+            app:destination="@id/fragment_registo_diario" />
+        <action
+            android:id="@+id/to_Selecionar_perfil"
+            app:destination="@id/fragment_selecionar_perfil2" />
+        <action
+            android:id="@+id/to_testes"
+            app:destination="@id/fragment_testes" />
+        <action
+            android:id="@+id/to_gestao_dados"
+            app:destination="@id/fragment_gestao_dados" />
+        <action
+            android:id="@+id/to_historico"
+            app:destination="@id/fragment_historico" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_historico"
+        android:name="com.example.app_covid_19.fragment_historico"
+        android:label="fragment_historico"
+        tools:layout="@layout/fragment_historico" >
+        <action
+            android:id="@+id/to_tabela_registos_diarios"
+            app:destination="@id/fragment_tabela_registos_diarios" />
+        <action
+            android:id="@+id/to_registo_diario"
+            app:destination="@id/fragment_registo_diario" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_registo_diario"
+        android:name="com.example.app_covid_19.fragment_registo_diario"
+        android:label="fragment_registo_diario"
+        tools:layout="@layout/fragment_registo_diario" >
+        <action
+            android:id="@+id/to_historico"
+            app:destination="@id/fragment_historico" />
+        <action
+            android:id="@+id/to_menu_principal"
+            app:destination="@id/fragment_menu_principal" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_resultado_teste"
+        android:name="com.example.app_covid_19.fragment_resultado_teste"
+        android:label="fragment_resultado_teste"
+        tools:layout="@layout/fragment_resultado_teste" >
+        <action
+            android:id="@+id/to_testes"
+            app:destination="@id/fragment_testes" />
+        <action
+            android:id="@+id/to_menu_principal"
+            app:destination="@id/fragment_menu_principal" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_selecionar_perfil2"
+        android:name="com.example.app_covid_19.fragment_selecionar_perfil"
+        android:label="fragment_selecionar_perfil"
+        tools:layout="@layout/fragment_selecionar_perfil" >
+        <action
+            android:id="@+id/to_editar_perfil"
+            app:destination="@id/fragment_editar_perfis2" />
+        <action
+            android:id="@+id/to_menu_principal"
+            app:destination="@id/fragment_menu_principal" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_tabela_registos_diarios"
+        android:name="com.example.app_covid_19.fragment_tabela_registos_diarios"
+        android:label="fragment_tabela_registos_diarios"
+        tools:layout="@layout/fragment_tabela_registos_diarios" >
+        <action
+            android:id="@+id/to_historico"
+            app:destination="@id/fragment_historico" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_tabela_resultado_testes"
+        android:name="com.example.app_covid_19.fragment_tabela_resultado_testes"
+        android:label="fragment_tabela_resultado_testes"
+        tools:layout="@layout/fragment_tabela_resultado_testes" >
+        <action
+            android:id="@+id/to_testes"
+            app:destination="@id/fragment_testes" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_testes"
+        android:name="com.example.app_covid_19.fragment_testes"
+        android:label="fragment_testes"
+        tools:layout="@layout/fragment_testes" >
+        <action
+            android:id="@+id/to_tabela_resultado_testes"
+            app:destination="@id/fragment_tabela_resultado_testes" />
+        <action
+            android:id="@+id/to_resultado_teste"
+            app:destination="@id/fragment_resultado_teste" />
+        <action
+            android:id="@+id/to_editar_perfil"
+            app:destination="@id/fragment_editar_perfis2" />
+    </fragment>
+</navigation>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_editar_perfis" >
+
+    <TextView
+        android:id="@+id/textViewTituloEditarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/editar_perfil"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewPerfilSelecionado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPerfilSelecionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/perfil_selecionado"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAlterarPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTituloEditarPerfil" />
+
+    <Button
+        android:id="@+id/buttonAlterarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alterar_prefil"
+        app:layout_constraintBottom_toTopOf="@+id/buttonApagarPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPerfilSelecionado" />
+
+    <Button
+        android:id="@+id/buttonApagarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/apagar_perfil"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegistoDiario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAlterarPerfil" />
+
+    <Button
+        android:id="@+id/buttonRegistoDiario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registo_diario"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTestes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonApagarPerfil" />
+
+    <Button
+        android:id="@+id/buttonTestes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/testes"
+        app:layout_constraintBottom_toTopOf="@+id/buttonHistorico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegistoDiario" />
+
+    <Button
+        android:id="@+id/buttonHistorico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/historico"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTestes" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
