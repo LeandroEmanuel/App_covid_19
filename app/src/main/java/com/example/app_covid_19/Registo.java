@@ -6,7 +6,7 @@ public class Registo {
     private long id = -1;
     private long idPerfil = -1;
     private String dataRegisto;
-    private float Temperatura = (float) -1.0;
+    private float Temperatura = 0.0f;
     private String sintomas;
 
     public long getId() {

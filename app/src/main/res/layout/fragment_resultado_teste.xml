@@ -94,6 +94,8 @@
         android:id="@+id/buttonSelecionarDataResultadoTeste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:text="@string/get_date"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewDataTesteResultado"
         app:layout_constraintStart_toStartOf="parent" />

@@ -10,6 +10,7 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
 
     public static final String BD_NOME = "covid.db";
     public static final int VERSAO_BD = 1;
+    private static boolean DESENVOLVIMENTO = true;
 
     /**
      * Create a helper object to create, open, and/or manage a database.
@@ -21,8 +22,6 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
      */
     public BdCovidOpenHelper(@Nullable Context context) {
         super(context,BD_NOME , null, VERSAO_BD);
-
-
     }
 
     /**
@@ -33,6 +32,43 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
+        BdTabelaPerfis tabelaPerfis = new BdTabelaPerfis(db);
+        tabelaPerfis.criaTabelaPerfis();
+
+        BdTabelaRegistos tabelaRegistos = new BdTabelaRegistos(db);
+        tabelaRegistos.criarTabelaRegistos();
+
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
+        tabelaTestes.criaTabelaTestes();
+
+        if(DESENVOLVIMENTO){
+            geraDados(db);
+        }
+
+    }
+
+    private void geraDados(SQLiteDatabase db) {
+        BdTabelaPerfis tabelaPerfis = new BdTabelaPerfis(db);
+
+        Perfil perfil = new Perfil();
+        perfil.setNome("Leandro");
+        perfil.setDataNascimento("24/12/1994");
+        long idPerfilLeandro = tabelaPerfis.insert(Converte.perfilParaContentValues(perfil));
+
+       BdTabelaRegistos tabelaRegistos = new BdTabelaRegistos(db);
+
+        Registo registo = new Registo();
+        registo.setDataRegisto("20/05/2020");
+        registo.setTemperatura(35.6f);
+        registo.setSintomas("Tosse");
+        registo.setIdPerfil(idPerfilLeandro);
+
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
+
+        Teste teste = new Teste();
+        teste.setDataTeste("02/06/2020");
+        teste.setResultadoTeste("Negativo");
+        teste.setIdPerfil(idPerfilLeandro);
 
     }
 

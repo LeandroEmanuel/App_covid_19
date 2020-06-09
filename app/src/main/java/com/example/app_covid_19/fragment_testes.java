@@ -34,7 +34,7 @@ public class fragment_testes extends Fragment {
         view.findViewById(R.id.buttonHistoricoTestes).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                novoTeste();
+                resultadoTeste();
             }
         });
 
@@ -43,5 +43,9 @@ public class fragment_testes extends Fragment {
     private void novoTeste() {
         NavController navController = NavHostFragment.findNavController(fragment_testes.this);
         navController.navigate(R.id.to_resultado_teste);
+    }
+    private void resultadoTeste() {
+        NavController navController = NavHostFragment.findNavController(fragment_testes.this);
+        navController.navigate(R.id.to_tabela_resultado_testes);
     }
 }

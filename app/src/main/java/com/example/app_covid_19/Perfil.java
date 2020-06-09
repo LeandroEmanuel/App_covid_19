@@ -1,14 +1,15 @@
 package com.example.app_covid_19;
 
-import java.sql.Date;
 
 public class Perfil {
-    private long id = -1;
+    private long id;
+
     private String nome;
     private String dataNascimento;
 
     public long getId() {
-        return id;
+
+        return id = -1;
     }
 
     public void setId(long id) {
