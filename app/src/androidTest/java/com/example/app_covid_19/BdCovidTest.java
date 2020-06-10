@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class BdCovidTest {
     @Before
+    @After
     public void apagaBD(){
         getTargetContext().deleteDatabase(BdCovidOpenHelper.BD_NOME);
     }
@@ -76,7 +77,6 @@ public class BdCovidTest {
         BdTabelaPerfis tabelaPerfis = new BdTabelaPerfis(dbCovid);
 
         long idPerfil = inserePerfil(tabelaPerfis, nomePerfil, dataNascimentoPerfil);
-
 
         BdTabelaTestes tabelaTestes = new BdTabelaTestes(dbCovid);
 
@@ -227,7 +227,74 @@ public class BdCovidTest {
 
         dbCovid.close();
     }
-    //todo: testes CRUD Testes
+    @Test
+    public void consegueInserirTestes(){
+        Context appContext = getTargetContext();
+
+        BdCovidOpenHelper openHelper = new BdCovidOpenHelper(appContext);
+        SQLiteDatabase dbCovid = openHelper.getWritableDatabase();
+
+        insereTeste(dbCovid,"02/06/2020","Negativo", "Almerinda","25/02/1985");
+        dbCovid.close();
+    }
+    @Test
+    public void consegueLerTestes(){
+        Context appContext = getTargetContext();
+
+        BdCovidOpenHelper openHelper = new BdCovidOpenHelper(appContext);
+        SQLiteDatabase dbCovid = openHelper.getWritableDatabase();
+
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(dbCovid);
+
+        Cursor cursor = tabelaTestes.query(BdTabelaTestes.TODOS_OS_CAMPOS,null,null,null,null, null);
+        int registos = cursor.getCount();
+        cursor.close();
+
+        insereTeste(dbCovid,"02/06/20/2020","Negativo","Felisbela","26/04/2003");
+
+        cursor = tabelaTestes.query(BdTabelaTestes.TODOS_OS_CAMPOS,null,null,null,null, null);
+        assertEquals(registos + 1, cursor.getCount());
+        cursor.close();
+
+        dbCovid.close();
+    }
+    @Test
+    public void consegueAlterarTestes(){
+        Context appContext = getTargetContext();
+
+        BdCovidOpenHelper openHelper = new BdCovidOpenHelper(appContext);
+        SQLiteDatabase dbCovid = openHelper.getWritableDatabase();
+
+        long idTeste = insereTeste(dbCovid,"01/05/2020","Negativo","Gustavo","05/05/2004");
+
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(dbCovid);
+        Cursor cursor = tabelaTestes.query(BdTabelaTestes.TODOS_OS_CAMPOS, BdTabelaTestes.CAMPO_ID_COMPLETO +"=?", new String[]{String.valueOf(idTeste)},null,null,null);
+        assertEquals(1, cursor.getCount());
+
+        assertTrue(cursor.moveToNext());
+        Teste teste = Converte.cursorParaTeste(cursor);
+        cursor.close();
+
+        assertEquals("01/05/2020", teste.getDataTeste());
+        teste.setResultadoTeste("01/04/2020");
+        int registosAlterados = tabelaTestes.update(Converte.testeParaContentValues(teste), BdTabelaTestes.CAMPO_ID_COMPLETO + "=?", new String[]{String.valueOf(teste.getId())});
+
+        dbCovid.close();
+    }
+    @Test
+    public void consegueEliminarTestes(){
+        Context appContext = getTargetContext();
+
+        BdCovidOpenHelper openHelper = new BdCovidOpenHelper(appContext);
+        SQLiteDatabase dbCovid = openHelper.getWritableDatabase();
+
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(dbCovid);
+        long id = insereTeste(dbCovid,"28/05/2020","Inconcludivo","Paulina","13/01/2001");
+        int registosEliminados = tabelaTestes.delete(BdTabelaTestes._ID + "=?", new String[]{String.valueOf(id)});
+        assertEquals(1, registosEliminados);
+
+        dbCovid.close();
+    }
 
 
 }

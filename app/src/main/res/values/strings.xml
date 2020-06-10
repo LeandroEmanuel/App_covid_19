@@ -51,4 +51,6 @@
     <string name="daily_date">Daily date</string>
     <string name="data_nascimento">Birth date</string>
     <string name="data_resultado_teste">Test result date</string>
+    <string name="nome_item_perfil">Name</string>
+    <string name="data_nascimento_item_perfil">Birth date</string>
 </resources>

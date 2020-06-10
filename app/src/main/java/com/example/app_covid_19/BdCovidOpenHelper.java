@@ -69,7 +69,6 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
         teste.setDataTeste("02/06/2020");
         teste.setResultadoTeste("Negativo");
         teste.setIdPerfil(idPerfilLeandro);
-
     }
 
     /**

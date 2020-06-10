@@ -20,9 +20,19 @@ public class Converte {
                 BdTabelaPerfis.DATA_NASCIMENTO)));
         return perfil;
     }
+    public static Perfil cursorParaPerfil(Cursor cursor){
+        Perfil perfil = new Perfil();
+
+        perfil.setId(cursor.getLong(cursor.getColumnIndex(BdTabelaPerfis._ID)));
+        perfil.setNome(cursor.getString(cursor.getColumnIndex(BdTabelaPerfis.NOME)));
+        perfil.setDataNascimento(cursor.getString(cursor.getColumnIndex(BdTabelaPerfis.DATA_NASCIMENTO)));
+
+        return perfil;
+    }
+
     public static ContentValues registoParaContentValues(Registo registo){
         ContentValues values = new ContentValues();
-        values.put(String.valueOf(BdTabelaRegistos.DATA_REGISTO), registo.getDataRegisto());
+        values.put(BdTabelaRegistos.DATA_REGISTO, registo.getDataRegisto());
         values.put(String.valueOf(BdTabelaRegistos.TEMPERATURA), registo.getTemperatura());
         values.put(BdTabelaRegistos.SINTOMAS, registo.getSintomas());
         values.put(BdTabelaRegistos.CAMPO_ID_PERFIL, registo.getIdPerfil());
@@ -52,16 +62,19 @@ public class Converte {
 
     public static ContentValues testeParaContentValues(Teste teste){
         ContentValues values = new ContentValues();
-        values.put(String.valueOf(BdTabelaTestes.DATA_TESTE), teste.getDataTeste());
+
+        values.put(BdTabelaTestes.DATA_TESTE, teste.getDataTeste());
         values.put(BdTabelaTestes.RESULTADO_TESTE, teste.getResultadoTeste());
+        values.put(BdTabelaTestes.CAMPO_ID_PERFIL, teste.getIdPerfil());
+
         return values;
     }
     public static Teste contentValuesParaTeste(ContentValues values){
         Teste teste = new Teste();
         teste.setId(values.getAsLong(BdTabelaTestes._ID));
-        teste.setIdPerfil(values.getAsLong(BdTabelaTestes.CAMPO_ID_PERFIL));
-        teste.setDataTeste(values.getAsString(String.valueOf(BdTabelaTestes.DATA_TESTE)));
+        teste.setDataTeste(values.getAsString(BdTabelaTestes.DATA_TESTE));
         teste.setResultadoTeste(values.getAsString(BdTabelaTestes.RESULTADO_TESTE));
+        teste.setIdPerfil(values.getAsLong(BdTabelaTestes.CAMPO_ID_PERFIL));
         return teste;
     }
 
