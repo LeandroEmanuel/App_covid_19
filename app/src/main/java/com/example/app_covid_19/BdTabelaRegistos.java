@@ -20,6 +20,8 @@ public class BdTabelaRegistos implements BaseColumns {
     public static final String CAMPO_SINTOMAS_COMPLETO = NOME_TABELA + "." + SINTOMAS;
     public static final String CAMPO_ID_PERFIL_COMPLETO = NOME_TABELA + "." + CAMPO_ID_PERFIL;
 
+    public static final String NOME_PERFIL = BdTabelaPerfis.NOME;
+
     public static final String[] TODOS_OS_CAMPOS = new String[]{CAMPO_ID_COMPLETO,CAMPO_DATA_REGISTO_COMPLETO,
             CAMPO_TEMPERATURA_COMPLETO, CAMPO_SINTOMAS_COMPLETO, CAMPO_ID_PERFIL_COMPLETO};
     private SQLiteDatabase db;

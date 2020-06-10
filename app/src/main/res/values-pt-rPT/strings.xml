@@ -53,4 +53,8 @@
     <string name="data_resultado_teste">Data do resultado do teste</string>
     <string name="nome_item_perfil">Nome</string>
     <string name="data_nascimento_item_perfil">Data de nascimento</string>
+    <string name="nome_item_registo">Nome perfil</string>
+    <string name="data_registo_item_registo">Data registo</string>
+    <string name="temperatura_item_registo">Temperatura</string>
+    <string name="sintomas_item_registo">Sintomas</string>
 </resources>

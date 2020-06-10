@@ -9,6 +9,16 @@ public class Registo {
     private float Temperatura = 0.0f;
     private String sintomas;
 
+    public String Perfil;
+
+    public String getPerfil() {
+        return Perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        Perfil = perfil;
+    }
+
     public long getId() {
         return id;
     }

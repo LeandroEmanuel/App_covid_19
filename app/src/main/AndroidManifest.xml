@@ -22,7 +22,6 @@
         <provider android:authorities="com.example.app_covid_19"
             android:name=".BdCovidContentProvider"
             android:exported="false"/>
-
     </application>
 
 </manifest>
