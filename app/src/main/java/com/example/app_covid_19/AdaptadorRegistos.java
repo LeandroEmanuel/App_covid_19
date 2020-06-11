@@ -37,7 +37,7 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdaptadorRegistos.ViewHolderRegisto holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderRegisto holder, int position) {
         cursor.moveToPosition(position);
         Registo registo = Converte.cursorParaRegisto(cursor);
         holder.setRegisto(registo);

@@ -8,6 +8,16 @@ public class Teste {
     private String dataTeste;
     private String resultadoTeste;
 
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
+
+    public String perfil;
+
     public long getId() {
         return id;
     }

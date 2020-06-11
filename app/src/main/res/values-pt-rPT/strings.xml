@@ -57,4 +57,7 @@
     <string name="data_registo_item_registo">Data registo</string>
     <string name="temperatura_item_registo">Temperatura</string>
     <string name="sintomas_item_registo">Sintomas</string>
+    <string name="data_teste_item_teste">Data teste</string>
+    <string name="nome_perfil_item_teste">Nome perfil</string>
+    <string name="resultado_teste_item_teste">Resultado teste</string>
 </resources>
