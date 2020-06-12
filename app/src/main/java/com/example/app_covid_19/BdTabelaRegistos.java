@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
+import android.text.TextUtils;
+
+import java.util.Arrays;
 
 public class BdTabelaRegistos implements BaseColumns {
 
@@ -52,7 +55,30 @@ public class BdTabelaRegistos implements BaseColumns {
     public Cursor query(String[] columns, String selection,
                         String[] selectionArgs, String groupBy, String having,
                         String orderBy) {
-        return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy);
+        if (Arrays.asList(columns).contains(CAMPO_PERFIL_COMPLETO)){
+            return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy);
+        }
+
+        String campos = TextUtils.join(",", columns);
+
+        String sql = "SELECT " + campos;
+        sql += " FROM " + NOME_TABELA + " INNER JOIN " + BdTabelaPerfis.NOME_TABELA;
+        sql += " ON " + CAMPO_ID_PERFIL_COMPLETO + "=" + BdTabelaPerfis.CAMPO_ID_COMPLETO;
+
+        if(selection != null){
+            sql += " WHERE " + selection;
+        }
+        if (groupBy != null){
+            sql += " GROUP BY " + groupBy;
+        }
+        if (having != null){
+            sql += " HAVING " +having;
+        }
+        if (orderBy != null){
+            sql += " ORDER BY " + orderBy;
+        }
+        return db.rawQuery(sql, selectionArgs);
+
     }
 
     public int update(ContentValues values, String whereClause, String[] whereArgs){
