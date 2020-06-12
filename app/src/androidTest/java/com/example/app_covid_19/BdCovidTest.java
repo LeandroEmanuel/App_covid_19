@@ -199,7 +199,12 @@ public class BdCovidTest {
 
         BdTabelaRegistos tabelaRegistos = new BdTabelaRegistos(dbCovid);
 
-        Cursor cursor = tabelaRegistos.query(BdTabelaRegistos.TODOS_OS_CAMPOS,BdTabelaRegistos.CAMPO_ID_COMPLETO + "=?",new String[]{String.valueOf(idRegisto)},null,null,null);
+        Cursor cursor = tabelaRegistos.query(BdTabelaRegistos.TODOS_OS_CAMPOS,
+                BdTabelaRegistos.CAMPO_ID_COMPLETO + "=?",
+                new String[]{String.valueOf(idRegisto)},
+                null,
+                null,
+                null);
         assertEquals(1, cursor.getCount());
 
         assertTrue(cursor.moveToNext());

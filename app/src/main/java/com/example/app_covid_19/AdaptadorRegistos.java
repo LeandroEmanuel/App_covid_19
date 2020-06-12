@@ -58,24 +58,24 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
 
         private Registo registo = null;
 
-        //private final TextView textViewNomeItemRegisto;
+        private final TextView textViewNomeItemRegisto;
         private final TextView textViewDataRegistoItemRegisto;
-        private final TextView textViewTemperaturaItemRegisto;
+        //private final TextView textViewTemperaturaItemRegisto;
         private final TextView textViewSintomasItemRegisto;
 
 
         public ViewHolderRegisto(@NonNull View itemView) {
             super(itemView);
 
-            //textViewNomeItemRegisto = (TextView)itemView.findViewById(R.id.textViewNomeItemRegisto);
+            textViewNomeItemRegisto = (TextView)itemView.findViewById(R.id.textViewNomeItemRegisto);
             textViewDataRegistoItemRegisto = (TextView)itemView.findViewById(R.id.textViewDataRegistoItemRegisto);
-            textViewTemperaturaItemRegisto = (TextView)itemView.findViewById(R.id.textViewTemperaturaItemRegisto);
+            //textViewTemperaturaItemRegisto = (TextView)itemView.findViewById(R.id.textViewTemperaturaItemRegisto);
             textViewSintomasItemRegisto = (TextView)itemView.findViewById(R.id.textViewSintomasItemRegisto);
         }
 
         public void setRegisto(Registo registo) {
             this.registo = registo;
-            //textViewNomeItemRegisto.setText(registo.getPerfil());
+            textViewNomeItemRegisto.setText(registo.getPerfil());
             textViewDataRegistoItemRegisto.setText(registo.getDataRegisto());
             //textViewTemperaturaItemRegisto.setText((int) registo.getTemperatura());
             textViewSintomasItemRegisto.setText(registo.getSintomas());

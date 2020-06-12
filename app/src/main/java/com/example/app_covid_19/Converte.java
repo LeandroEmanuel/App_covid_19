@@ -33,19 +33,20 @@ public class Converte {
     public static ContentValues registoParaContentValues(Registo registo){
         ContentValues values = new ContentValues();
         values.put(BdTabelaRegistos.DATA_REGISTO, registo.getDataRegisto());
-        values.put(String.valueOf(BdTabelaRegistos.TEMPERATURA), registo.getTemperatura());
+        values.put(BdTabelaRegistos.TEMPERATURA, registo.getTemperatura());
         values.put(BdTabelaRegistos.SINTOMAS, registo.getSintomas());
         values.put(BdTabelaRegistos.CAMPO_ID_PERFIL, registo.getIdPerfil());
         return values;
     }
     public static Registo contentValuesParaRegisto(ContentValues values){
         Registo registo = new Registo();
+
         registo.setId(values.getAsLong(BdTabelaRegistos._ID));
         registo.setDataRegisto(values.getAsString(BdTabelaRegistos.DATA_REGISTO));
         registo.setTemperatura(values.getAsFloat(BdTabelaRegistos.TEMPERATURA));
         registo.setSintomas(values.getAsString(BdTabelaRegistos.SINTOMAS));
         registo.setIdPerfil(values.getAsLong(BdTabelaRegistos.CAMPO_ID_PERFIL));
-        //registo.setPerfil(values.getAsString(BdTabelaRegistos.NOME_PERFIL));
+        //registo.setPerfil(values.getAsString(BdTabelaRegistos.CAMPO_PERFIL));
 
         return registo;
     }
@@ -58,7 +59,9 @@ public class Converte {
         registo.setTemperatura(cursor.getFloat(cursor.getColumnIndex(String.valueOf(
                 BdTabelaRegistos.TEMPERATURA))));
         registo.setSintomas(cursor.getString(cursor.getColumnIndex(BdTabelaRegistos.SINTOMAS)));
-        //registo.setPerfil(cursor.getString(cursor.getColumnIndex(BdTabelaRegistos.NOME_PERFIL)));
+        registo.setIdPerfil(cursor.getLong(cursor.getColumnIndex(BdTabelaRegistos.CAMPO_ID_PERFIL)));
+        //registo.setPerfil(cursor.getString(cursor.getColumnIndex(BdTabelaRegistos.CAMPO_PERFIL)));
+
         return registo;
     }
 
