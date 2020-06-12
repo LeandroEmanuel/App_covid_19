@@ -45,6 +45,7 @@ public class Converte {
         registo.setTemperatura(values.getAsFloat(BdTabelaRegistos.TEMPERATURA));
         registo.setSintomas(values.getAsString(BdTabelaRegistos.SINTOMAS));
         registo.setIdPerfil(values.getAsLong(BdTabelaRegistos.CAMPO_ID_PERFIL));
+        //registo.setPerfil(values.getAsString(BdTabelaRegistos.NOME_PERFIL));
 
         return registo;
     }
@@ -57,6 +58,7 @@ public class Converte {
         registo.setTemperatura(cursor.getFloat(cursor.getColumnIndex(String.valueOf(
                 BdTabelaRegistos.TEMPERATURA))));
         registo.setSintomas(cursor.getString(cursor.getColumnIndex(BdTabelaRegistos.SINTOMAS)));
+        //registo.setPerfil(cursor.getString(cursor.getColumnIndex(BdTabelaRegistos.NOME_PERFIL)));
         return registo;
     }
 
@@ -75,6 +77,7 @@ public class Converte {
         teste.setDataTeste(values.getAsString(BdTabelaTestes.DATA_TESTE));
         teste.setResultadoTeste(values.getAsString(BdTabelaTestes.RESULTADO_TESTE));
         teste.setIdPerfil(values.getAsLong(BdTabelaTestes.CAMPO_ID_PERFIL));
+        //teste.setPerfil(values.getAsString(BdTabelaTestes.NOME_PERFIL));
         return teste;
     }
 
@@ -86,6 +89,7 @@ public class Converte {
                 BdTabelaTestes.DATA_TESTE))));
         teste.setResultadoTeste(String.valueOf(cursor.getColumnIndex(
                 BdTabelaTestes.RESULTADO_TESTE)));
+        //teste.setPerfil(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.NOME_PERFIL)));
         return teste;
     }
 

@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.example.app_covid_19.R.layout.item_registo;
-
 public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.ViewHolderRegisto> {
     private Context context;
 
@@ -31,7 +29,7 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
     @NonNull
     @Override
     public ViewHolderRegisto onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemRegisto = LayoutInflater.from(context).inflate(item_registo, parent, false);
+        View itemRegisto = LayoutInflater.from(context).inflate(R.layout.item_registo, parent, false);
 
         return new ViewHolderRegisto(itemRegisto);
     }
@@ -60,14 +58,16 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
 
         private Registo registo = null;
 
-        private final TextView textViewNomeItemRegisto;
+        //private final TextView textViewNomeItemRegisto;
         private final TextView textViewDataRegistoItemRegisto;
         private final TextView textViewTemperaturaItemRegisto;
         private final TextView textViewSintomasItemRegisto;
+
+
         public ViewHolderRegisto(@NonNull View itemView) {
             super(itemView);
 
-            textViewNomeItemRegisto = (TextView)itemView.findViewById(R.id.textViewNomeItemRegisto);
+            //textViewNomeItemRegisto = (TextView)itemView.findViewById(R.id.textViewNomeItemRegisto);
             textViewDataRegistoItemRegisto = (TextView)itemView.findViewById(R.id.textViewDataRegistoItemRegisto);
             textViewTemperaturaItemRegisto = (TextView)itemView.findViewById(R.id.textViewTemperaturaItemRegisto);
             textViewSintomasItemRegisto = (TextView)itemView.findViewById(R.id.textViewSintomasItemRegisto);
@@ -75,7 +75,7 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
 
         public void setRegisto(Registo registo) {
             this.registo = registo;
-            textViewNomeItemRegisto.setText(registo.getPerfil());
+            //textViewNomeItemRegisto.setText(registo.getPerfil());
             textViewDataRegistoItemRegisto.setText(registo.getDataRegisto());
             textViewTemperaturaItemRegisto.setText((int) registo.getTemperatura());
             textViewSintomasItemRegisto.setText(registo.getSintomas());
