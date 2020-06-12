@@ -78,6 +78,7 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
             textViewNomeItemRegisto.setText(registo.getPerfil());
             textViewDataRegistoItemRegisto.setText(registo.getDataRegisto());
             //textViewTemperaturaItemRegisto.setText((int) registo.getTemperatura());
+            //todo: perguntar porque é que sendo a temperatura float me obriga a fazer um cast para int
             textViewSintomasItemRegisto.setText(registo.getSintomas());
 
         }

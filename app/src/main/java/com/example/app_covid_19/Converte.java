@@ -47,6 +47,7 @@ public class Converte {
         registo.setSintomas(values.getAsString(BdTabelaRegistos.SINTOMAS));
         registo.setIdPerfil(values.getAsLong(BdTabelaRegistos.CAMPO_ID_PERFIL));
         //registo.setPerfil(values.getAsString(BdTabelaRegistos.CAMPO_PERFIL));
+        // todo: perguntar porque dá erro quando tento usar
 
         return registo;
     }
