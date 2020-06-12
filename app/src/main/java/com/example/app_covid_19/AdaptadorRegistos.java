@@ -77,7 +77,7 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
             this.registo = registo;
             //textViewNomeItemRegisto.setText(registo.getPerfil());
             textViewDataRegistoItemRegisto.setText(registo.getDataRegisto());
-            textViewTemperaturaItemRegisto.setText((int) registo.getTemperatura());
+            //textViewTemperaturaItemRegisto.setText((int) registo.getTemperatura());
             textViewSintomasItemRegisto.setText(registo.getSintomas());
 
         }
