@@ -17,19 +17,18 @@ public class BdTabelaRegistos implements BaseColumns {
     public static final String SINTOMAS = "sintomas";
     public static final String CAMPO_ID_PERFIL = "id_perfil";
 
-
+    public static final String CAMPO_PERFIL = "perfil";
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA +"."+ _ID;
     public static final String CAMPO_DATA_REGISTO_COMPLETO = NOME_TABELA + "." + DATA_REGISTO;
     public static final String CAMPO_TEMPERATURA_COMPLETO = NOME_TABELA + "." + TEMPERATURA;
     public static final String CAMPO_SINTOMAS_COMPLETO = NOME_TABELA + "." + SINTOMAS;
     public static final String CAMPO_ID_PERFIL_COMPLETO = NOME_TABELA + "." + CAMPO_ID_PERFIL;
 
-    public static final String CAMPO_PERFIL = "perfil";
 
-    public static final String CAMPO_PERFIL_COMPLETO = BdTabelaPerfis.NOME_TABELA + "." + BdTabelaPerfis.NOME + " AS " + CAMPO_ID_PERFIL_COMPLETO;
+    public static final String CAMPO_PERFIL_COMPLETO = BdTabelaPerfis.NOME_TABELA + "." + BdTabelaPerfis.NOME + " AS " + CAMPO_PERFIL;
 
     public static final String[] TODOS_OS_CAMPOS = new String[]{CAMPO_ID_COMPLETO,CAMPO_DATA_REGISTO_COMPLETO,
-            CAMPO_TEMPERATURA_COMPLETO, CAMPO_SINTOMAS_COMPLETO, CAMPO_ID_PERFIL_COMPLETO/*,CAMPO_PERFIL_COMPLETO*/};
+            CAMPO_TEMPERATURA_COMPLETO, CAMPO_SINTOMAS_COMPLETO, CAMPO_ID_PERFIL_COMPLETO, CAMPO_PERFIL_COMPLETO};
     private SQLiteDatabase db;
 
     public BdTabelaRegistos(SQLiteDatabase db){
@@ -55,7 +54,7 @@ public class BdTabelaRegistos implements BaseColumns {
     public Cursor query(String[] columns, String selection,
                         String[] selectionArgs, String groupBy, String having,
                         String orderBy) {
-        if (Arrays.asList(columns).contains(CAMPO_PERFIL_COMPLETO)){
+        if (!Arrays.asList(columns).contains(CAMPO_PERFIL_COMPLETO)){
             return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy);
         }
 

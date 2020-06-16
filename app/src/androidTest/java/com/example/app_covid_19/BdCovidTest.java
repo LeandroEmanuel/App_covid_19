@@ -10,7 +10,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
@@ -64,7 +63,7 @@ public class BdCovidTest {
 
         Registo registo = new Registo();
         registo.setDataRegisto(dataRegisto);
-        registo.setTemperatura(temperatura);
+        registo.setTemperatura(35.2f);
         registo.setSintomas(sintomas);
         registo.setIdPerfil(idPerfil);
 

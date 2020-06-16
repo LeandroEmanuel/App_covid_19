@@ -46,8 +46,7 @@ public class Converte {
         registo.setTemperatura(values.getAsFloat(BdTabelaRegistos.TEMPERATURA));
         registo.setSintomas(values.getAsString(BdTabelaRegistos.SINTOMAS));
         registo.setIdPerfil(values.getAsLong(BdTabelaRegistos.CAMPO_ID_PERFIL));
-        //registo.setPerfil(values.getAsString(BdTabelaRegistos.CAMPO_PERFIL));
-        // todo: perguntar porque dá erro quando tento usar
+
 
         return registo;
     }
@@ -57,11 +56,10 @@ public class Converte {
         registo.setIdPerfil(cursor.getLong(cursor.getColumnIndex(BdTabelaRegistos.CAMPO_ID_PERFIL)));
         registo.setDataRegisto(cursor.getString(cursor.getColumnIndex(String.valueOf(
                 BdTabelaRegistos.DATA_REGISTO))));
-        registo.setTemperatura(cursor.getFloat(cursor.getColumnIndex(String.valueOf(
-                BdTabelaRegistos.TEMPERATURA))));
+        registo.setTemperatura(cursor.getFloat(cursor.getColumnIndex(BdTabelaRegistos.TEMPERATURA)));
         registo.setSintomas(cursor.getString(cursor.getColumnIndex(BdTabelaRegistos.SINTOMAS)));
         registo.setIdPerfil(cursor.getLong(cursor.getColumnIndex(BdTabelaRegistos.CAMPO_ID_PERFIL)));
-        //registo.setPerfil(cursor.getString(cursor.getColumnIndex(BdTabelaRegistos.CAMPO_PERFIL)));
+        registo.setPerfil(cursor.getString(cursor.getColumnIndex(BdTabelaRegistos.CAMPO_PERFIL)));
 
         return registo;
     }
@@ -81,7 +79,6 @@ public class Converte {
         teste.setDataTeste(values.getAsString(BdTabelaTestes.DATA_TESTE));
         teste.setResultadoTeste(values.getAsString(BdTabelaTestes.RESULTADO_TESTE));
         teste.setIdPerfil(values.getAsLong(BdTabelaTestes.CAMPO_ID_PERFIL));
-        //teste.setPerfil(values.getAsString(BdTabelaTestes.NOME_PERFIL));
         return teste;
     }
 
@@ -91,9 +88,8 @@ public class Converte {
         teste.setIdPerfil(cursor.getLong(cursor.getColumnIndex(BdTabelaTestes.CAMPO_ID_PERFIL)));
         teste.setDataTeste(cursor.getString(cursor.getColumnIndex(String.valueOf(
                 BdTabelaTestes.DATA_TESTE))));
-        teste.setResultadoTeste(String.valueOf(cursor.getColumnIndex(
-                BdTabelaTestes.RESULTADO_TESTE)));
-        //teste.setPerfil(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.NOME_PERFIL)));
+        teste.setResultadoTeste(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.RESULTADO_TESTE)));
+        teste.setPerfil(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.CAMPO_PERFIL)));
         return teste;
     }
 

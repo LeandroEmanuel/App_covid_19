@@ -60,7 +60,7 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
 
         private final TextView textViewNomeItemRegisto;
         private final TextView textViewDataRegistoItemRegisto;
-        //private final TextView textViewTemperaturaItemRegisto;
+        private final TextView textViewTemperaturaItemRegisto;
         private final TextView textViewSintomasItemRegisto;
 
 
@@ -69,7 +69,7 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
 
             textViewNomeItemRegisto = (TextView)itemView.findViewById(R.id.textViewNomeItemRegisto);
             textViewDataRegistoItemRegisto = (TextView)itemView.findViewById(R.id.textViewDataRegistoItemRegisto);
-            //textViewTemperaturaItemRegisto = (TextView)itemView.findViewById(R.id.textViewTemperaturaItemRegisto);
+            textViewTemperaturaItemRegisto = (TextView)itemView.findViewById(R.id.textViewTemperaturaItemRegisto);
             textViewSintomasItemRegisto = (TextView)itemView.findViewById(R.id.textViewSintomasItemRegisto);
         }
 
@@ -77,8 +77,7 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
             this.registo = registo;
             textViewNomeItemRegisto.setText(registo.getPerfil());
             textViewDataRegistoItemRegisto.setText(registo.getDataRegisto());
-            //textViewTemperaturaItemRegisto.setText((int) registo.getTemperatura());
-            //todo: perguntar porque é que sendo a temperatura float me obriga a fazer um cast para int
+            textViewTemperaturaItemRegisto.setText(String.valueOf(registo.getTemperatura()));
             textViewSintomasItemRegisto.setText(registo.getSintomas());
 
         }

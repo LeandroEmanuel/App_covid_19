@@ -52,21 +52,21 @@ public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHo
     public class ViewHolderTeste extends RecyclerView.ViewHolder {
 
         private Teste teste = null;
-        //private final TextView textViewNomeItemTeste;
+        private final TextView textViewNomeItemTeste;
         private final TextView textViewDataItemTeste;
         private final TextView textViewResultadoItemTeste;
 
         public ViewHolderTeste(@NonNull View itemView) {
             super(itemView);
 
-            //textViewNomeItemTeste = (TextView)itemView.findViewById(R.id.textViewNomeItemTeste);
+            textViewNomeItemTeste = (TextView)itemView.findViewById(R.id.textViewNomeItemTeste);
             textViewDataItemTeste = (TextView)itemView.findViewById(R.id.textViewDataResultadoItemTeste);
             textViewResultadoItemTeste = (TextView)itemView.findViewById(R.id.textViewResultadoItemTeste);
         }
 
         public void setTeste(Teste teste) {
             this.teste = teste;
-            //textViewNomeItemTeste.setText(teste.getPerfil());
+            textViewNomeItemTeste.setText(teste.getPerfil());
             textViewDataItemTeste.setText(teste.getDataTeste());
             textViewResultadoItemTeste.setText(teste.getResultadoTeste());
         }
