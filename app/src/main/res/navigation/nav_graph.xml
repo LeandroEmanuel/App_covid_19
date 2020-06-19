@@ -126,6 +126,9 @@
         <action
             android:id="@+id/action_editar_perfil"
             app:destination="@id/fragment_altera_dados_pessoais" />
+        <action
+            android:id="@+id/action_eliminar_perfil"
+            app:destination="@id/fragment_eliminar_perfil" />
     </fragment>
     <fragment
         android:id="@+id/fragment_tabela_registos_diarios"
@@ -166,6 +169,15 @@
         android:label="fragment_altera_dados_pessoais" >
         <action
             android:id="@+id/actionaltera_dados_pessoais_to__selecionar_perfil"
+            app:destination="@id/fragment_selecionar_perfil2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_eliminar_perfil"
+        android:name="com.example.app_covid_19.fragment_eliminar_perfil"
+        android:label="fragment_eliminar_perfil"
+        tools:layout="@layout/fragment_eliminar_perfil" >
+        <action
+            android:id="@+id/action_canselar_eliminar_perfil"
             app:destination="@id/fragment_selecionar_perfil2" />
     </fragment>
 </navigation>

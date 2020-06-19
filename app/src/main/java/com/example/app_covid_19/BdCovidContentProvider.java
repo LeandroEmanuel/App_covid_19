@@ -166,13 +166,13 @@ public class BdCovidContentProvider extends ContentProvider {
 
         switch (getUriMatcher().match(uri)){
             case URI_PERFIS:
-                id = new BdTabelaPerfis(db).insert(values);
+                id = (new BdTabelaPerfis(db).insert(values));
                 break;
             case URI_REGISTOS:
-                id = new BdTabelaRegistos(db).insert(values);
+                id = (new BdTabelaRegistos(db).insert(values));
                 break;
             case URI_TESTES:
-                id = new BdTabelaTestes(db).insert(values);
+                id = (new BdTabelaTestes(db).insert(values));
                 break;
 
             default:

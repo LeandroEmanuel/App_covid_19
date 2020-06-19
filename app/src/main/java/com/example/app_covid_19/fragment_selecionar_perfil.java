@@ -74,7 +74,7 @@ public class fragment_selecionar_perfil extends Fragment implements LoaderManage
     }
     public void eliminarPerfil(){
         NavController navController = NavHostFragment.findNavController(fragment_selecionar_perfil.this);
-        navController.navigate(R.id.action_editar_perfil);
+        navController.navigate(R.id.action_eliminar_perfil);
     }
 
     @NonNull

@@ -23,12 +23,7 @@ public class fragment_menu_principal extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.buttonNovoPerfil).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dadosPerfil();
-            }
-        });
+
         view.findViewById(R.id.buttonProcurarPerfil).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

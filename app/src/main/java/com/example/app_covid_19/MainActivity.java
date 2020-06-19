@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean gereOpcoesMenuInserirPerfil(int id) {
         fragment_insere_dados_pessoais fragment_dados_pessoais = (fragment_insere_dados_pessoais) fragmentActual;
-        if(id == R.id.action_guardar_perfil){
+        if(id == R.id.action_guardar){
             fragment_dados_pessoais.guardaNovoPerfil();
             return true;
         } else if(id == R.id.action_canselar_perfil){
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean gereOpcoesMenuAlteraPerfil(int id) {
         fragment_altera_dados_pessoais fragment_altera_dados_pessoais =(com.example.app_covid_19.fragment_altera_dados_pessoais) fragmentActual;
 
-        if(id == R.id.action_guardar_perfil){
+        if(id == R.id.action_guardar){
             fragment_altera_dados_pessoais.guardaAlteraPerfil();
             return true;
         } else if(id == R.id.action_canselar_perfil){

@@ -33,8 +33,8 @@ import java.util.Calendar;
 
 public class fragment_insere_dados_pessoais extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    EditText nome;
-    TextView textViewDataNascimento;
+    private EditText nome;
+    private TextView textViewDataNascimento;
     Button buttonSelecionarDataNascimento;
     private int mAno, mMes, mDia;
     private EditText editTextNome;
