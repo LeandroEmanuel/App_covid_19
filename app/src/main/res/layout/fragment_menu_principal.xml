@@ -10,33 +10,25 @@
         android:id="@+id/textViewTituloMenuPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:text="@string/titulo_menu_principal"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNovoPerfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonNovoPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/novo_perfil"
         app:layout_constraintBottom_toTopOf="@+id/buttonProcurarPerfil"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloMenuPrincipal" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonProcurarPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/procurar_perfil"
+        android:text="@string/gerir_perfis"
         app:layout_constraintBottom_toTopOf="@+id/buttonSairApp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonNovoPerfil" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTituloMenuPrincipal" />
 
     <Button
         android:id="@+id/buttonSairApp"

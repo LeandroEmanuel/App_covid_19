@@ -14,42 +14,11 @@
         android:text="@string/editar_perfil"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textViewPerfilSelecionado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewPerfilSelecionado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/perfil_selecionado"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAlterarPerfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloEditarPerfil" />
-
-    <Button
-        android:id="@+id/buttonAlterarPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/alterar_prefil"
-        app:layout_constraintBottom_toTopOf="@+id/buttonApagarPerfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPerfilSelecionado" />
-
-    <Button
-        android:id="@+id/buttonApagarPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/apagar_perfil"
         app:layout_constraintBottom_toTopOf="@+id/buttonRegistoDiario"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAlterarPerfil" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonRegistoDiario"
@@ -59,7 +28,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonTestes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonApagarPerfil" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTituloEditarPerfil" />
 
     <Button
         android:id="@+id/buttonTestes"

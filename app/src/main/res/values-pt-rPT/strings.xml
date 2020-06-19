@@ -25,13 +25,13 @@
     <string name="Doencas">Doenças</string>
     <string name="titulo_gestao_dados">Gestão de Dados</string>
     <string name="sair_app">Sair</string>
-    <string name="procurar_perfil">Procurar Perfil</string>
+    <string name="gerir_perfis">Gerir Perfis</string>
     <string name="novo_perfil">"Novo Perfil "</string>
     <string name="titulo_menu_principal">Menu Principal</string>
     <string name="action_settings">Opções</string>
     <string name="doencas_conhecidas">Doenças Conhecidas</string>
     <string name="apagar_perfil">Apagar Perfil</string>
-    <string name="gerir_perfil">Gerir Perfil</string>
+    <string name="gerir_perfil">Mais informação</string>
     <string name="guardar_dados_pessoais">Guardar</string>
     <string name="guardar_resultado_teste">Guardar</string>
     <string name="resultado_teste">Resultado do Teste</string>
@@ -40,7 +40,7 @@
     <string name="temperatura">Temperatura</string>
     <string name="historico">Histórico</string>
     <string name="registo_diario">Registo Diario</string>
-    <string name="editar_perfil">Editar Perfis</string>
+    <string name="editar_perfil">Informações</string>
     <string name="selecionar_perfil">Selecionar Perfil</string>
     <string name="perfil_selecionado">Perfil Selecionado</string>
     <string name="outras_doencas">Outras Doenças</string>

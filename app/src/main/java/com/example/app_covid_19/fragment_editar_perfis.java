@@ -25,12 +25,7 @@ public class fragment_editar_perfis extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.buttonAlterarPerfil).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alterarPerfil();
-            }
-        });
+        
         view.findViewById(R.id.buttonRegistoDiario).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

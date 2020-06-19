@@ -55,6 +55,10 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
         perfil.setDataNascimento("24/12/1994");
         long idPerfilLeandro = tabelaPerfis.insert(Converte.perfilParaContentValues(perfil));
 
+        perfil.setNome("Manel");
+        perfil.setDataNascimento("22/11/1974");
+        long idPerfilManel = tabelaPerfis.insert(Converte.perfilParaContentValues(perfil));
+
        BdTabelaRegistos tabelaRegistos = new BdTabelaRegistos(db);
 
         Registo registo = new Registo();
@@ -64,6 +68,12 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
         registo.setIdPerfil(idPerfilLeandro);
         long idRegistoLeandro = tabelaRegistos.insert(Converte.registoParaContentValues(registo));
 
+        registo.setDataRegisto("12/06/2020");
+        registo.setTemperatura(35.6f);
+        registo.setSintomas("Febre");
+        registo.setIdPerfil(idPerfilLeandro);
+        long idRegistoManel = tabelaRegistos.insert(Converte.registoParaContentValues(registo));
+
         BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
 
         Teste teste = new Teste();
@@ -71,6 +81,11 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
         teste.setResultadoTeste("Negativo");
         teste.setIdPerfil(idPerfilLeandro);
         long idTesteLeandro = tabelaTestes.insert(Converte.testeParaContentValues(teste));
+
+        teste.setDataTeste("19/06/2020");
+        teste.setResultadoTeste("Inconclusivo");
+        teste.setIdPerfil(idPerfilLeandro);
+        long idTesteLManel = tabelaTestes.insert(Converte.testeParaContentValues(teste));
 
 
     }

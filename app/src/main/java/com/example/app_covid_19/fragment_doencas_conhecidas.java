@@ -26,7 +26,7 @@ public class fragment_doencas_conhecidas extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        editTextOutrasDoencas = view.findViewById(R.id.editTextNome);
+        editTextOutrasDoencas = view.findViewById(R.id.editTextAlteraNome);
         view.findViewById(R.id.buttonCancelarDoencasConhecidas).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

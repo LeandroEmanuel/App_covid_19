@@ -49,7 +49,10 @@ public class AdaptadorPerfis extends RecyclerView.Adapter<AdaptadorPerfis.ViewHo
         return cursor.getCount();
     }
 
-    public class ViewHolderPerfis extends RecyclerView.ViewHolder{
+    private ViewHolderPerfis viewHolderPerfilSelecionado = null;
+
+
+    public class ViewHolderPerfis extends RecyclerView.ViewHolder implements View.OnClickListener{
         private Perfil perfil = null;
         private final TextView textViewNomeItemPerfil;
         private final TextView textViewDataNascimentoItemPerfil;
@@ -62,13 +65,39 @@ public class AdaptadorPerfis extends RecyclerView.Adapter<AdaptadorPerfis.ViewHo
             textViewNomeItemPerfil = (TextView)itemView.findViewById(R.id.textViewNomeItemPerfil);
             textViewDataNascimentoItemPerfil = (TextView)itemView.findViewById(R.id.textViewDataNascimentoItemPerfil);
 
+            itemView.setOnClickListener(this);
+
         }
 
         public void setPerfil(Perfil perfil) {
             this.perfil = perfil;
             textViewNomeItemPerfil.setText(perfil.getNome());
             textViewDataNascimentoItemPerfil.setText(perfil.getDataNascimento());
+        }
 
+        @Override
+        public void onClick(View v) {
+            if(viewHolderPerfilSelecionado == this){
+                return;
+            }
+
+            if(viewHolderPerfilSelecionado != null){
+                viewHolderPerfilSelecionado.desSeleciona();
+            }
+            viewHolderPerfilSelecionado = this;
+            seleciona();
+
+            MainActivity activity = (MainActivity) AdaptadorPerfis.this.context;
+            activity.perfilAlterado(perfil);
+
+        }
+
+        private void seleciona() {
+            itemView.setBackgroundResource(R.color.colorPrimary);
+        }
+
+        private void desSeleciona() {
+        itemView.setBackgroundResource(android.R.color.white);
         }
     }
 }

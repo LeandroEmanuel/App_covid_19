@@ -36,9 +36,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_dados_pessoais2"
-        android:name="com.example.app_covid_19.fragment_dados_pessoais"
+        android:name="com.example.app_covid_19.fragment_insere_dados_pessoais"
         android:label="fragment_dados_pessoais"
-        tools:layout="@layout/fragment_dados_pessoais" >
+        tools:layout="@layout/fragment_insere_dados_pessoais" >
         <action
             android:id="@+id/to_menu_principal"
             app:destination="@id/fragment_menu_principal" />
@@ -53,7 +53,7 @@
             app:destination="@id/fragment_menu_principal" />
     </fragment>
     <fragment
-        android:id="@+id/fragment_editar_perfis2"
+        android:id="@+id/fragment_editar_perfis"
         android:name="com.example.app_covid_19.fragment_editar_perfis"
         android:label="fragment_editar_perfis"
         tools:layout="@layout/fragment_editar_perfis" >
@@ -116,10 +116,16 @@
         tools:layout="@layout/fragment_selecionar_perfil" >
         <action
             android:id="@+id/to_editar_perfil"
-            app:destination="@id/fragment_editar_perfis2" />
+            app:destination="@id/fragment_editar_perfis" />
         <action
             android:id="@+id/to_menu_principal"
             app:destination="@id/fragment_menu_principal" />
+        <action
+            android:id="@+id/action_novoPerfil"
+            app:destination="@id/fragment_dados_pessoais2" />
+        <action
+            android:id="@+id/action_editar_perfil"
+            app:destination="@id/fragment_altera_dados_pessoais" />
     </fragment>
     <fragment
         android:id="@+id/fragment_tabela_registos_diarios"
@@ -152,6 +158,14 @@
             app:destination="@id/fragment_resultado_teste" />
         <action
             android:id="@+id/to_editar_perfil"
-            app:destination="@id/fragment_editar_perfis2" />
+            app:destination="@id/fragment_editar_perfis" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_altera_dados_pessoais"
+        android:name="com.example.app_covid_19.fragment_altera_dados_pessoais"
+        android:label="fragment_altera_dados_pessoais" >
+        <action
+            android:id="@+id/actionaltera_dados_pessoais_to__selecionar_perfil"
+            app:destination="@id/fragment_selecionar_perfil2" />
     </fragment>
 </navigation>

@@ -4,7 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="titulo_menu_principal">Main Menu</string>
     <string name="novo_perfil">New Profile</string>
-    <string name="procurar_perfil">Find Profile</string>
+    <string name="gerir_perfis">Manage Profiles</string>
     <string name="sair_app">Exit</string>
     <string name="titulo_gestao_dados">Data Management</string>
     <string name="dados_pessoais">Personal data</string>
@@ -20,9 +20,9 @@
     <string name="doencas_respiratorias">Respiratory Diseases</string>
     <string name="doencas_cardiovsaculares">Cardiovascular Diseases</string>
     <string name="selecionar_perfil">Select Profile</string>
-    <string name="gerir_perfil">Manage Profile</string>
+    <string name="gerir_perfil">More Information</string>
     <string name="perfil_selecionado">Selected Profile</string>
-    <string name="editar_perfil">Edit Profiles</string>
+    <string name="editar_perfil">Information</string>
     <string name="alterar_prefil">Change profile Data</string>
     <string name="apagar_perfil">Delete Profile</string>
     <string name="registo_diario">Daily Registration</string>
