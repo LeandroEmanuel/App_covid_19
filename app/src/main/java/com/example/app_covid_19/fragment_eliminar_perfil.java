@@ -25,8 +25,6 @@ public class fragment_eliminar_perfil extends Fragment {
 
     private EditText nome;
     private TextView textViewDataNascimento;
-    Button buttonSelecionarDataNascimento;
-    private int mAno, mMes, mDia;
     private EditText editTextNome;
     private Perfil perfil;
 
@@ -53,7 +51,6 @@ public class fragment_eliminar_perfil extends Fragment {
         MainActivity activity = (MainActivity) getActivity();
         activity.setFragmentActual(this);
 
-        //todo criar o menu eliminar
         activity.setMenuActual(R.menu.menu_eliminar_perfil);
 
         nome = view.findViewById(R.id.editTextAlteraNome);
