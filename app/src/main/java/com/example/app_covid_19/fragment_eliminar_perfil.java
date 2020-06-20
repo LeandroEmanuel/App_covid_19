@@ -1,58 +1,43 @@
 package com.example.app_covid_19;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_eliminar_perfil#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.material.snackbar.Snackbar;
+
 public class fragment_eliminar_perfil extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private EditText nome;
+    private TextView textViewDataNascimento;
+    Button buttonSelecionarDataNascimento;
+    private int mAno, mMes, mDia;
+    private EditText editTextNome;
+    private Perfil perfil;
 
     public fragment_eliminar_perfil() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_eliminar_perfil.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static fragment_eliminar_perfil newInstance(String param1, String param2) {
-        fragment_eliminar_perfil fragment = new fragment_eliminar_perfil();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -60,5 +45,65 @@ public class fragment_eliminar_perfil extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_eliminar_perfil, container, false);
+    }
+    public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Context context = getContext();
+
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setFragmentActual(this);
+
+        //todo criar o menu eliminar
+        activity.setMenuActual(R.menu.menu_eliminar_perfil);
+
+        nome = view.findViewById(R.id.editTextAlteraNome);
+        textViewDataNascimento = view.findViewById(R.id.textViewAlteraDataNascimento);
+
+        perfil = activity.getPerfil();
+
+        editTextNome.setText(perfil.getNome());
+        textViewDataNascimento.setText(perfil.getDataNascimento());
+    }
+
+    public void cancelar(){
+        NavController navController = NavHostFragment.findNavController(fragment_eliminar_perfil.this);
+        navController.navigate(R.id.action_canselar_perfil;
+    }
+
+    public void eliminar(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        builder.setTitle("Eliminar Perfil");
+        builder.setMessage("Tem a certeza que pretende eliminar o perfil'" + perfil.getNome() + "'");
+        builder.setIcon(R.drawable.ic_round_delete_forever_24);
+        builder.setPositiveButton("Sim",  new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                confirmarEliminar();
+            }
+        });
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                cancelar();
+            }
+        });
+        builder.show();
+    }
+
+    private void confirmarEliminar() {
+        try{
+            Uri enderecoPerfil = Uri.withAppendedPath(BdCovidContentProvider.ENDERECO_PERFIS, String.valueOf(perfil.getId()));
+            int registosApagados = getActivity().getContentResolver().delete(enderecoPerfil, null, null);
+
+            if(registosApagados == 1){
+                Toast.makeText(getContext(),"Perfil eliminado com sucesso", Toast.LENGTH_SHORT).show();
+                NavController navController = NavHostFragment.findNavController(fragment_eliminar_perfil.this);
+                navController.navigate(R.id.action_canselar_perfil);
+                return;
+            }
+        }catch (Exception e){
+        }
+        Snackbar.make(editTextNome,"Erro: Não foi possivél eliminar o perfil", Snackbar.LENGTH_INDEFINITE).show();
     }
 }

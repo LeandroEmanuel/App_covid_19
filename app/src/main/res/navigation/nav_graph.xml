@@ -177,7 +177,7 @@
         android:label="fragment_eliminar_perfil"
         tools:layout="@layout/fragment_eliminar_perfil" >
         <action
-            android:id="@+id/action_canselar_eliminar_perfil"
+            android:id="@+id/action_canselar_perfil"
             app:destination="@id/fragment_selecionar_perfil2" />
     </fragment>
 </navigation>

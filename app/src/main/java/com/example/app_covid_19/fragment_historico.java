@@ -11,6 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 
 public class fragment_historico extends Fragment {
 
@@ -38,4 +42,8 @@ public class fragment_historico extends Fragment {
         NavController navController = NavHostFragment.findNavController(fragment_historico.this);
         navController.navigate(R.id.to_tabela_registos_diarios);
     }
+
+    //teste string to date
+
+
 }
