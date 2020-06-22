@@ -64,7 +64,8 @@ public class BdCovidTest {
         Registo registo = new Registo();
         registo.setDataRegisto(dataRegisto);
         registo.setTemperatura(35.2f);
-        registo.setSintomas(sintomas);
+        registo.setTosse(1);
+        registo.setDifResp(1);
         registo.setIdPerfil(idPerfil);
 
         long idRegisto = tabelaRegistos.insert(Converte.registoParaContentValues(registo));

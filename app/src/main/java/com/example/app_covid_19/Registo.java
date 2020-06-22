@@ -7,7 +7,8 @@ public class Registo {
     private long idPerfil = -1;
     private String dataRegisto;
     private float Temperatura = 0.0f;
-    private String sintomas;
+    private int tosse;
+    private int difResp;
 
     public String Perfil;
 
@@ -51,11 +52,19 @@ public class Registo {
         Temperatura = temperatura;
     }
 
-    public String getSintomas() {
-        return sintomas;
+    public int getTosse() {
+        return tosse;
     }
 
-    public void setSintomas(String sintomas) {
-        this.sintomas = sintomas;
+    public void setTosse(int tosse) {
+        this.tosse = tosse;
+    }
+
+    public int getDifResp() {
+        return difResp;
+    }
+
+    public void setDifResp(int difResp) {
+        this.difResp = difResp;
     }
 }

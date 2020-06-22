@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,10 +33,12 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
     EditText editTextTemperatura;
     TextView textViewDataRegistoDiario;
     Button buttonSelecionarDataRegisto;
+    CheckBox checkBoxTosse;
+    CheckBox checkBoxDifResp;
     private int mAno, mMes, mDia;
     private Registo registo;
-    private boolean tosse = false;
-    private boolean difResp = false;
+    public static int ID_CURSOR_LOADER_PERFIS;
+
 
     @Override
     public View onCreateView(
@@ -76,7 +79,7 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
                 }
             }
         });
-
+        LoaderManager.getInstance(this).initLoader(ID_CURSOR_LOADER_PERFIS, null, this);
     }
 
     private void cancelarRegistoDiario() {
@@ -86,17 +89,28 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
     public void guardar_novo_registo(){
         float temperatura = Float.parseFloat(editTextTemperatura.getText().toString());
         String dataRegisto = textViewDataRegistoDiario.getText().toString();
-        //todo: ver como ir buscar os dados das check box
-        String sintomas  ;
 
-        //todo: erro ao preencher e validacoes
+        boolean auxtosse = checkBoxTosse.isChecked();
+        int tosse;
+        if(auxtosse){
+            tosse = 1;
+        }
+        else {
+            tosse = 0;
+        }
 
-        long idPerfil = registo.getIdPerfil();
+        boolean auxeDifResp = checkBoxDifResp.isChecked();
+        int difResp;
+        if(auxeDifResp){
+            difResp = 1;
+        } else{
+            difResp = 0;
+        }
 
         Registo registo = new Registo();
-        registo.getDataRegisto();
-        registo.getTemperatura();
-        registo.getSintomas();
+        registo.setDataRegisto(dataRegisto);
+        registo.setTemperatura(temperatura);
+        registo.setTosse(tosse);
 
         try{
             getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_REGISTOS, Converte.registoParaContentValues(registo));
@@ -116,11 +130,11 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-
     }
+
+
 }

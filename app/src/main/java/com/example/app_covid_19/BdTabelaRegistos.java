@@ -14,21 +14,23 @@ public class BdTabelaRegistos implements BaseColumns {
     public static final String NOME_TABELA = "registos";
     public static final String DATA_REGISTO = "data_registo";
     public static final String TEMPERATURA = "temperatura";
-    public static final String SINTOMAS = "sintomas";
+    public static final String TOSSE = "tosse";
+    public static final String DIFICULDADE_RESPIRATORIA = "difResp";
     public static final String CAMPO_ID_PERFIL = "id_perfil";
 
     public static final String CAMPO_PERFIL = "perfil";
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA +"."+ _ID;
     public static final String CAMPO_DATA_REGISTO_COMPLETO = NOME_TABELA + "." + DATA_REGISTO;
     public static final String CAMPO_TEMPERATURA_COMPLETO = NOME_TABELA + "." + TEMPERATURA;
-    public static final String CAMPO_SINTOMAS_COMPLETO = NOME_TABELA + "." + SINTOMAS;
+    public static final String CAMPO_TOSSE_COMPLETO = NOME_TABELA + "." + TOSSE;
+    public static final String CAMPO_DIFICULDADE_RESPIRATORIA_COMPLETO = NOME_TABELA + "." + DIFICULDADE_RESPIRATORIA;
     public static final String CAMPO_ID_PERFIL_COMPLETO = NOME_TABELA + "." + CAMPO_ID_PERFIL;
 
 
     public static final String CAMPO_PERFIL_COMPLETO = BdTabelaPerfis.NOME_TABELA + "." + BdTabelaPerfis.NOME + " AS " + CAMPO_PERFIL;
 
     public static final String[] TODOS_OS_CAMPOS = new String[]{CAMPO_ID_COMPLETO,CAMPO_DATA_REGISTO_COMPLETO,
-            CAMPO_TEMPERATURA_COMPLETO, CAMPO_SINTOMAS_COMPLETO, CAMPO_ID_PERFIL_COMPLETO, CAMPO_PERFIL_COMPLETO};
+            CAMPO_TEMPERATURA_COMPLETO, CAMPO_TOSSE_COMPLETO, CAMPO_DIFICULDADE_RESPIRATORIA_COMPLETO, CAMPO_ID_PERFIL_COMPLETO, CAMPO_PERFIL_COMPLETO};
     private SQLiteDatabase db;
 
     public BdTabelaRegistos(SQLiteDatabase db){
@@ -40,7 +42,8 @@ public class BdTabelaRegistos implements BaseColumns {
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DATA_REGISTO + " TEXT NOT NULL, " +
                 TEMPERATURA + " REAL NOT NULL, " +
-                SINTOMAS + " BOOLEAN," +
+                TOSSE + " BOOLEAN," +
+                DIFICULDADE_RESPIRATORIA +  " BOOLEAN, " +
                 CAMPO_ID_PERFIL + " INTEGER NOT NULL," +
                 " FOREIGN KEY(" + CAMPO_ID_PERFIL + ") REFERENCES " +
                 BdTabelaPerfis.NOME_TABELA +"("+ BdTabelaPerfis._ID + ")" +

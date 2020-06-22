@@ -93,7 +93,8 @@ public class AdaptadorPerfis extends RecyclerView.Adapter<AdaptadorPerfis.ViewHo
         }
 
         private void seleciona() {
-            itemView.setBackgroundResource(R.color.colorPrimary);
+            itemView.setBackgroundResource(R.color.colorSelected);
+            
         }
 
         private void desSeleciona() {

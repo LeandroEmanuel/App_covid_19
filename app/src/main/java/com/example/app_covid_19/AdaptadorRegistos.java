@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.ViewHolderRegisto> {
     private Context context;
 
@@ -61,7 +63,8 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
         private final TextView textViewNomeItemRegisto;
         private final TextView textViewDataRegistoItemRegisto;
         private final TextView textViewTemperaturaItemRegisto;
-        private final TextView textViewSintomasItemRegisto;
+        private final TextView textViewTosse;
+        private final TextView textViewDifResp;
 
 
         public ViewHolderRegisto(@NonNull View itemView) {
@@ -70,7 +73,9 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
             textViewNomeItemRegisto = (TextView)itemView.findViewById(R.id.textViewNomeItemRegisto);
             textViewDataRegistoItemRegisto = (TextView)itemView.findViewById(R.id.textViewDataRegistoItemRegisto);
             textViewTemperaturaItemRegisto = (TextView)itemView.findViewById(R.id.textViewTemperaturaItemRegisto);
-            textViewSintomasItemRegisto = (TextView)itemView.findViewById(R.id.textViewSintomasItemRegisto);
+            textViewTosse = (TextView)itemView.findViewById(R.id.textViewTosse);
+            textViewDifResp =(TextView)itemView.findViewById(R.id.textViewDifResp);
+
         }
 
         public void setRegisto(Registo registo) {
@@ -78,8 +83,18 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
             textViewNomeItemRegisto.setText(registo.getPerfil());
             textViewDataRegistoItemRegisto.setText(registo.getDataRegisto());
             textViewTemperaturaItemRegisto.setText(String.valueOf(registo.getTemperatura()));
-            textViewSintomasItemRegisto.setText(registo.getSintomas());
-
+            if(registo.getTosse() == 1) {
+                textViewTosse.setText("Tosse");
+                textViewTosse.setVisibility(View.VISIBLE);
+            } else{
+                textViewTosse.setVisibility(View.GONE);
+            }
+            if(registo.getDifResp() == 1){
+                textViewDifResp.setText("Dificuldade Respiratória");
+                textViewDifResp.setVisibility(View.VISIBLE);
+            }else{
+                textViewDifResp.setVisibility(View.GONE);
+            }
         }
     }
 }

@@ -46,11 +46,4 @@ public class fragment_menu_principal extends Fragment {
         NavController navController = NavHostFragment.findNavController(fragment_menu_principal.this);
         navController.navigate(R.id.to_selecionar_perfil);
     }
-
-    private void dadosPerfil() {
-        NavController navController = NavHostFragment.findNavController(fragment_menu_principal.this);
-        navController.navigate(R.id.to_gestao_dados);
-    }
-
-
 }

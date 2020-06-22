@@ -181,4 +181,9 @@
             android:id="@+id/cancelar_eliminar_perfil"
             app:destination="@id/fragment_selecionar_perfil2" />
     </fragment>
+    <fragment
+        android:id="@+id/fragment_altera_registo"
+        android:name="com.example.app_covid_19.fragment_altera_registo"
+        android:label="fragment_altera_registo"
+        tools:layout="@layout/fragment_altera_registo" />
 </navigation>
