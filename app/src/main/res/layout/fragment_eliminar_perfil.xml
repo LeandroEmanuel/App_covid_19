@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="32dp"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".fragment_eliminar_perfil">
 
@@ -11,20 +12,24 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
         android:text="Nome" />
 
     <TextView
-        android:id="@+id/textViewNomePerfilEliminar"
+        android:id="@+id/editTextNomePerfilEliminar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Leandro"
+        android:text="L"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold" />
 
@@ -32,19 +37,25 @@
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
         android:text="Data de nascimento" />
 
-    <TextView
+    <EditText
         android:id="@+id/textViewDataNascimentoPerfilEliminar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        android:text="24/12/1994"
+        android:text="2"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold" />
+
 </LinearLayout>

@@ -33,7 +33,6 @@ import java.util.Calendar;
 
 public class fragment_insere_dados_pessoais extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private EditText nome;
     private TextView textViewDataNascimento;
     Button buttonSelecionarDataNascimento;
     private int mAno, mMes, mDia;
@@ -56,9 +55,9 @@ public class fragment_insere_dados_pessoais extends Fragment implements LoaderMa
         MainActivity activity = (MainActivity) getActivity();
         activity.setFragmentActual(this);
         activity.setMenuActual(R.menu.menu_inserir_perfil);
-        
 
-        nome = view.findViewById(R.id.editTextAlteraNome);
+
+        editTextNome = view.findViewById(R.id.editTextNome);
         textViewDataNascimento = view.findViewById(R.id.textViewAlteraDataNascimento);
         view.findViewById(R.id.buttonCancelarDAdosPessoais).setOnClickListener(new View.OnClickListener() {
            @Override
@@ -93,7 +92,7 @@ public class fragment_insere_dados_pessoais extends Fragment implements LoaderMa
     private void cancelarDadosPessoais() {
         NavController navController = NavHostFragment.findNavController(fragment_insere_dados_pessoais.this);
         navController.navigate(R.id.to_menu_principal);
-        nome.setText("");
+        editTextNome.setText("");
         textViewDataNascimento.setText("");
 
     }

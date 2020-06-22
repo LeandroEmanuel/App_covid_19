@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         boolean mostraEdeitarEliminarPerfil = (perfil != null);
 
         menu.findItem(R.id.action_editar_perfil).setVisible(mostraEdeitarEliminarPerfil);
-        menu.findItem(R.id.action_eliminar_perfil).setVisible(mostraEdeitarEliminarPerfil);
+        menu.findItem(R.id.selecionar_para_eliminar_perfil).setVisible(mostraEdeitarEliminarPerfil);
     }
 
     public void setFragmentActual(Fragment fragmentActual){
@@ -77,9 +77,24 @@ public class MainActivity extends AppCompatActivity {
             if(gereOpcoesMenuInserirPerfil(id)) return true;
         }else if (menuActual == R.menu.menu_alterar_perfil) {
             if(gereOpcoesMenuAlteraPerfil(id)) return true;
+        }else if (menuActual == R.menu.menu_eliminar_perfil) {
+            if(gereOpcoesMenuEliminarPerfil(id)) return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean gereOpcoesMenuEliminarPerfil(int id) {
+        fragment_eliminar_perfil fragment_eliminar_perfil =(fragment_eliminar_perfil) fragmentActual;
+
+        if(id == R.id.canselar_eliminar_perfil) {
+            fragment_eliminar_perfil.cancelar();
+            return true;
+        } else if(id == R.id.action_eliminar_perfil){
+            fragment_eliminar_perfil.eliminar();
+            return true;
+        }
+        return false;
     }
 
     private boolean gereOpcoesMenuInserirPerfil(int id) {
@@ -87,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         if(id == R.id.action_guardar){
             fragment_dados_pessoais.guardaNovoPerfil();
             return true;
-        } else if(id == R.id.action_canselar_perfil){
+        } else if(id == R.id.canselar_eliminar_perfil){
             fragment_dados_pessoais.cancelarInserirPerfil();
             return true;
         }
@@ -100,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         if(id == R.id.action_guardar){
             fragment_altera_dados_pessoais.guardaAlteraPerfil();
             return true;
-        } else if(id == R.id.action_canselar_perfil){
+        } else if(id == R.id.canselar_eliminar_perfil){
             fragment_altera_dados_pessoais.cancelarAlterarDadosPessoais();
             return true;
         }
@@ -116,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         }else if(id == R.id.action_editar_perfil){
             fragment_selecionar_perfil.editarPerfil();
             return true;
-        } else if(id == R.id.action_eliminar_perfil){
+        } else if(id == R.id.selecionar_para_eliminar_perfil){
             fragment_selecionar_perfil.eliminarPerfil();
             return true;
         }

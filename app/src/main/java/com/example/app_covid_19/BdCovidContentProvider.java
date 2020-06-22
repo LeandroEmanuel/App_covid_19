@@ -52,31 +52,6 @@ public class BdCovidContentProvider extends ContentProvider {
         return uriMatcher;
     }
 
-    /**
-     * Implement this to initialize your content provider on startup.
-     * This method is called for all registered content providers on the
-     * application main thread at application launch time.  It must not perform
-     * lengthy operations, or application startup will be delayed.
-     *
-     * <p>You should defer nontrivial initialization (such as opening,
-     * upgrading, and scanning databases) until the content provider is used
-     * (via {@link #query}, {@link #insert}, etc).  Deferred initialization
-     * keeps application startup fast, avoids unnecessary work if the provider
-     * turns out not to be needed, and stops database errors (such as a full
-     * disk) from halting application launch.
-     *
-     * <p>If you use SQLite, {@link SQLiteOpenHelper}
-     * is a helpful utility class that makes it easy to manage databases,
-     * and will automatically defer opening until first use.  If you do use
-     * SQLiteOpenHelper, make sure to avoid calling
-     * {@link SQLiteOpenHelper#getReadableDatabase} or
-     * {@link SQLiteOpenHelper#getWritableDatabase}
-     * from this method.  (Instead, override
-     * {@link SQLiteOpenHelper#onOpen} to initialize the
-     * database when it is first opened.)
-     *
-     * @return true if the provider was successfully loaded, false otherwise
-     */
     @Override
     public boolean onCreate() {
         openHelper = new BdCovidOpenHelper(getContext());
@@ -114,24 +89,6 @@ public class BdCovidContentProvider extends ContentProvider {
         }
     }
 
-    /**
-     * Implement this to handle requests for the MIME type of the data at the
-     * given URI.  The returned MIME type should start with
-     * <code>vnd.android.cursor.item</code> for a single record,
-     * or <code>vnd.android.cursor.dir/</code> for multiple items.
-     * This method can be called from multiple threads, as described in
-     * <a href="{@docRoot}guide/topics/fundamentals/processes-and-threads.html#Threads">Processes
-     * and Threads</a>.
-     *
-     * <p>Note that there are no permissions needed for an application to
-     * access this information; if your content provider requires read and/or
-     * write permissions, or is not exported, all applications can still call
-     * this method regardless of their access permissions.  This allows them
-     * to retrieve the MIME type for a URI when dispatching intents.
-     *
-     * @param uri the URI to query.
-     * @return a MIME type string, or {@code null} if there is no type.
-     */
     @Nullable
     @Override
     public String getType(@NonNull Uri uri) {

@@ -8,7 +8,7 @@
         android:visible="true"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_canselar_perfil"
+        android:id="@+id/canselar_eliminar_perfil"
         android:icon="@drawable/ic_baseline_cancel_presentation_24"
         android:title="Cancelar"
         android:visible="true"

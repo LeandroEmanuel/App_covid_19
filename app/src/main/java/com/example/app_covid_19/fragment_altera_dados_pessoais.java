@@ -31,9 +31,9 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
 
 
     private TextView textViewAlteraDataNascimento;
+    private EditText editTextAlteraNome;
     Button buttonSelecionarDataNascimento;
     private int mAno, mMes, mDia;
-    private EditText editTextAlteraNome;
     private Perfil perfil;
 
 
@@ -46,6 +46,7 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
         return inflater.inflate(R.layout.fragment_altera_dados_pessoais, container, false);
     }
 
+
     public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Context context = getContext();
@@ -55,14 +56,12 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
         activity.setMenuActual(R.menu.menu_alterar_perfil);
 
 
-        editTextAlteraNome = (EditText) view.findViewById(R.id.editTextAlteraNome);
+        editTextAlteraNome = (EditText) view.findViewById(R.id.editTextNome);
         textViewAlteraDataNascimento =(TextView) view.findViewById(R.id.textViewAlteraDataNascimento);
 
         perfil = activity.getPerfil();
         editTextAlteraNome.setText(perfil.getNome());
         textViewAlteraDataNascimento.setText(perfil.getDataNascimento());
-
-        //todo: ver se o bbotao de get data funciona
 
         buttonSelecionarDataNascimento = (Button)view.findViewById(R.id.buttonSelecionarDataNascimento);
         textViewAlteraDataNascimento =(TextView)view.findViewById(R.id.textViewAlteraDataNascimento);
@@ -98,7 +97,6 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
         String dataNascimento = textViewAlteraDataNascimento.getText().toString();
 
         MainActivity activity = (MainActivity) getActivity();
-
         Perfil perfil = activity.getPerfil();
         perfil.setNome(nome);
         perfil.setDataNascimento(dataNascimento);
@@ -106,7 +104,7 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
         try {
             Uri enderecoPerfil = Uri.withAppendedPath(BdCovidContentProvider.ENDERECO_PERFIS, String.valueOf(perfil.getId()));
 
-            int registos = getActivity().getContentResolver().update(enderecoPerfil, Converte.perfilParaContentValues(perfil), null, null);
+            int registos = getActivity().getContentResolver().update(enderecoPerfil, Converte.perfilParaContentValues(perfil), BdTabelaPerfis._ID+ "=?", new String[]{String.valueOf(perfil.getId())});
             if(registos == 1){
                 Toast.makeText(getContext(),"Perfil guardado com sucesso", Toast.LENGTH_SHORT).show();
                 NavController navController = NavHostFragment.findNavController(fragment_altera_dados_pessoais.this);

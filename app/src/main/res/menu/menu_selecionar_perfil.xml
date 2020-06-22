@@ -15,10 +15,10 @@
         android:id="@+id/action_editar_perfil"
         android:icon="@drawable/ic_baseline_edit_24"
         android:title="Editar Perfil"
-        android:visible="true"
+        android:visible="false"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_eliminar_perfil"
+        android:id="@+id/selecionar_para_eliminar_perfil"
         android:icon="@drawable/ic_round_delete_forever_24"
         android:title="Eliminar Perfil"
         android:visible="false"
