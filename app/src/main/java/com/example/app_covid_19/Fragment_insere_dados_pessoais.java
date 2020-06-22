@@ -59,13 +59,7 @@ public class fragment_insere_dados_pessoais extends Fragment implements LoaderMa
 
         editTextNome = view.findViewById(R.id.editTextNome);
         textViewDataNascimento = view.findViewById(R.id.textViewAlteraDataNascimento);
-        view.findViewById(R.id.buttonCancelarDAdosPessoais).setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               cancelarDadosPessoais();
 
-           }
-       });
         buttonSelecionarDataNascimento = (Button)view.findViewById(R.id.buttonSelecionarDataNascimento);
         textViewDataNascimento =(TextView)view.findViewById(R.id.textViewAlteraDataNascimento);
         view.findViewById(R.id.buttonSelecionarDataNascimento).setOnClickListener(new View.OnClickListener() {

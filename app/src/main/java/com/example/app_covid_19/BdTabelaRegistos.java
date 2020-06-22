@@ -40,7 +40,7 @@ public class BdTabelaRegistos implements BaseColumns {
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DATA_REGISTO + " TEXT NOT NULL, " +
                 TEMPERATURA + " REAL NOT NULL, " +
-                SINTOMAS + " TEXT," +
+                SINTOMAS + " BOOLEAN," +
                 CAMPO_ID_PERFIL + " INTEGER NOT NULL," +
                 " FOREIGN KEY(" + CAMPO_ID_PERFIL + ") REFERENCES " +
                 BdTabelaPerfis.NOME_TABELA +"("+ BdTabelaPerfis._ID + ")" +

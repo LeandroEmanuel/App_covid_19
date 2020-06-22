@@ -9,7 +9,7 @@ public class Perfil {
 
     public long getId() {
 
-        return id ;//= -1; // inicializado a -1 dá erro quando tentyo gravar
+        return id ;//= -1; // inicializado a -1 dá erro quando tento gravar
     }
 
     public void setId(long id) {
