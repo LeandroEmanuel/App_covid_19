@@ -15,9 +15,14 @@ public class MainActivity extends AppCompatActivity {
     private int menuActual = R.menu.menu_principal;
     private Menu menu;
     private Perfil perfil = null;
+    private Registo registo = null;
 
     public Perfil getPerfil() {
         return perfil;
+    }
+
+    public Registo getRegisto() {
+        return registo;
     }
 
     @Override
@@ -33,10 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
         this.perfil = perfil;
 
-        boolean mostraEdeitarEliminarPerfil = (perfil != null);
+        boolean mostraEdeitarEliminarMaisInfoPerfil = (perfil != null);
 
-        menu.findItem(R.id.action_editar_perfil).setVisible(mostraEdeitarEliminarPerfil);
-        menu.findItem(R.id.selecionar_para_eliminar_perfil).setVisible(mostraEdeitarEliminarPerfil);
+        menu.findItem(R.id.action_editar_perfil).setVisible(mostraEdeitarEliminarMaisInfoPerfil);
+        menu.findItem(R.id.selecionar_para_eliminar_perfil).setVisible(mostraEdeitarEliminarMaisInfoPerfil);
+        menu.findItem(R.id.action_mais_info).setVisible(mostraEdeitarEliminarMaisInfoPerfil);
     }
 
     public void setFragmentActual(Fragment fragmentActual){
@@ -79,9 +85,40 @@ public class MainActivity extends AppCompatActivity {
             if(gereOpcoesMenuAlteraPerfil(id)) return true;
         }else if (menuActual == R.menu.menu_eliminar_perfil) {
             if(gereOpcoesMenuEliminarPerfil(id)) return true;
+        }else if (menuActual == R.menu.menu_inserir_registo_diario) {
+            if(gereOpcoesMenuInsereRegisto(id)) return true;
+        }else if (menuActual == R.menu.menu_alterar_registo) {
+            if(gereOpcoesMenuAlteraRegisto(id)) return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean gereOpcoesMenuAlteraRegisto(int id) {
+        fragment_altera_registo fragment_altera_registo = (com.example.app_covid_19.fragment_altera_registo) fragmentActual;
+
+        if (id == R.id.action_guardar_registo_alterado) {
+            fragment_altera_registo.guardarRegistoAlterado();
+            return true;
+        } else if (id == R.id.action_cancelar_registo) {
+            fragment_altera_registo.cancelarAlteraRegistoDiario();
+            return true;
+        }
+        return false;
+    }
+
+
+    private boolean gereOpcoesMenuInsereRegisto(int id) {
+        fragment_insere_registo_diario fragment_insere_registo_diario = (fragment_insere_registo_diario) fragmentActual;
+
+        if(id == R.id.action_guardar_registo){
+            fragment_insere_registo_diario.guardar_novo_registo();
+            return true;
+        } else if(id == R.id.action_cancelar_registo){
+            fragment_insere_registo_diario.cancelarRegistoDiario();
+            return true;
+        }
+        return false;
     }
 
     private boolean gereOpcoesMenuEliminarPerfil(int id) {
@@ -133,6 +170,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if(id == R.id.selecionar_para_eliminar_perfil){
             fragment_selecionar_perfil.eliminarPerfil();
+            return true;
+        }else if(id == R.id.action_mais_info){
+            fragment_selecionar_perfil.maisInformacao();
             return true;
         }
         return false;

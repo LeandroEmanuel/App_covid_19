@@ -1,5 +1,7 @@
 package com.example.app_covid_19;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,10 +12,13 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class fragment_editar_perfis extends Fragment {
 
+
+    private TextView textViewTituloEditarPerfil;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -25,7 +30,8 @@ public class fragment_editar_perfis extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        
+        textViewTituloEditarPerfil = (TextView) view.findViewById(R.id.textViewTituloEditarPerfil);//aqui
+
         view.findViewById(R.id.buttonRegistoDiario).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +50,6 @@ public class fragment_editar_perfis extends Fragment {
                 historico();
             }
         });
-
     }
 
     private void historico() {
@@ -58,12 +63,24 @@ public class fragment_editar_perfis extends Fragment {
     }
 
     private void registoDiario() {
-        NavController navController = NavHostFragment.findNavController(fragment_editar_perfis.this);
-        navController.navigate(R.id.to_registo_diario);
+        Context context = getContext();
+
+        long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
+        BdCovidOpenHelper openHelper = new BdCovidOpenHelper(context);
+
+        SQLiteDatabase dbCovid = openHelper.getReadableDatabase();
+        BdTabelaRegistos bdTabelaRegistos = new BdTabelaRegistos(dbCovid);
+
+        int existeRegisto = bdTabelaRegistos.contaRegistos(idPerfilSelecionado);
+
+       if(existeRegisto == 0){
+           NavController navController = NavHostFragment.findNavController(fragment_editar_perfis.this);
+           navController.navigate(R.id.action_fragment_editar_perfis_to_fragment_insere_registo_diario);
+       }else {
+           NavController navController = NavHostFragment.findNavController(fragment_editar_perfis.this);
+           navController.navigate(R.id.action_fragment_editar_perfis_to_fragment_altera_registo);
+       }
+
     }
 
-    private void alterarPerfil() {
-        NavController navController = NavHostFragment.findNavController(fragment_editar_perfis.this);
-        navController.navigate(R.id.to_gestao_dados);
-    }
 }

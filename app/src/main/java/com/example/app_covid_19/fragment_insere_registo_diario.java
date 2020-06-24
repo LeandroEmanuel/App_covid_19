@@ -1,6 +1,7 @@
 package com.example.app_covid_19;
 
 import android.app.DatePickerDialog;
+import android.app.usage.StorageStats;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -32,13 +33,12 @@ import java.util.Calendar;
 public class fragment_insere_registo_diario extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     EditText editTextTemperatura;
     TextView textViewDataRegistoDiario;
-    Button buttonSelecionarDataRegisto;
     CheckBox checkBoxTosse;
     CheckBox checkBoxDifResp;
     private int mAno, mMes, mDia;
     private Registo registo;
     public static int ID_CURSOR_LOADER_PERFIS;
-
+    private String sysDate;
 
     @Override
     public View onCreateView(
@@ -55,40 +55,29 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
 
         MainActivity activity = (MainActivity) getActivity();
         activity.setFragmentActual(this);
-        activity.setMenuActual(R.menu.menu_insere_registo_diario);
+        activity.setMenuActual(R.menu.menu_inserir_registo_diario);
 
         editTextTemperatura = view.findViewById(R.id.editTextTemperatura);
-        buttonSelecionarDataRegisto = (Button)view.findViewById(R.id.buttonSelecionarDataRegisto);
         textViewDataRegistoDiario =(TextView)view.findViewById(R.id.textViewDataRegistoDiario);
-        view.findViewById(R.id.buttonSelecionarDataRegisto).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if( v == buttonSelecionarDataRegisto){
-                    final Calendar calendario = Calendar.getInstance();
-                    mAno = calendario.get(Calendar.YEAR);
-                    mMes = calendario.get(Calendar.MONTH);
-                    mDia = calendario.get(Calendar.DAY_OF_MONTH);
+        checkBoxTosse = (CheckBox) view.findViewById(R.id.checkBoxTosse);
+        checkBoxDifResp = (CheckBox) view.findViewById(R.id.checkBoxDifResp);
 
-                    DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            textViewDataRegistoDiario.setText(dayOfMonth+ "/" +(month + 1) + "/" + year);
-                        }
-                    }, mAno, mMes, mDia);
-                    datePickerDialog.show();
-                }
-            }
-        });
+        final Calendar calendario = Calendar.getInstance();
+        mAno = calendario.get(Calendar.YEAR);
+        mMes = calendario.get(Calendar.MONTH);
+        mDia = calendario.get(Calendar.DAY_OF_MONTH);
+        sysDate = mDia + "/" + (mMes +1) + "/" + mAno;
+        textViewDataRegistoDiario.setText(sysDate);
         LoaderManager.getInstance(this).initLoader(ID_CURSOR_LOADER_PERFIS, null, this);
     }
 
-    private void cancelarRegistoDiario() {
+    public void cancelarRegistoDiario() {
         NavController navController = NavHostFragment.findNavController(fragment_insere_registo_diario.this);
-        navController.navigate(R.id.to_menu_principal);
+        navController.navigate(R.id.action_fragment_insere_registo_diario_to_fragment_selecionar_perfil2);
     }
     public void guardar_novo_registo(){
         float temperatura = Float.parseFloat(editTextTemperatura.getText().toString());
-        String dataRegisto = textViewDataRegistoDiario.getText().toString();
+        //String dataRegisto = textViewDataRegistoDiario.getText().toString();
 
         boolean auxtosse = checkBoxTosse.isChecked();
         int tosse;
@@ -107,11 +96,13 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
             difResp = 0;
         }
 
+        long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();// ir buscar o id de um perfil
         Registo registo = new Registo();
-        registo.setDataRegisto(dataRegisto);
+        registo.setDataRegisto(sysDate);
         registo.setTemperatura(temperatura);
         registo.setTosse(tosse);
-
+        registo.setDifResp(difResp);
+        registo.setIdPerfil(idPerfilSelecionado);
         try{
             getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_REGISTOS, Converte.registoParaContentValues(registo));
             Toast.makeText(getContext(),"Registo inserido com sucesso", Toast.LENGTH_SHORT).show();

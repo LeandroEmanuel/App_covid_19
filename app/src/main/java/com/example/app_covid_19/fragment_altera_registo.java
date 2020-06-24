@@ -1,58 +1,41 @@
 package com.example.app_covid_19;
 
+import android.content.Context;
+import android.content.CursorLoader;
+import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CursorAdapter;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_altera_registo#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class fragment_altera_registo extends Fragment {
+import com.google.android.material.snackbar.Snackbar;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class fragment_altera_registo extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    public fragment_altera_registo() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_altera_registo.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static fragment_altera_registo newInstance(String param1, String param2) {
-        fragment_altera_registo fragment = new fragment_altera_registo();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private TextView textViewDataRegistoDiario;
+    private EditText editTextTemperatura;
+    CheckBox checkBoxTosse;
+    CheckBox checkBoxDifResp;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -60,5 +43,75 @@ public class fragment_altera_registo extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_altera_registo, container, false);
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanState){
+        super.onViewCreated(view, savedInstanState);
+        Context context = getContext();
+
+        MainActivity activity =(MainActivity) getActivity();
+        activity.setFragmentActual(this);
+        activity.setMenuActual(R.menu.menu_alterar_registo);
+        textViewDataRegistoDiario = (TextView) view.findViewById(R.id.textViewDataRegistoDiario);
+        editTextTemperatura = (EditText) view.findViewById(R.id.editTextTemperatura);
+
+    }
+    public void cancelarAlteraRegistoDiario() {
+        NavController navController = NavHostFragment.findNavController(fragment_altera_registo.this);
+        navController.navigate(R.id.action_fragment_altera_registo_to_fragment_selecionar_perfil2);
+    }
+    public void guardarRegistoAlterado(){
+        float temperatura = Float.parseFloat(editTextTemperatura.getText().toString());
+        String dataRegisto = textViewDataRegistoDiario.getText().toString();
+
+        boolean auxtosse = checkBoxTosse.isChecked();
+        int tosse;
+        if(auxtosse){
+            tosse = 1;
+        }
+        else {
+            tosse = 0;
+        }
+
+        boolean auxeDifResp = checkBoxDifResp.isChecked();
+        int difResp;
+        if(auxeDifResp){
+            difResp = 1;
+        } else{
+            difResp = 0;
+        }
+
+        long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();// ir buscar o id de um perfil
+        Registo registo = new Registo();
+        registo.setDataRegisto(dataRegisto);
+        registo.setTemperatura(temperatura);
+        registo.setTosse(tosse);
+        registo.setDifResp(difResp);
+        registo.setIdPerfil(idPerfilSelecionado);
+
+        try{
+            getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_REGISTOS, Converte.registoParaContentValues(registo));
+            Toast.makeText(getContext(),"Registo alterado com sucesso", Toast.LENGTH_SHORT).show();
+            NavController navController = NavHostFragment.findNavController(fragment_altera_registo.this);
+            navController.navigate(R.id.action_fragment_altera_registo_to_fragment_selecionar_perfil2);
+        }catch (Exception e){
+            Snackbar.make(editTextTemperatura,"Não foi possivel alterar o registo", Snackbar.LENGTH_INDEFINITE).show();
+        }
+    }
+
+    @NonNull
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
+        return new androidx.loader.content.CursorLoader(getContext(), BdCovidContentProvider.ENDERECO_REGISTOS, BdTabelaRegistos.TODOS_OS_CAMPOS, null, null, BdTabelaPerfis.NOME);
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+
     }
 }

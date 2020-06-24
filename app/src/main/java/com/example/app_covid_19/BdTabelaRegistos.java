@@ -3,10 +3,12 @@ package com.example.app_covid_19;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.text.TextUtils;
 
 import java.util.Arrays;
+import java.util.Calendar;
 
 public class BdTabelaRegistos implements BaseColumns {
 
@@ -31,6 +33,7 @@ public class BdTabelaRegistos implements BaseColumns {
 
     public static final String[] TODOS_OS_CAMPOS = new String[]{CAMPO_ID_COMPLETO,CAMPO_DATA_REGISTO_COMPLETO,
             CAMPO_TEMPERATURA_COMPLETO, CAMPO_TOSSE_COMPLETO, CAMPO_DIFICULDADE_RESPIRATORIA_COMPLETO, CAMPO_ID_PERFIL_COMPLETO, CAMPO_PERFIL_COMPLETO};
+    private final SQLiteOpenHelper openHelper = null;
     private SQLiteDatabase db;
 
     public BdTabelaRegistos(SQLiteDatabase db){
@@ -43,7 +46,7 @@ public class BdTabelaRegistos implements BaseColumns {
                 DATA_REGISTO + " TEXT NOT NULL, " +
                 TEMPERATURA + " REAL NOT NULL, " +
                 TOSSE + " BOOLEAN," +
-                DIFICULDADE_RESPIRATORIA +  " BOOLEAN, " +
+                DIFICULDADE_RESPIRATORIA + " BOOLEAN, " +
                 CAMPO_ID_PERFIL + " INTEGER NOT NULL," +
                 " FOREIGN KEY(" + CAMPO_ID_PERFIL + ") REFERENCES " +
                 BdTabelaPerfis.NOME_TABELA +"("+ BdTabelaPerfis._ID + ")" +
@@ -54,6 +57,25 @@ public class BdTabelaRegistos implements BaseColumns {
         return db.insert(NOME_TABELA, null, values);
     }
 
+    public int contaRegistos(long idPerfil){//contar os registos de um perfil
+        final Calendar calendario = Calendar.getInstance();
+        int mAno = calendario.get(Calendar.YEAR);
+        int mMes = calendario.get(Calendar.MONTH);
+        int mDia = calendario.get(Calendar.DAY_OF_MONTH);
+        String sysDate = mDia + "/" + (mMes +1) + "/" + mAno;
+
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) from " +
+                NOME_TABELA +
+                " where " +
+                CAMPO_ID_PERFIL + " =? " +
+                " AND " +
+                DATA_REGISTO +
+                " = ? " , new String[]{String.valueOf(idPerfil),sysDate});
+
+        cursor.moveToNext();
+        return cursor.getInt(0);
+        // SELECT COUNT(*) from registos where registos.idPerfil = 1 and dataRegisto = sysdate
+    }
     public Cursor query(String[] columns, String selection,
                         String[] selectionArgs, String groupBy, String having,
                         String orderBy) {

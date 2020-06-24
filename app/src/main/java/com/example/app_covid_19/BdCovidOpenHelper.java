@@ -6,11 +6,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.Calendar;
+
 public class BdCovidOpenHelper extends SQLiteOpenHelper {
 
     public static final String BD_NOME = "covid.db";
     public static final int VERSAO_BD = 1;
     private static boolean DESENVOLVIMENTO = true;
+
+    private int mAno, mMes, mDia;
 
     public BdCovidOpenHelper(@Nullable Context context) {
         super(context,BD_NOME , null, VERSAO_BD);
@@ -47,8 +51,14 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
 
        BdTabelaRegistos tabelaRegistos = new BdTabelaRegistos(db);
 
+        final Calendar calendario = Calendar.getInstance();
+        mAno = calendario.get(Calendar.YEAR);
+        mMes = calendario.get(Calendar.MONTH);
+        mDia = calendario.get(Calendar.DAY_OF_MONTH);
+        String sysDate = mDia + "/" + (mMes + 1) + "/" + mAno;
+
         Registo registo = new Registo();
-        registo.setDataRegisto("20/05/2020");
+        registo.setDataRegisto(sysDate);
         registo.setTemperatura(35.6f);
         registo.setTosse(1);
         registo.setDifResp(0);

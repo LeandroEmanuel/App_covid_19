@@ -49,16 +49,9 @@ public class fragment_selecionar_perfil extends Fragment implements LoaderManage
         recyclerViewPerfis.setLayoutManager(new LinearLayoutManager(context));
         adaptadorPerfis.setCursor(null);
 
-        view.findViewById(R.id.buttonMaisInfo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                maisInformacao();
-            }
-        });
-
         LoaderManager.getInstance(this).initLoader(_CURSOR_LOADER_PERFIS, null, this);
     }
-    private void maisInformacao() {
+    public void maisInformacao() {
         NavController navController = NavHostFragment.findNavController(fragment_selecionar_perfil.this);
         navController.navigate(R.id.fragment_editar_perfis);
     }
