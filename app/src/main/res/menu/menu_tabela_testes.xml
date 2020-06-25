@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/elimina_teste"
+        android:icon="@drawable/ic_round_delete_forever_24"
+        android:title="@string/acao_eliminar_perfil"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/reverteTeste"
+        android:icon="@drawable/ic_baseline_undo_24"
+        android:title="@string/voltar"
+        app:showAsAction="ifRoom" />
+</menu>

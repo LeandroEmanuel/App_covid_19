@@ -49,7 +49,9 @@ public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHo
         return cursor.getCount();
     }
 
-    public class ViewHolderTeste extends RecyclerView.ViewHolder {
+    private ViewHolderTeste viewHolderTesteSelecionado = null;
+
+    public class ViewHolderTeste extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Teste teste = null;
         private final TextView textViewNomeItemTeste;
@@ -59,9 +61,9 @@ public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHo
         public ViewHolderTeste(@NonNull View itemView) {
             super(itemView);
 
-            textViewNomeItemTeste = (TextView)itemView.findViewById(R.id.textViewNomeItemTeste);
-            textViewDataItemTeste = (TextView)itemView.findViewById(R.id.textViewDataResultadoItemTeste);
-            textViewResultadoItemTeste = (TextView)itemView.findViewById(R.id.textViewResultadoItemTeste);
+            textViewNomeItemTeste = (TextView) itemView.findViewById(R.id.textViewNomeItemTeste);
+            textViewDataItemTeste = (TextView) itemView.findViewById(R.id.textViewDataResultadoItemTeste);
+            textViewResultadoItemTeste = (TextView) itemView.findViewById(R.id.textViewResultadoItemTeste);
         }
 
         public void setTeste(Teste teste) {
@@ -69,6 +71,31 @@ public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHo
             textViewNomeItemTeste.setText(teste.getPerfil());
             textViewDataItemTeste.setText(teste.getDataTeste());
             textViewResultadoItemTeste.setText(teste.getResultadoTeste());
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (viewHolderTesteSelecionado == this) {
+                return;
+            }
+
+            if (viewHolderTesteSelecionado != null) {
+                viewHolderTesteSelecionado.desSeleciona();
+            }
+            viewHolderTesteSelecionado = this;
+            seleciona();
+
+            MainActivity activity = (MainActivity) AdaptadorTestes.this.context;
+            activity.testeAlterado(teste);
+
+        }
+
+        private void seleciona() {
+            itemView.setBackgroundResource(R.color.colorSelected);
+        }
+
+        private void desSeleciona() {
+            itemView.setBackgroundResource(android.R.color.white);
         }
     }
 }

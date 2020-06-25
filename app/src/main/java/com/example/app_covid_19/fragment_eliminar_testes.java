@@ -31,6 +31,7 @@ public class fragment_eliminar_testes extends Fragment implements LoaderManager.
 
     private TextView textViewEliminarDataTeste;
     private TextView textViewEliminaResultadoTeste;
+    private TextView textViewNomeTeste;
     private Teste teste;
 
     @Override
@@ -54,17 +55,18 @@ public class fragment_eliminar_testes extends Fragment implements LoaderManager.
         activity.setMenuActual(R.menu.menu_eliminar_registo);
         textViewEliminarDataTeste = (TextView) view.findViewById(R.id.textViewEliminarDataTeste);
         textViewEliminaResultadoTeste = (TextView) view.findViewById(R.id.textViewEliminaResultadoTeste);
-        Registo registo = activity.getRegisto();
+        textViewNomeTeste = (TextView) view.findViewById(R.id.textViewNomeTeste);
+        teste = activity.getTest();
 
-        textViewEliminarDataTeste.setText(registo.getDataRegisto());
-        textViewEliminaResultadoTeste.setText(String.valueOf(registo.getTemperatura()));//alterei
+        textViewNomeTeste.setText(teste.getPerfil());
+        textViewEliminarDataTeste.setText(teste.getResultadoTeste());
+        textViewEliminaResultadoTeste.setText(String.valueOf(teste.getResultadoTeste()));//alterei
     }
     public void cancelarEliminarTeste(){
         NavController navController = NavHostFragment.findNavController(fragment_eliminar_testes.this);
         navController.navigate(R.id.action_fragment_elimina_registo_to_fragment_selecionar_perfil2);
     }
     public void eliminarTeste(){
-        //long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 

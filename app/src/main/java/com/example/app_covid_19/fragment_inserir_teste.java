@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,10 @@ public class fragment_inserir_teste extends Fragment implements LoaderManager.Lo
     TextView textViewDataTesteResultado;
     private int mAno, mMes, mDia;
     private String sysDate;
+    private Teste teste;
+    private RadioGroup radioGroupTeste;
     public static final int _CURSOR_LOADER_PERFIS = 0;
+
 
 
     @Override
@@ -56,6 +60,7 @@ public class fragment_inserir_teste extends Fragment implements LoaderManager.Lo
         activity.setMenuActual(R.menu.menu_inserir_teste);
 
         textViewDataTesteResultado =(TextView)view.findViewById(R.id.textViewDataTesteResultado);
+        //radioGroupTeste = (RadioGroup) view.findViewById(R.id.radioGroupTeste);
 
         final Calendar calendario = Calendar.getInstance();
         mAno = calendario.get(Calendar.YEAR);
@@ -71,15 +76,15 @@ public class fragment_inserir_teste extends Fragment implements LoaderManager.Lo
 
     public void cancelarInserirTeste() {
         NavController navController = NavHostFragment.findNavController(fragment_inserir_teste.this);
-        navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
+        navController.navigate(R.id.action_fragment_resultado_teste_to_fragment_testes);
     }
 
     public void guardarNovoTeste(){
         //todo: guardar o radioButton selecionado
 
-        long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
 
-        Teste teste = new Teste();
+        long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
+        teste = new Teste();
         teste.setDataTeste(sysDate);
         //teste.setResultadoTeste(radiobuton);
         teste.setIdPerfil(idPerfilSelecionado);

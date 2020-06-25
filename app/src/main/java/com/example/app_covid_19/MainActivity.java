@@ -59,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void testeAlterado(Teste teste){
+
+        this.teste = teste;
+
+        boolean mostraEliminarTeste = (teste != null);
+        menu.findItem(R.id.elimina_registo).setVisible(mostraEliminarTeste);
+
+    }
+
     public void setFragmentActual(Fragment fragmentActual){
         this.fragmentActual = fragmentActual;
     }
@@ -106,17 +115,26 @@ public class MainActivity extends AppCompatActivity {
             if(gereOpcoesMenuEliminarRegisto(id)) return true;
         }else if (menuActual == R.menu.menu_inserir_teste) {
             if(gereOpcoesMenuInserirTeste(id)) return true;
-        }else if (menuActual == R.menu.menu_alterar_teste) {
-            if(gereOpcoesMenuAlterarTeste(id)) return true;
         }else if (menuActual == R.menu.menu_eliminar_teste) {
             if(gereOpcoesMenuEliminarTeste(id)) return true;
         }else if (menuActual == R.menu.menu_historico_registos) {
             if(gereOpcoesMenuTabelaRegisto(id)) return true;
+        }else if (menuActual == R.menu.menu_tabela_testes) {
+            if(gereOpcoesMenuTabelaTeste(id)) return true;
         }
-         /*else if (menuActual == R.menu.menu_alterar_eliminar_registo) {menu_historico_registos
-            if(gereOpcoesMenuAlteraRegisto(id)) return true;
-        }*/
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean gereOpcoesMenuTabelaTeste(int id) {
+        fragment_tabela_resultado_testes fragmentTabelaResultadoTestes = (fragment_tabela_resultado_testes) fragmentActual;
+        if (id == R.id.elimina_teste) {
+            fragmentTabelaResultadoTestes.EliminarTeste();
+            return true;
+        } else if (id == R.id.reverte) {
+            fragmentTabelaResultadoTestes.historicoTestes();
+            return true;
+        }
+        return false;
     }
 
     private boolean gereOpcoesMenuTabelaRegisto(int id) {
@@ -152,19 +170,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if(id == R.id.action_eliminar_perfil){
             fragment_eliminar_testes.eliminarTeste();
-            return true;
-        }
-        return false;
-    }
-
-    private boolean gereOpcoesMenuAlterarTeste(int id) {
-        fragment_elterar_testes fragment_elterar_testes = (fragment_elterar_testes) fragmentActual;
-
-        if (id == R.id.action_guardar_registo_alterado) {
-            fragment_elterar_testes.guardarTesteAlterado();
-            return true;
-        } else if (id == R.id.action_cancelar_registo) {
-            fragment_elterar_testes.cancelarAlterarTeste();
             return true;
         }
         return false;
