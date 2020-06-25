@@ -4,8 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="32dp"
+    android:layout_marginRight="32dp"
     android:gravity="center"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewNomePerfilEliminar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        tools:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/textViewEliminaDataRegisto"
@@ -37,4 +47,5 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp" />
+
 </LinearLayout>

@@ -32,6 +32,7 @@ public class fragment_eliminar_testes extends Fragment implements LoaderManager.
     private TextView textViewEliminarDataTeste;
     private TextView textViewEliminaResultadoTeste;
     private Teste teste;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -50,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         menu.findItem(R.id.action_mais_info).setVisible(mostraEdeitarEliminarMaisInfoPerfil);
     }
 
+    public void registoAlterado(Registo registo){
+
+        this.registo = registo;
+
+        boolean mostraEliminarRegisto = (registo != null);
+        menu.findItem(R.id.elimina_registo).setVisible(mostraEliminarRegisto);
+
+    }
+
     public void setFragmentActual(Fragment fragmentActual){
         this.fragmentActual = fragmentActual;
     }
@@ -79,9 +88,10 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (menuActual == R.menu.menu_selecionar_perfil) {
+        if (menuActual == R.menu.menu_principal) {
+            if(gereOpcoesMenuPrincipal(id)) return true;
+        }
+         else if (menuActual == R.menu.menu_selecionar_perfil) {
             if(gereOpcoesMenuSelecionaPerfil(id)) return true;
 
         } else if (menuActual == R.menu.menu_inserir_perfil) {
@@ -92,43 +102,98 @@ public class MainActivity extends AppCompatActivity {
             if(gereOpcoesMenuEliminarPerfil(id)) return true;
         }else if (menuActual == R.menu.menu_inserir_registo_diario) {
             if(gereOpcoesMenuInsereRegisto(id)) return true;
-        }else if (menuActual == R.menu.menu_alterar_eliminar_registo) {
-            if(gereOpcoesMenuAlteraRegisto(id)) return true;
         }else if (menuActual == R.menu.menu_eliminar_registo) {
             if(gereOpcoesMenuEliminarRegisto(id)) return true;
+        }else if (menuActual == R.menu.menu_inserir_teste) {
+            if(gereOpcoesMenuInserirTeste(id)) return true;
+        }else if (menuActual == R.menu.menu_alterar_teste) {
+            if(gereOpcoesMenuAlterarTeste(id)) return true;
+        }else if (menuActual == R.menu.menu_eliminar_teste) {
+            if(gereOpcoesMenuEliminarTeste(id)) return true;
+        }else if (menuActual == R.menu.menu_historico_registos) {
+            if(gereOpcoesMenuTabelaRegisto(id)) return true;
         }
-
+         /*else if (menuActual == R.menu.menu_alterar_eliminar_registo) {menu_historico_registos
+            if(gereOpcoesMenuAlteraRegisto(id)) return true;
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
-    private boolean gereOpcoesMenuEliminarRegisto(int id) {
-
-        if (id == R.id.action_eliminar_registo) {
-            fragment_elimina_registo.eliminarRegisto(); nao consigo usar as funcoes do fragmento elimina registos
+    private boolean gereOpcoesMenuTabelaRegisto(int id) {
+        fragment_tabela_registos_diarios fragment_tabela_registos_diarios = (com.example.app_covid_19.fragment_tabela_registos_diarios) fragmentActual;
+        if (id == R.id.elimina_registo) {
+            fragment_tabela_registos_diarios.EliminarRegisto();
             return true;
-        } else if (id == R.id.canselar_eliminar_registo) {
-            fragment_elimina_registo.;
+        } else if (id == R.id.reverte) {
+            fragment_tabela_registos_diarios.historico();
             return true;
         }
         return false;
     }
 
-    private boolean gereOpcoesMenuAlteraRegisto(int id) {
-        fragment_altera_registo fragment_altera_registo = (com.example.app_covid_19.fragment_altera_registo) fragmentActual;
+    private boolean gereOpcoesMenuPrincipal(int id) {
+        fragment_menu_principal fragment_menu_principal = (com.example.app_covid_19.fragment_menu_principal)fragmentActual;
+
+        if(id == R.id.go_conf) {
+            fragment_menu_principal.configuracoes();
+            return true;
+        } else if(id == R.id.go_info){
+            fragment_menu_principal.sobre();
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean gereOpcoesMenuEliminarTeste(int id) {
+        fragment_eliminar_testes fragment_eliminar_testes = (com.example.app_covid_19.fragment_eliminar_testes) fragmentActual;
+        if(id == R.id.canselar_eliminar_perfil) {
+            fragment_eliminar_testes.cancelarEliminarTeste();
+            return true;
+        } else if(id == R.id.action_eliminar_perfil){
+            fragment_eliminar_testes.eliminarTeste();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean gereOpcoesMenuAlterarTeste(int id) {
+        fragment_elterar_testes fragment_elterar_testes = (fragment_elterar_testes) fragmentActual;
 
         if (id == R.id.action_guardar_registo_alterado) {
-            fragment_altera_registo.guardarRegistoAlterado();
+            fragment_elterar_testes.guardarTesteAlterado();
             return true;
         } else if (id == R.id.action_cancelar_registo) {
-            fragment_altera_registo.cancelarAlteraRegistoDiario();
+            fragment_elterar_testes.cancelarAlterarTeste();
             return true;
-        } else if (id == R.id.action_eliminar_registo) {
-        fragment_altera_registo.eliminarRegistoDiario();
-        return true;
         }
         return false;
     }
 
+    private boolean gereOpcoesMenuInserirTeste(int id) {
+        fragment_inserir_teste fragment_inserir_teste = (fragment_inserir_teste) fragmentActual;
+
+        if(id == R.id.action_guardar_registo){
+            fragment_inserir_teste.guardarNovoTeste();
+            return true;
+        } else if(id == R.id.action_cancelar_registo){
+            fragment_inserir_teste.cancelarInserirTeste();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean gereOpcoesMenuEliminarRegisto(int id) {
+        fragment_elimina_registo fragment_elimina_registo = (fragment_elimina_registo) fragmentActual;
+        if (id == R.id.action_eliminar_registo) {
+            fragment_elimina_registo.eliminarRegisto();
+            return true;
+        } else if (id == R.id.canselar_eliminar_registo) {
+            fragment_elimina_registo.cancelarEliminarRegisto();
+            return true;
+        }
+        return false;
+    }
 
     private boolean gereOpcoesMenuInsereRegisto(int id) {
         fragment_insere_registo_diario fragment_insere_registo_diario = (fragment_insere_registo_diario) fragmentActual;

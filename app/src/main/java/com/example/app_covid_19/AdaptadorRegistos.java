@@ -2,7 +2,6 @@ package com.example.app_covid_19;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
-
-import java.util.Calendar;
-
-import static com.example.app_covid_19.BdTabelaRegistos.CAMPO_ID_PERFIL;
-import static com.example.app_covid_19.BdTabelaRegistos.DATA_REGISTO;
-import static com.example.app_covid_19.BdTabelaRegistos.NOME_TABELA;
-import static com.example.app_covid_19.BdTabelaRegistos.TODOS_OS_CAMPOS;
 
 public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.ViewHolderRegisto> {
     private Context context;
@@ -59,7 +49,9 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
         return cursor.getCount();
     }
 
-    public class ViewHolderRegisto extends RecyclerView.ViewHolder {
+    private ViewHolderRegisto viewHolderRegistoSelecionado = null;
+
+    public class ViewHolderRegisto extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Registo registo = null;
 
@@ -79,6 +71,7 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
             textViewTosse = (TextView)itemView.findViewById(R.id.textViewTosse);
             textViewDifResp =(TextView)itemView.findViewById(R.id.textViewDifResp);
 
+            itemView.setOnClickListener(this);
         }
 
         public void setRegisto(Registo registo) {
@@ -98,6 +91,31 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
             }else{
                 textViewDifResp.setVisibility(View.GONE);
             }
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(viewHolderRegistoSelecionado == this){
+                return;
+            }
+
+            if(viewHolderRegistoSelecionado != null){
+                viewHolderRegistoSelecionado.desSeleciona();
+            }
+            viewHolderRegistoSelecionado = this;
+            seleciona();
+
+            MainActivity activity = (MainActivity) AdaptadorRegistos.this.context;
+            activity.registoAlterado(registo);
+
+        }
+
+        private void seleciona() {
+            itemView.setBackgroundResource(R.color.colorSelected);
+        }
+
+        private void desSeleciona() {
+            itemView.setBackgroundResource(android.R.color.white);
         }
     }
 }

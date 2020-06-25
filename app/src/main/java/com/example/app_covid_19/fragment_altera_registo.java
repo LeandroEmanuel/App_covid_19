@@ -37,6 +37,10 @@ public class fragment_altera_registo extends Fragment implements LoaderManager.L
 
     private TextView textViewDataRegistoDiario;
     private EditText editTextTemperatura;
+
+    private int mAno, mMes, mDia;
+    private String sysDate;
+
     CheckBox checkBoxTosse;
     CheckBox checkBoxDifResp;
     Registo registo;
@@ -60,13 +64,22 @@ public class fragment_altera_registo extends Fragment implements LoaderManager.L
         MainActivity activity =(MainActivity) getActivity();
         activity.setFragmentActual(this);
         activity.setMenuActual(R.menu.menu_alterar_eliminar_registo);
-        long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
+
+
         textViewDataRegistoDiario = (TextView) view.findViewById(R.id.textViewDataRegistoDiario);
         editTextTemperatura = (EditText) view.findViewById(R.id.editTextTemperatura);
         checkBoxTosse = (CheckBox) view.findViewById(R.id.checkBoxTosse);
         checkBoxDifResp = (CheckBox) view.findViewById(R.id.checkBoxDifResp);
 
-    }
+        final Calendar calendario = Calendar.getInstance();
+        mAno = calendario.get(Calendar.YEAR);
+        mMes = calendario.get(Calendar.MONTH);
+        mDia = calendario.get(Calendar.DAY_OF_MONTH);
+        sysDate = mDia + "/" + (mMes +1) + "/" + mAno;
+
+        textViewDataRegistoDiario.setText(sysDate);
+
+    }/*
     public void cancelarAlteraRegistoDiario() {
         NavController navController = NavHostFragment.findNavController(fragment_altera_registo.this);
         navController.navigate(R.id.action_fragment_altera_registo_to_fragment_selecionar_perfil2);
@@ -96,8 +109,10 @@ public class fragment_altera_registo extends Fragment implements LoaderManager.L
             difResp = 0;
         }
 
+
         long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();// ir buscar o id de um perfil
-        registo.setDataRegisto(dataRegisto);
+
+        registo.setDataRegisto(sysDate);
         registo.setTemperatura(temperatura);
         registo.setTosse(tosse);
         registo.setDifResp(difResp);
@@ -118,7 +133,7 @@ public class fragment_altera_registo extends Fragment implements LoaderManager.L
         }
 
 
-    }
+    }*/
 
     @NonNull
     @Override

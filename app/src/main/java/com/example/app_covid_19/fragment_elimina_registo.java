@@ -30,12 +30,14 @@ import com.google.android.material.snackbar.Snackbar;
 import org.w3c.dom.Text;
 
 
-public class fragment_elimina_registo extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class fragment_elimina_registo extends Fragment {
     private TextView textViewEliminaDataRegisto;
     private TextView textViewEliminaTemperatura;
     private TextView textViewEliminaTosseRegisto;
+    private TextView textViewEliminaDifRespRegisto;
+    private TextView textViewNomePerfilEliminar;
     private Registo registo;
-;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,19 +56,27 @@ public class fragment_elimina_registo extends Fragment implements LoaderManager.
         MainActivity activity =(MainActivity) getActivity();
         activity.setFragmentActual(this);
         activity.setMenuActual(R.menu.menu_eliminar_registo);
-        textViewEliminaDataRegisto = (TextView) view.findViewById(R.id.textViewEliminaDataRegisto);
-        textViewEliminaTemperatura = (TextView) view.findViewById(R.id.editTextTemperatura);
-        Registo registo = activity.getRegisto();
 
+        textViewNomePerfilEliminar = (TextView) view.findViewById(R.id.textViewNomePerfilEliminar);
+        textViewEliminaDataRegisto = (TextView) view.findViewById(R.id.textViewEliminaDataRegisto);
+        textViewEliminaTemperatura = (TextView) view.findViewById(R.id.textViewEliminaTemperatura);
+
+        textViewEliminaTosseRegisto = (TextView) view.findViewById(R.id.textViewEliminaTosseRegisto);
+        textViewEliminaDifRespRegisto = (TextView) view.findViewById(R.id.textViewEliminaDifRespRegisto);
+
+        registo = activity.getRegisto();
+        textViewNomePerfilEliminar.setText(registo.getPerfil());
         textViewEliminaDataRegisto.setText(registo.getDataRegisto());
-        textViewEliminaTemperatura.setText(String.valueOf(registo.getTemperatura()));//alterei
+        textViewEliminaTemperatura.setText(String.valueOf(registo.getTemperatura()));
+        textViewEliminaTosseRegisto.setText(""+registo.getTosse());
+        textViewEliminaDifRespRegisto.setText(""+registo.getDifResp());
     }
-    public void cancelarEliminarRegisto(){não consigo usar isto na mainactivity
+    public void cancelarEliminarRegisto(){
         NavController navController = NavHostFragment.findNavController(fragment_elimina_registo.this);
         navController.navigate(R.id.action_fragment_elimina_registo_to_fragment_selecionar_perfil2);
     }
-    public void eliminarRegisto(){não consigo usar isto na mainactivity
-        //long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
+
+    public void eliminarRegisto(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
@@ -81,10 +91,12 @@ public class fragment_elimina_registo extends Fragment implements LoaderManager.
         });
         builder.setNegativeButton(R.string.nao, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {    cancelarEliminarRegisto();
+            public void onClick(DialogInterface dialog, int which) {
+                cancelarEliminarRegisto();
             }
         });
         builder.show();
+
     }
 
     public void confirmarEliminarRegisto() {
@@ -95,28 +107,11 @@ public class fragment_elimina_registo extends Fragment implements LoaderManager.
             if(registosApagados == 1){
                 Toast.makeText(getContext(), R.string.registo_eliminado_sucesso, Toast.LENGTH_SHORT).show();
                 NavController navController = NavHostFragment.findNavController(fragment_elimina_registo.this);
-                navController.navigate(R.id.action_fragment_elimina_registo_to_fragment_selecionar_perfil2);
+                navController.navigate(R.id.action_fragment_elimina_registo_to_fragment_tabela_registos_diarios);
                 return;
             }
         }catch (Exception e){
         }
         Snackbar.make(textViewEliminaDataRegisto, R.string.erro_eliminar_registo, Snackbar.LENGTH_INDEFINITE).show();
-    }
-
-    @NonNull
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-
-        return new androidx.loader.content.CursorLoader(getContext(), BdCovidContentProvider.ENDERECO_REGISTOS, BdTabelaRegistos.TODOS_OS_CAMPOS, null, null, BdTabelaPerfis.NOME);
-    }
-
-    @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-
-    }
-
-    @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-
     }
 }

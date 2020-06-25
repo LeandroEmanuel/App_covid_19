@@ -108,6 +108,7 @@ public class Converte {
         teste.setDataTeste(cursor.getString(cursor.getColumnIndex(String.valueOf(
                 BdTabelaTestes.DATA_TESTE))));
         teste.setResultadoTeste(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.RESULTADO_TESTE)));
+        teste.setIdPerfil(cursor.getLong(cursor.getColumnIndex(BdTabelaTestes.CAMPO_PERFIL)));
         teste.setPerfil(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.CAMPO_PERFIL)));
         return teste;
     }

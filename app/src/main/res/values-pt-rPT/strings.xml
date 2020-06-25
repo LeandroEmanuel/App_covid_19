@@ -88,4 +88,10 @@
     <string name="acao_editar_perfil">Editar Perfil</string>
     <string name="mais_informacao">Mais Informação</string>
     <string name="acao_eliminar_perfil">Eliminar Perfil</string>
+    <string name="sobre">Sobre</string>
+    <string name="voltar">Voltar</string>
+    <string name="autor">    "Autor: Leandro Gomes                 nº 1012489"</string>
+    <string name="versao">"App_covid_19 V1 concluida a 28/06/2020.                          No ambito da cadeira de Programação Avançada."</string>
+    <string name="discricao">"Esta aplicacao destina-se ao uso domiciliario, em que o utilisador pode registar os dados de cada pessoa com que m reside, bem como a situacao patologica de cada um e o historico. Tendo como objetivo final, dar uma informacao mais detalhada, sobre os sintomas que alguma destas pessoas teve e a partir de quando se intensificaram, caso tenha que recorrer ao SNS24 ou a um estabelecimento de saude."</string>
+    <string name="configuracoes">Configurations</string>
 </resources>

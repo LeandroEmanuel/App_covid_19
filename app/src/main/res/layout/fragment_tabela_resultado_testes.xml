@@ -10,6 +10,8 @@
         android:id="@+id/textViewTituloTabelaTestes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/titulo_tabela_testes"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -21,7 +23,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTestes"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginEnd="32dp"

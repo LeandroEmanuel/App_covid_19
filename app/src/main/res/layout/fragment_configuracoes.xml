@@ -4,36 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_historico" >
+    tools:context=".fragment_configuracoes">
+
 
     <TextView
-        android:id="@+id/textViewMediaTemperaturas"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/media_temperaturas"
-        app:layout_constraintBottom_toTopOf="@+id/buttonTabelaRegistos"
+        android:text="@string/configuracoes"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDarckTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloHistorico" />
-
-    <TextView
-        android:id="@+id/textViewTituloHistorico"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/historico"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonTabelaRegistos"
+        android:id="@+id/buttonLightTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tabela_registos_diarios"
+        android:text="@string/light_theme"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDarckTheme"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMediaTemperaturas" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.493" />
+
+    <Button
+        android:id="@+id/buttonDarckTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/darck_theme"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonLightTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonLightTheme" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,24 +63,8 @@ public class fragment_editar_menu_perfis extends Fragment {
     }
 
     private void registoDiario() {
-        Context context = getContext();
-
-        long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
-        BdCovidOpenHelper openHelper = new BdCovidOpenHelper(context);
-
-        SQLiteDatabase dbCovid = openHelper.getReadableDatabase();
-        BdTabelaRegistos bdTabelaRegistos = new BdTabelaRegistos(dbCovid);
-
-        int existeRegisto = bdTabelaRegistos.contaRegistos(idPerfilSelecionado);
-
-       if(existeRegisto == 0){
            NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
            navController.navigate(R.id.action_fragment_editar_perfis_to_fragment_insere_registo_diario);
-       }else {
-           NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
-           navController.navigate(R.id.action_fragment_editar_perfis_to_fragment_altera_registo);
-       }
-
     }
 
 }

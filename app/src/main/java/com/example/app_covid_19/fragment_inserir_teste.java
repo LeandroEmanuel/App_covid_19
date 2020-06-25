@@ -69,12 +69,12 @@ public class fragment_inserir_teste extends Fragment implements LoaderManager.Lo
 
     }
 
-    private void cancelarInserirTeste() {
+    public void cancelarInserirTeste() {
         NavController navController = NavHostFragment.findNavController(fragment_inserir_teste.this);
         navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
     }
 
-    public void gardar_novoTeste(){
+    public void guardarNovoTeste(){
         //todo: guardar o radioButton selecionado
 
         long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();

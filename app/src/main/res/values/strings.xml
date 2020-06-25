@@ -88,4 +88,12 @@
     <string name="acao_editar_perfil">Edit profile</string>
     <string name="mais_informacao">More Information</string>
     <string name="acao_eliminar_perfil">Delete Profile</string>
+    <string name="sobre">About</string>
+    <string name="voltar">Back</string>
+    <string name="autor">"Author: Leandro Gomes                          nº 1012489"</string>
+    <string name="versao">"App_covid_19 V1 completed on 06/28/2020.                           Within the scope of the Advanced Programming course."</string>
+    <string name="discricao">"This application is intended for home use, in which the user can record the data of each person he resides with, as well as the pathological situation of each person and the history, give more detailed information, about the symptoms that any of these people had and from when they intensified, if you have to resort to the NHS24 or a health facility."</string>
+    <string name="configuracoes">Configurations</string>
+    <string name="light_theme" translatable="false">Light theme</string>
+    <string name="darck_theme" translatable="false">Darck theme</string>
 </resources>

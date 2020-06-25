@@ -24,6 +24,7 @@ public class fragment_tabela_resultado_testes extends Fragment implements Loader
 
     public static final int _CURSOR_LOADER_TESTES = 0;
     private AdaptadorTestes adaptadorTestes;
+    private long idPerfil;
 
     @Override
     public View onCreateView(
@@ -40,6 +41,11 @@ public class fragment_tabela_resultado_testes extends Fragment implements Loader
         Context context = getContext();
         RecyclerView recyclerViewTestes = (RecyclerView) view.findViewById(R.id.recyclerViewTestes);
         adaptadorTestes = new AdaptadorTestes(context);
+        MainActivity activity =(MainActivity) getActivity();
+        activity.setFragmentActual(this);
+        activity.setMenuActual(R.menu.menu_historico_registos);
+
+        idPerfil = activity.getPerfil().getId();
 
         recyclerViewTestes.setAdapter(adaptadorTestes);
         recyclerViewTestes.setLayoutManager(new LinearLayoutManager(context));
@@ -51,7 +57,7 @@ public class fragment_tabela_resultado_testes extends Fragment implements Loader
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new CursorLoader(getContext(), BdCovidContentProvider.ENDERECO_TESTES, BdTabelaTestes.TODOS_OS_CAMPOS, null, null, BdTabelaTestes.DATA_TESTE);
+        return new CursorLoader(getContext(), BdCovidContentProvider.ENDERECO_TESTES, BdTabelaTestes.TODOS_OS_CAMPOS,  BdTabelaRegistos.CAMPO_ID_PERFIL_COMPLETO + "=?", new String[]{String.valueOf(idPerfil)}, BdTabelaTestes.DATA_TESTE);
     }
 
     @Override

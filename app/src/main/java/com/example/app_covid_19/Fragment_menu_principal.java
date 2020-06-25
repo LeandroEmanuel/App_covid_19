@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-public class fragment_menu_principal extends Fragment {
+public class fragment_menu_principal extends Fragment{
 
     @Override
     public View onCreateView(
@@ -23,6 +23,10 @@ public class fragment_menu_principal extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setFragmentActual(this);
+        activity.setMenuActual(R.menu.menu_principal);
 
         view.findViewById(R.id.buttonProcurarPerfil).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,4 +50,15 @@ public class fragment_menu_principal extends Fragment {
         NavController navController = NavHostFragment.findNavController(fragment_menu_principal.this);
         navController.navigate(R.id.to_selecionar_perfil);
     }
+
+    public void configuracoes() {
+        NavController navController = NavHostFragment.findNavController(fragment_menu_principal.this);
+        navController.navigate(R.id.action_fragment_menu_principal_to_fragment_configuracoes);
+    }
+
+    public void sobre() {
+        NavController navController = NavHostFragment.findNavController(fragment_menu_principal.this);
+        navController.navigate(R.id.action_fragment_menu_principal_to_fragment_sobre);
+    }
+
 }
