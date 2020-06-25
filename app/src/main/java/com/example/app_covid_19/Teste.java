@@ -3,7 +3,7 @@ package com.example.app_covid_19;
 import java.sql.Date;
 
 public class Teste {
-    private long id = -1;
+    private long id;
     private long idPerfil = -1;
     private String dataTeste;
     private String resultadoTeste;

@@ -82,31 +82,31 @@ public class AdaptadorPerfis extends RecyclerView.Adapter<AdaptadorPerfis.ViewHo
             textViewNomeItemPerfil.setText(perfil.getNome());
             textViewDataNascimentoItemPerfil.setText(perfil.getDataNascimento());
             if(perfil.getCardio() == 1) {
-                textViewDoencasCardioVasculares.setText("Cardiovascular Diseaase");
+                textViewDoencasCardioVasculares.setText(R.string.doenca_cardiovascular);
                 textViewDoencasCardioVasculares.setVisibility(View.VISIBLE);
             } else{
                 textViewDoencasCardioVasculares.setVisibility(View.GONE);
             }
             if(perfil.getDiabetes() == 1){
-                textViewDiabetes.setText("Diabetes");
+                textViewDiabetes.setText(R.string.diabetes);
                 textViewDiabetes.setVisibility(View.VISIBLE);
             }else{
                 textViewDiabetes.setVisibility(View.GONE);
             }
             if(perfil.getHiper() == 1){
-                textViewHipertensao.setText("Hypertension");
+                textViewHipertensao.setText(R.string.hipertensao);
                 textViewHipertensao.setVisibility(View.VISIBLE);
             }else{
                 textViewHipertensao.setVisibility(View.GONE);
             }
             if(perfil.getOnco() == 1){
-                textViewOncologica.setText("Oncological Disease");
+                textViewOncologica.setText(R.string.doenca_oncologica);
                 textViewOncologica.setVisibility(View.VISIBLE);
             }else{
                 textViewOncologica.setVisibility(View.GONE);
             }
             if(perfil.getResp() == 1){
-                textViewRespiratoria.setText("Respiratory Disease");
+                textViewRespiratoria.setText(R.string.doenca_respiratoria);
                 textViewRespiratoria.setVisibility(View.VISIBLE);
             }else{
                 textViewRespiratoria.setVisibility(View.GONE);

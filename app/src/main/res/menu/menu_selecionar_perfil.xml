@@ -3,28 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/acttion_setings"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/action_novoPerfil"
         android:icon="@drawable/ic_baseline_add_24"
-        android:title="Novo Perfil"
+        android:title="@string/acao_novo_perfil"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_editar_perfil"
         android:icon="@drawable/ic_baseline_edit_24"
-        android:title="Editar Perfil"
+        android:title="@string/acao_editar_perfil"
         android:visible="false"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_mais_info"
         android:icon="@drawable/ic_baseline_info_24"
-        android:title="More Information" />
+        android:title="@string/mais_informacao" />
     <item
         android:id="@+id/selecionar_para_eliminar_perfil"
         android:icon="@drawable/ic_round_delete_forever_24"
-        android:title="Eliminar Perfil"
+        android:title="@string/acao_eliminar_perfil"
         android:visible="false"
         app:showAsAction="ifRoom" />
 </menu>

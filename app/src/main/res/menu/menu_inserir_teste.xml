@@ -5,11 +5,11 @@
     <item
         android:id="@+id/action_guardar_teste"
         android:icon="@drawable/ic_baseline_save_24"
-        android:title="Guardar"
+        android:title="@string/guardar"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_cancelar_testes"
         android:icon="@drawable/ic_baseline_cancel_presentation_24"
-        android:title="Cancelar"
+        android:title="@string/cancelar"
         app:showAsAction="ifRoom" />
 </menu>

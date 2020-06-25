@@ -71,6 +71,10 @@ public class fragment_altera_registo extends Fragment implements LoaderManager.L
         NavController navController = NavHostFragment.findNavController(fragment_altera_registo.this);
         navController.navigate(R.id.action_fragment_altera_registo_to_fragment_selecionar_perfil2);
     }
+    public void eliminarRegistoDiario() {
+        NavController navController = NavHostFragment.findNavController(fragment_altera_registo.this);
+        navController.navigate(R.id.action_fragment_altera_registo_to_fragment_elimina_registo);
+    }
     public void guardarRegistoAlterado(){
         float temperatura = Float.parseFloat(editTextTemperatura.getText().toString());
         String dataRegisto = textViewDataRegistoDiario.getText().toString();
@@ -104,13 +108,13 @@ public class fragment_altera_registo extends Fragment implements LoaderManager.L
 
             int registos = getActivity().getContentResolver().update(enderecoPerfil, Converte.registoParaContentValues(registo), null, null);
             if(registos == 1){
-                Toast.makeText(getContext(),"Registo guardado com sucesso", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.registo_guardado_com_sucesso, Toast.LENGTH_SHORT).show();
                 NavController navController = NavHostFragment.findNavController(fragment_altera_registo.this);
                 navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
                 return;
             }
         } catch (Exception e) {
-            Snackbar.make(editTextTemperatura,"Não foi possivel alterar o registo", Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar.make(editTextTemperatura, R.string.erro_alterar_registo, Snackbar.LENGTH_INDEFINITE).show();
         }
 
 

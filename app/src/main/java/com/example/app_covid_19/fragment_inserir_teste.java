@@ -86,12 +86,12 @@ public class fragment_inserir_teste extends Fragment implements LoaderManager.Lo
 
         try {
             getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_TESTES, Converte.testeParaContentValues(teste));
-            Toast.makeText(getContext(),"Teste inserido com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),R.string.teste_guardado_com_sucesso, Toast.LENGTH_SHORT).show();
             NavController navController = NavHostFragment.findNavController(fragment_inserir_teste.this);
             navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
 
         } catch (Exception e) {
-            Snackbar.make(textViewDataTesteResultado,"Não foi possivél guardar o teste!", Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar.make(textViewDataTesteResultado, R.string.erro_inserir_teste, Snackbar.LENGTH_INDEFINITE).show();
         }
 
 

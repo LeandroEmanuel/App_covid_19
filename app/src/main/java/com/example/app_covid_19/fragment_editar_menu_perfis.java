@@ -25,7 +25,7 @@ public class fragment_editar_menu_perfis extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_editar_perfis, container, false);
+        return inflater.inflate(R.layout.fragment_editar_menu_perfis, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {

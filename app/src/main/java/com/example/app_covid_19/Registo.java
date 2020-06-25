@@ -3,7 +3,7 @@ package com.example.app_covid_19;
 import java.sql.Date;
 
 public class Registo {
-    private long id = -1;
+    private long id;
     private long idPerfil = -1;
     private String dataRegisto;
     private float Temperatura = 0.0f;

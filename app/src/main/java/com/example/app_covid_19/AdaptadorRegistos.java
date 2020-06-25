@@ -87,13 +87,13 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
             textViewDataRegistoItemRegisto.setText(registo.getDataRegisto());
             textViewTemperaturaItemRegisto.setText(String.valueOf(registo.getTemperatura()));
             if(registo.getTosse() == 1) {
-                textViewTosse.setText("Tosse");
+                textViewTosse.setText(R.string.tosse);
                 textViewTosse.setVisibility(View.VISIBLE);
             } else{
                 textViewTosse.setVisibility(View.GONE);
             }
             if(registo.getDifResp() == 1){
-                textViewDifResp.setText("Dificuldade Respiratória");
+                textViewDifResp.setText(R.string.dificuldade_respiratoria);
                 textViewDifResp.setVisibility(View.VISIBLE);
             }else{
                 textViewDifResp.setVisibility(View.GONE);

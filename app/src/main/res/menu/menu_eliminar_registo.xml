@@ -4,13 +4,13 @@
     <item
         android:id="@+id/action_eliminar_registo"
         android:icon="@drawable/ic_round_delete_forever_24"
-        android:title="Eliminar"
+        android:title="@string/eliminar"
         android:visible="true"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/canselar_eliminar_registo"
         android:icon="@drawable/ic_baseline_cancel_presentation_24"
-        android:title="Cancelar"
+        android:title="@string/cancelar"
         android:visible="true"
         app:showAsAction="ifRoom" />
 </menu>

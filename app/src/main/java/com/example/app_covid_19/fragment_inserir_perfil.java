@@ -47,7 +47,7 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_insere_dados_pessoais, container, false);
+        return inflater.inflate(R.layout.fragment_insere_perfil, container, false);
     }
 
     public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
@@ -135,11 +135,11 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
         }
 
         if(nome.length() == 0){
-            editTextNome.setError("Preencha o nome!");
+            editTextNome.setError(getString(R.string.preencher_nome));
             editTextNome.requestFocus();
             return;
         } else if(dataNascimento.length() == 0){
-            textViewDataNascimento.setError("Selecione uma data!");
+            textViewDataNascimento.setError(getString(R.string.selecionar_data));
             textViewDataNascimento.requestFocus();
         }
 
@@ -156,11 +156,11 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
 
         try {
             getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_PERFIS, Converte.perfilParaContentValues(perfil));
-            Toast.makeText(getContext(), "Perfil inserido com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.perfil_inserido_sucesso, Toast.LENGTH_SHORT).show();
             NavController navController = NavHostFragment.findNavController(fragment_inserir_perfil.this);
             navController.navigate(R.id.fragment_selecionar_perfil2);
         } catch (Exception e){
-            Snackbar.make(editTextNome,"Erro: Não foi possivel inserir o perfil! ", Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar.make(editTextNome, R.string.erro_inserir_perfil, Snackbar.LENGTH_INDEFINITE).show();
         }
     }
 

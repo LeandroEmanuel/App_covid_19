@@ -85,13 +85,13 @@ public class fragment_elterar_testes extends Fragment implements LoaderManager.L
 
             int registos = getActivity().getContentResolver().update(enderecoPerfil, Converte.testeParaContentValues(teste), BdTabelaTestes._ID+ "=?", new String[]{String.valueOf(teste.getId())});
             if(registos == 1){
-                Toast.makeText(getContext(),"Teste guardado com sucesso", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.teste_guardado_com_sucesso, Toast.LENGTH_SHORT).show();
                 NavController navController = NavHostFragment.findNavController(fragment_elterar_testes.this);
                 navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
                 return;
             }
         } catch (Exception e) {
-            Snackbar.make(textViewAlteraDataTesteResultado,"Erro: Não foi possivel alterar o teste! ", Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar.make(textViewAlteraDataTesteResultado, R.string.erro_alterar_teste, Snackbar.LENGTH_INDEFINITE).show();
         }
 
     }

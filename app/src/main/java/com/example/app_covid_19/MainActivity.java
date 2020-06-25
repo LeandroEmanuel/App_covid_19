@@ -94,9 +94,23 @@ public class MainActivity extends AppCompatActivity {
             if(gereOpcoesMenuInsereRegisto(id)) return true;
         }else if (menuActual == R.menu.menu_alterar_eliminar_registo) {
             if(gereOpcoesMenuAlteraRegisto(id)) return true;
+        }else if (menuActual == R.menu.menu_eliminar_registo) {
+            if(gereOpcoesMenuEliminarRegisto(id)) return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean gereOpcoesMenuEliminarRegisto(int id) {
+
+        if (id == R.id.action_eliminar_registo) {
+            fragment_elimina_registo.eliminarRegisto(); nao consigo usar as funcoes do fragmento elimina registos
+            return true;
+        } else if (id == R.id.canselar_eliminar_registo) {
+            fragment_elimina_registo.;
+            return true;
+        }
+        return false;
     }
 
     private boolean gereOpcoesMenuAlteraRegisto(int id) {
@@ -108,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.action_cancelar_registo) {
             fragment_altera_registo.cancelarAlteraRegistoDiario();
             return true;
+        } else if (id == R.id.action_eliminar_registo) {
+        fragment_altera_registo.eliminarRegistoDiario();
+        return true;
         }
         return false;
     }

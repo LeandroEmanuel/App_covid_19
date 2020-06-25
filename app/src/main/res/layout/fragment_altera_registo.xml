@@ -10,7 +10,7 @@
         android:id="@+id/textViewTituloRegistoDiario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Daily Log Change"
+        android:text="@string/alterar_registo_diario"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewDataRegistoDiario"

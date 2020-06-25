@@ -49,7 +49,7 @@ public class fragment_alterar_perfil extends Fragment implements LoaderManager.L
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_altera_dados_pessoais, container, false);
+        return inflater.inflate(R.layout.fragment_altera_perfil, container, false);
     }
 
 
@@ -159,13 +159,13 @@ public class fragment_alterar_perfil extends Fragment implements LoaderManager.L
 
             int registos = getActivity().getContentResolver().update(enderecoPerfil, Converte.perfilParaContentValues(perfil), BdTabelaPerfis._ID+ "=?", new String[]{String.valueOf(perfil.getId())});
             if(registos == 1){
-                Toast.makeText(getContext(),"Perfil guardado com sucesso", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),R.string.perfil_inserido_sucesso, Toast.LENGTH_SHORT).show();
                 NavController navController = NavHostFragment.findNavController(fragment_alterar_perfil.this);
                 navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
                 return;
             }
         } catch (Exception e){
-            Snackbar.make(editTextAlteraNome,"Erro: Não foi possivel alterar o perfil! ", Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar.make(editTextAlteraNome, R.string.erro_alterar_perfil, Snackbar.LENGTH_INDEFINITE).show();
         }
     }
 

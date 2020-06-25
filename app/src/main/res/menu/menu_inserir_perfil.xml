@@ -5,13 +5,13 @@
     <item
         android:id="@+id/action_guardar"
         android:icon="@drawable/ic_baseline_save_24"
-        android:title="Guardar "
+        android:title="@string/guardar"
         android:visible="true"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/canselar_eliminar_perfil"
         android:icon="@drawable/ic_baseline_cancel_presentation_24"
-        android:title="Cancelar"
+        android:title="@string/cancelar"
         android:visible="true"
         app:showAsAction="ifRoom" />
 </menu>
