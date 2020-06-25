@@ -6,6 +6,11 @@ public class Perfil {
 
     private String nome;
     private String dataNascimento;
+    private int cardio;
+    private int diabetes;
+    private int hiper;
+    private int onco;
+    private int resp;
 
     public long getId() {
 
@@ -30,5 +35,45 @@ public class Perfil {
 
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public int getCardio() {
+        return cardio;
+    }
+
+    public void setCardio(int cardio) {
+        this.cardio = cardio;
+    }
+
+    public int getDiabetes() {
+        return diabetes;
+    }
+
+    public void setDiabetes(int diabetes) {
+        this.diabetes = diabetes;
+    }
+
+    public int getHiper() {
+        return hiper;
+    }
+
+    public void setHiper(int hiper) {
+        this.hiper = hiper;
+    }
+
+    public int getOnco() {
+        return onco;
+    }
+
+    public void setOnco(int onco) {
+        this.onco = onco;
+    }
+
+    public int getResp() {
+        return resp;
+    }
+
+    public void setResp(int resp) {
+        this.resp = resp;
     }
 }

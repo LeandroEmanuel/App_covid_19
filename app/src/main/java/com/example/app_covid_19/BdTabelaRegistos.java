@@ -45,8 +45,8 @@ public class BdTabelaRegistos implements BaseColumns {
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DATA_REGISTO + " TEXT NOT NULL, " +
                 TEMPERATURA + " REAL NOT NULL, " +
-                TOSSE + " BOOLEAN," +
-                DIFICULDADE_RESPIRATORIA + " BOOLEAN, " +
+                TOSSE + " INTEGER," +
+                DIFICULDADE_RESPIRATORIA + " INTEGER, " +
                 CAMPO_ID_PERFIL + " INTEGER NOT NULL," +
                 " FOREIGN KEY(" + CAMPO_ID_PERFIL + ") REFERENCES " +
                 BdTabelaPerfis.NOME_TABELA +"("+ BdTabelaPerfis._ID + ")" +
@@ -76,6 +76,26 @@ public class BdTabelaRegistos implements BaseColumns {
         return cursor.getInt(0);
         // SELECT COUNT(*) from registos where registos.idPerfil = 1 and dataRegisto = sysdate
     }
+    public Registo getRegistos(long idPerfil){//contar os registos de um perfil
+        final Calendar calendario = Calendar.getInstance();
+        int mAno = calendario.get(Calendar.YEAR);
+        int mMes = calendario.get(Calendar.MONTH);
+        int mDia = calendario.get(Calendar.DAY_OF_MONTH);
+        String sysDate = mDia + "/" + (mMes +1) + "/" + mAno;
+
+        Cursor cursor = db.rawQuery("SELECT "+TODOS_OS_CAMPOS+" from " +
+                NOME_TABELA +
+                " where " +
+                CAMPO_ID_PERFIL + " =? " +
+                " AND " +
+                DATA_REGISTO +
+                " = ? " , new String[]{String.valueOf(idPerfil),sysDate});
+
+        cursor.moveToNext();
+        return Converte.cursorParaRegisto(cursor);
+        // SELECT COUNT(*) from registos where registos.idPerfil = 1 and dataRegisto = sysdate
+    }
+
     public Cursor query(String[] columns, String selection,
                         String[] selectionArgs, String groupBy, String having,
                         String orderBy) {

@@ -44,7 +44,7 @@ public class fragment_elimina_registo extends Fragment implements LoaderManager.
 
         MainActivity activity =(MainActivity) getActivity();
         activity.setFragmentActual(this);
-        //activity.setMenuActual(R.menu.);
+        activity.setMenuActual(R.menu.menu_eliminar_registo);
         textViewEliminaDataRegisto = (TextView) view.findViewById(R.id.textViewEliminaDataRegisto);
         textViewEliminaTemperatura = (EditText) view.findViewById(R.id.editTextTemperatura);
         Registo registo = activity.getRegisto();

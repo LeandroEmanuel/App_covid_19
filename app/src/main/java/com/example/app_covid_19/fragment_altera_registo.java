@@ -1,14 +1,14 @@
 package com.example.app_covid_19;
 
 import android.content.Context;
-import android.content.CursorLoader;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.navigation.NavController;
@@ -18,12 +18,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.Calendar;
+
+import static com.example.app_covid_19.BdTabelaRegistos.CAMPO_ID_PERFIL;
+import static com.example.app_covid_19.BdTabelaRegistos.DATA_REGISTO;
+import static com.example.app_covid_19.BdTabelaRegistos.NOME_TABELA;
+import static com.example.app_covid_19.BdTabelaRegistos.TODOS_OS_CAMPOS;
+import static com.example.app_covid_19.BdTabelaRegistos._ID;
 
 
 public class fragment_altera_registo extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -32,6 +39,7 @@ public class fragment_altera_registo extends Fragment implements LoaderManager.L
     private EditText editTextTemperatura;
     CheckBox checkBoxTosse;
     CheckBox checkBoxDifResp;
+    Registo registo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,9 +59,12 @@ public class fragment_altera_registo extends Fragment implements LoaderManager.L
 
         MainActivity activity =(MainActivity) getActivity();
         activity.setFragmentActual(this);
-        activity.setMenuActual(R.menu.menu_alterar_registo);
+        activity.setMenuActual(R.menu.menu_alterar_eliminar_registo);
+        long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
         textViewDataRegistoDiario = (TextView) view.findViewById(R.id.textViewDataRegistoDiario);
         editTextTemperatura = (EditText) view.findViewById(R.id.editTextTemperatura);
+        checkBoxTosse = (CheckBox) view.findViewById(R.id.checkBoxTosse);
+        checkBoxDifResp = (CheckBox) view.findViewById(R.id.checkBoxDifResp);
 
     }
     public void cancelarAlteraRegistoDiario() {
@@ -82,27 +93,33 @@ public class fragment_altera_registo extends Fragment implements LoaderManager.L
         }
 
         long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();// ir buscar o id de um perfil
-        Registo registo = new Registo();
         registo.setDataRegisto(dataRegisto);
         registo.setTemperatura(temperatura);
         registo.setTosse(tosse);
         registo.setDifResp(difResp);
         registo.setIdPerfil(idPerfilSelecionado);
 
-        try{
-            getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_REGISTOS, Converte.registoParaContentValues(registo));
-            Toast.makeText(getContext(),"Registo alterado com sucesso", Toast.LENGTH_SHORT).show();
-            NavController navController = NavHostFragment.findNavController(fragment_altera_registo.this);
-            navController.navigate(R.id.action_fragment_altera_registo_to_fragment_selecionar_perfil2);
-        }catch (Exception e){
+        try {
+            Uri enderecoPerfil = Uri.withAppendedPath(BdCovidContentProvider.ENDERECO_REGISTOS, String.valueOf(registo.getId()));
+
+            int registos = getActivity().getContentResolver().update(enderecoPerfil, Converte.registoParaContentValues(registo), null, null);
+            if(registos == 1){
+                Toast.makeText(getContext(),"Registo guardado com sucesso", Toast.LENGTH_SHORT).show();
+                NavController navController = NavHostFragment.findNavController(fragment_altera_registo.this);
+                navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
+                return;
+            }
+        } catch (Exception e) {
             Snackbar.make(editTextTemperatura,"Não foi possivel alterar o registo", Snackbar.LENGTH_INDEFINITE).show();
         }
+
+
     }
 
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new androidx.loader.content.CursorLoader(getContext(), BdCovidContentProvider.ENDERECO_REGISTOS, BdTabelaRegistos.TODOS_OS_CAMPOS, null, null, BdTabelaPerfis.NOME);
+        return new androidx.loader.content.CursorLoader(getContext(), BdCovidContentProvider.ENDERECO_REGISTOS, TODOS_OS_CAMPOS, null, null, BdTabelaPerfis.NOME);
     }
 
     @Override

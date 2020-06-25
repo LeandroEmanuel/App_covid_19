@@ -1,16 +1,13 @@
 package com.example.app_covid_19;
 
 import android.app.DatePickerDialog;
-import android.content.ClipData;
 import android.content.Context;
-import android.content.CursorLoader;
 import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.navigation.NavController;
@@ -20,7 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CursorAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,12 +28,17 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 
 
-public class fragment_insere_dados_pessoais extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class fragment_inserir_perfil extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private TextView textViewDataNascimento;
     Button buttonSelecionarDataNascimento;
     private int mAno, mMes, mDia;
     private EditText editTextNome;
+    private CheckBox checkBoxCardiovascular;
+    private CheckBox checkBoxDiabetes;
+    private CheckBox checkBoxHipertensao;
+    private CheckBox checkBoxDoencasOncologicas;
+    private CheckBox checkBoxResp;
 
 
     @Override
@@ -62,6 +64,12 @@ public class fragment_insere_dados_pessoais extends Fragment implements LoaderMa
 
         buttonSelecionarDataNascimento = (Button)view.findViewById(R.id.buttonSelecionarDataNascimento);
         textViewDataNascimento =(TextView)view.findViewById(R.id.textViewAlteraDataNascimento);
+        checkBoxCardiovascular = (CheckBox) view.findViewById(R.id.checkBoxCardiovascular);
+        checkBoxDiabetes = (CheckBox) view.findViewById(R.id.checkBoxDiabetes);
+        checkBoxHipertensao = (CheckBox) view.findViewById(R.id.checkBoxHipertensao);
+        checkBoxDoencasOncologicas = (CheckBox) view.findViewById(R.id.checkBoxDoencasOncologicas);
+        checkBoxResp = (CheckBox) view.findViewById(R.id.checkBoxResp);
+
         view.findViewById(R.id.buttonSelecionarDataNascimento).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,17 +91,48 @@ public class fragment_insere_dados_pessoais extends Fragment implements LoaderMa
         });
         
     }
-    private void cancelarDadosPessoais() {
-        NavController navController = NavHostFragment.findNavController(fragment_insere_dados_pessoais.this);
-        navController.navigate(R.id.to_menu_principal);
-        editTextNome.setText("");
-        textViewDataNascimento.setText("");
 
-    }
-
-    public void guardaNovoPerfil() {
+    public void guardaNovoPerfil() {// não insere dados pessois
         String nome = editTextNome.getText().toString();
         String dataNascimento = textViewDataNascimento.getText().toString();
+
+        boolean auxCardio = checkBoxCardiovascular.isChecked();
+        int cardio;
+        if(auxCardio){
+            cardio = 1;
+        }
+        else {
+            cardio = 0;
+        }
+
+        boolean auxDiabetes = checkBoxDiabetes.isChecked();
+        int diabetes;
+        if(auxDiabetes){
+            diabetes = 1;
+        } else{
+            diabetes = 0;
+        }
+        boolean auxHiper = checkBoxHipertensao.isChecked();
+        int hiper;
+        if(auxHiper){
+            hiper = 1;
+        } else{
+            hiper = 0;
+        }
+        boolean auxOnco = checkBoxDoencasOncologicas.isChecked();
+        int onco;
+        if(auxOnco){
+            onco = 1;
+        } else{
+            onco = 0;
+        }
+        boolean auxResp = checkBoxResp.isChecked();
+        int resp;
+        if(auxResp){
+            resp = 1;
+        } else{
+            resp = 0;
+        }
 
         if(nome.length() == 0){
             editTextNome.setError("Preencha o nome!");
@@ -109,11 +148,16 @@ public class fragment_insere_dados_pessoais extends Fragment implements LoaderMa
         Perfil perfil = new Perfil();
         perfil.setNome(nome);
         perfil.setDataNascimento(dataNascimento);
+        perfil.setCardio(cardio);
+        perfil.setDiabetes(diabetes);
+        perfil.setHiper(hiper);
+        perfil.setOnco(onco);
+        perfil.setResp(resp);
 
         try {
             getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_PERFIS, Converte.perfilParaContentValues(perfil));
             Toast.makeText(getContext(), "Perfil inserido com sucesso", Toast.LENGTH_SHORT).show();
-            NavController navController = NavHostFragment.findNavController(fragment_insere_dados_pessoais.this);
+            NavController navController = NavHostFragment.findNavController(fragment_inserir_perfil.this);
             navController.navigate(R.id.fragment_selecionar_perfil2);
         } catch (Exception e){
             Snackbar.make(editTextNome,"Erro: Não foi possivel inserir o perfil! ", Snackbar.LENGTH_INDEFINITE).show();
@@ -121,7 +165,7 @@ public class fragment_insere_dados_pessoais extends Fragment implements LoaderMa
     }
 
     public void cancelarInserirPerfil() {
-        NavController navController = NavHostFragment.findNavController(fragment_insere_dados_pessoais.this);
+        NavController navController = NavHostFragment.findNavController(fragment_inserir_perfil.this);
         navController.navigate(R.id.fragment_selecionar_perfil2);
     }
 

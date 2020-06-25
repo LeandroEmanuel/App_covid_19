@@ -24,6 +24,12 @@ public class fragment_eliminar_perfil extends Fragment {
 
     private TextView textViewDataNascimentoPerfilEliminar;
     private TextView editTextNomePerfilEliminar;
+    private TextView textViewEliminaDoencasCardioVasculares;
+    private TextView textViewEliminaDiabetes;
+    private TextView textViewEliminaHipertensao;
+    private TextView textViewEliminaOncologica;
+    private TextView textViewEliminaRespiratoria;
+
     private Perfil perfil;
 
     @Override
@@ -50,11 +56,26 @@ public class fragment_eliminar_perfil extends Fragment {
 
         editTextNomePerfilEliminar =(TextView) view.findViewById(R.id.editTextNomePerfilEliminar);
         textViewDataNascimentoPerfilEliminar = (TextView) view.findViewById(R.id.textViewDataNascimentoPerfilEliminar);
+        textViewEliminaDoencasCardioVasculares = (TextView) view.findViewById(R.id.textViewEliminaDoencasCardioVasculares);
+        textViewEliminaDiabetes = (TextView) view.findViewById(R.id.textViewEliminaDiabetes);
+        textViewEliminaHipertensao = (TextView) view.findViewById(R.id.textViewEliminaHipertensao);
+        textViewEliminaOncologica = (TextView) view.findViewById(R.id.textViewEliminaOncologica);
+        textViewEliminaRespiratoria = (TextView) view.findViewById(R.id.textViewEliminaRespiratoria);
 
         perfil = activity.getPerfil();
 
         editTextNomePerfilEliminar.setText(perfil.getNome());
         textViewDataNascimentoPerfilEliminar.setText(perfil.getDataNascimento());
+        textViewEliminaDoencasCardioVasculares.setText("" + perfil.getCardio());
+        textViewEliminaDiabetes.setText("" + perfil.getDiabetes());
+        textViewEliminaHipertensao.setText("" + perfil.getHiper());
+        textViewEliminaOncologica.setText("" + perfil.getOnco());
+        textViewEliminaRespiratoria.setText("" + perfil.getResp());
+
+        //eliminar registos do perfil
+
+        //eliminar testes do perfil
+
     }
 
     public void cancelar(){

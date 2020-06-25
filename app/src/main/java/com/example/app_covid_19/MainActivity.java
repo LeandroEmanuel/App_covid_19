@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Menu menu;
     private Perfil perfil = null;
     private Registo registo = null;
+    private Teste teste = null;
 
     public Perfil getPerfil() {
         return perfil;
@@ -23,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
     public Registo getRegisto() {
         return registo;
+    }
+
+    public Teste getTest() {
+    return teste;
     }
 
     @Override
@@ -87,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             if(gereOpcoesMenuEliminarPerfil(id)) return true;
         }else if (menuActual == R.menu.menu_inserir_registo_diario) {
             if(gereOpcoesMenuInsereRegisto(id)) return true;
-        }else if (menuActual == R.menu.menu_alterar_registo) {
+        }else if (menuActual == R.menu.menu_alterar_eliminar_registo) {
             if(gereOpcoesMenuAlteraRegisto(id)) return true;
         }
 
@@ -135,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean gereOpcoesMenuInserirPerfil(int id) {
-        fragment_insere_dados_pessoais fragment_dados_pessoais = (fragment_insere_dados_pessoais) fragmentActual;
+        fragment_inserir_perfil fragment_dados_pessoais = (fragment_inserir_perfil) fragmentActual;
         if(id == R.id.action_guardar){
             fragment_dados_pessoais.guardaNovoPerfil();
             return true;
@@ -147,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean gereOpcoesMenuAlteraPerfil(int id) {
-        fragment_altera_dados_pessoais fragment_altera_dados_pessoais =(com.example.app_covid_19.fragment_altera_dados_pessoais) fragmentActual;
+        fragment_alterar_perfil fragment_altera_dados_pessoais =(fragment_alterar_perfil) fragmentActual;
 
         if(id == R.id.action_guardar){
             fragment_altera_dados_pessoais.guardaAlteraPerfil();
@@ -177,4 +182,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+
 }

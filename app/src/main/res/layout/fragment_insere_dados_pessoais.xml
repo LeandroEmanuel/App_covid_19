@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_insere_dados_pessoais" >
+    tools:context=".fragment_inserir_perfil" >
 
     <TextView
         android:id="@+id/textViewTituloDadosPessoais"
@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nome" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -45,7 +46,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:text="@string/get_date"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxCardiovascular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,4 +63,64 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.994"
         app:layout_constraintStart_toEndOf="@+id/buttonSelecionarDataNascimento" />
+
+    <CheckBox
+        android:id="@+id/checkBoxCardiovascular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/doencas_cardiovsaculares"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxHipertensao"
+        app:layout_constraintEnd_toEndOf="@+id/checkBoxHipertensao"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxHipertensao"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSelecionarDataNascimento" />
+
+    <CheckBox
+        android:id="@+id/checkBoxDiabetes"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/diabetes"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxDoencasOncologicas"
+        app:layout_constraintEnd_toEndOf="@+id/checkBoxDoencasOncologicas"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxDoencasOncologicas"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAlteraDataNascimento" />
+
+    <CheckBox
+        android:id="@+id/checkBoxHipertensao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/hipertensao"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkBoxDoencasOncologicas"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxCardiovascular" />
+
+    <CheckBox
+        android:id="@+id/checkBoxDoencasOncologicas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/doencas_oncologicas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxDiabetes"
+        app:layout_constraintVertical_bias="0.685" />
+
+    <CheckBox
+        android:id="@+id/checkBoxResp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/doencas_respiratorias"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxHipertensao" />
 </androidx.constraintlayout.widget.ConstraintLayout>

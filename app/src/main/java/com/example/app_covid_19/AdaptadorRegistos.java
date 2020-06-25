@@ -2,6 +2,7 @@ package com.example.app_covid_19;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
+
+import java.util.Calendar;
+
+import static com.example.app_covid_19.BdTabelaRegistos.CAMPO_ID_PERFIL;
+import static com.example.app_covid_19.BdTabelaRegistos.DATA_REGISTO;
+import static com.example.app_covid_19.BdTabelaRegistos.NOME_TABELA;
+import static com.example.app_covid_19.BdTabelaRegistos.TODOS_OS_CAMPOS;
 
 public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.ViewHolderRegisto> {
     private Context context;

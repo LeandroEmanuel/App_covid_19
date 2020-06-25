@@ -3,15 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_eliminar_perfil"
-        android:icon="@drawable/ic_round_delete_forever_24"
-        android:title="Eliminar"
-        android:visible="true"
+        android:id="@+id/action_guardar_teste"
+        android:icon="@drawable/ic_baseline_save_24"
+        android:title="Guardar"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/canselar_eliminar_perfil"
+        android:id="@+id/action_cancelar_testes"
         android:icon="@drawable/ic_baseline_cancel_presentation_24"
         android:title="Cancelar"
-        android:visible="true"
         app:showAsAction="ifRoom" />
 </menu>

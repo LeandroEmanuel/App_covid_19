@@ -43,10 +43,20 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
         Perfil perfil = new Perfil();
         perfil.setNome("Leandro");
         perfil.setDataNascimento("24/12/1994");
+        perfil.setCardio(0);
+        perfil.setDiabetes(0);
+        perfil.setHiper(0);
+        perfil.setOnco(0);
+        perfil.setResp(1);
         long idPerfilLeandro = tabelaPerfis.insert(Converte.perfilParaContentValues(perfil));
 
         perfil.setNome("Manel");
         perfil.setDataNascimento("22/11/1974");
+        perfil.setCardio(0);
+        perfil.setDiabetes(0);
+        perfil.setHiper(0);
+        perfil.setOnco(0);
+        perfil.setResp(0);
         long idPerfilManel = tabelaPerfis.insert(Converte.perfilParaContentValues(perfil));
 
        BdTabelaRegistos tabelaRegistos = new BdTabelaRegistos(db);

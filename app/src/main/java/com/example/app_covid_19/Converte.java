@@ -9,6 +9,12 @@ public class Converte {
         ContentValues values = new ContentValues();
         values.put(BdTabelaPerfis.NOME, perfil.getNome());
         values.put(BdTabelaPerfis.DATA_NASCIMENTO, perfil.getDataNascimento());
+        values.put(BdTabelaPerfis.CARDIO, perfil.getCardio());
+        values.put(BdTabelaPerfis.DIABETES, perfil.getDiabetes());
+        values.put(BdTabelaPerfis.HIPER, perfil.getHiper());
+        values.put(BdTabelaPerfis.ONCO, perfil.getOnco());
+        values.put(BdTabelaPerfis.RESP, perfil.getResp());
+
         return values;
     }
     public static Perfil contentValuesParaPerfil(ContentValues values){
@@ -16,8 +22,13 @@ public class Converte {
 
         perfil.setId(values.getAsLong(BdTabelaPerfis._ID));
         perfil.setNome(values.getAsString(BdTabelaPerfis.NOME));
-        perfil.setDataNascimento(values.getAsString(String.valueOf(
-                BdTabelaPerfis.DATA_NASCIMENTO)));
+        perfil.setDataNascimento(values.getAsString(
+                BdTabelaPerfis.DATA_NASCIMENTO));
+        perfil.setCardio(values.getAsInteger(BdTabelaPerfis.CARDIO));
+        perfil.setDiabetes(values.getAsInteger(BdTabelaPerfis.DIABETES));
+        perfil.setHiper(values.getAsInteger(BdTabelaPerfis.HIPER));
+        perfil.setOnco(values.getAsInteger(BdTabelaPerfis.ONCO));
+        perfil.setResp(values.getAsInteger(BdTabelaPerfis.RESP));
         return perfil;
     }
     public static Perfil cursorParaPerfil(Cursor cursor){
@@ -26,6 +37,11 @@ public class Converte {
         perfil.setId(cursor.getLong(cursor.getColumnIndex(BdTabelaPerfis._ID)));
         perfil.setNome(cursor.getString(cursor.getColumnIndex(BdTabelaPerfis.NOME)));
         perfil.setDataNascimento(cursor.getString(cursor.getColumnIndex(BdTabelaPerfis.DATA_NASCIMENTO)));
+        perfil.setCardio(cursor.getInt(cursor.getColumnIndex(BdTabelaPerfis.CARDIO)));
+        perfil.setDiabetes(cursor.getInt(cursor.getColumnIndex(BdTabelaPerfis.DIABETES)));
+        perfil.setHiper(cursor.getInt(cursor.getColumnIndex(BdTabelaPerfis.HIPER)));
+        perfil.setOnco(cursor.getInt(cursor.getColumnIndex(BdTabelaPerfis.ONCO)));
+        perfil.setResp(cursor.getInt(cursor.getColumnIndex(BdTabelaPerfis.RESP)));
 
         return perfil;
     }

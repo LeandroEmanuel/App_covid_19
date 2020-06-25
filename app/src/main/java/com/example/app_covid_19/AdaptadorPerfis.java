@@ -56,7 +56,11 @@ public class AdaptadorPerfis extends RecyclerView.Adapter<AdaptadorPerfis.ViewHo
         private Perfil perfil = null;
         private final TextView textViewNomeItemPerfil;
         private final TextView textViewDataNascimentoItemPerfil;
-
+        private final TextView textViewDoencasCardioVasculares;
+        private final TextView textViewDiabetes;
+        private final TextView textViewHipertensao;
+        private final TextView textViewOncologica;
+        private final TextView textViewRespiratoria;
 
 
         public ViewHolderPerfis(@NonNull View itemView) {
@@ -64,7 +68,11 @@ public class AdaptadorPerfis extends RecyclerView.Adapter<AdaptadorPerfis.ViewHo
 
             textViewNomeItemPerfil = (TextView)itemView.findViewById(R.id.textViewNomeItemPerfil);
             textViewDataNascimentoItemPerfil = (TextView)itemView.findViewById(R.id.textViewDataNascimentoItemPerfil);
-
+            textViewDoencasCardioVasculares = (TextView) itemView.findViewById(R.id.textViewDoencasCardioVasculares);
+            textViewDiabetes = (TextView) itemView.findViewById(R.id.textViewDiabetes);
+            textViewHipertensao = (TextView) itemView.findViewById(R.id.textViewHipertensao);
+            textViewOncologica = (TextView) itemView.findViewById(R.id.textViewOncologica);
+            textViewRespiratoria =(TextView) itemView.findViewById(R.id.textViewRespiratoria);
             itemView.setOnClickListener(this);
 
         }
@@ -73,6 +81,36 @@ public class AdaptadorPerfis extends RecyclerView.Adapter<AdaptadorPerfis.ViewHo
             this.perfil = perfil;
             textViewNomeItemPerfil.setText(perfil.getNome());
             textViewDataNascimentoItemPerfil.setText(perfil.getDataNascimento());
+            if(perfil.getCardio() == 1) {
+                textViewDoencasCardioVasculares.setText("Cardiovascular Diseaase");
+                textViewDoencasCardioVasculares.setVisibility(View.VISIBLE);
+            } else{
+                textViewDoencasCardioVasculares.setVisibility(View.GONE);
+            }
+            if(perfil.getDiabetes() == 1){
+                textViewDiabetes.setText("Diabetes");
+                textViewDiabetes.setVisibility(View.VISIBLE);
+            }else{
+                textViewDiabetes.setVisibility(View.GONE);
+            }
+            if(perfil.getHiper() == 1){
+                textViewHipertensao.setText("Hypertension");
+                textViewHipertensao.setVisibility(View.VISIBLE);
+            }else{
+                textViewHipertensao.setVisibility(View.GONE);
+            }
+            if(perfil.getOnco() == 1){
+                textViewOncologica.setText("Oncological Disease");
+                textViewOncologica.setVisibility(View.VISIBLE);
+            }else{
+                textViewOncologica.setVisibility(View.GONE);
+            }
+            if(perfil.getResp() == 1){
+                textViewRespiratoria.setText("Respiratory Disease");
+                textViewRespiratoria.setVisibility(View.VISIBLE);
+            }else{
+                textViewRespiratoria.setVisibility(View.GONE);
+            }
         }
 
         @Override

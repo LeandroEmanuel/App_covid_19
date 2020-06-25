@@ -16,9 +16,9 @@
     <string name="tosse">Tosse</string>
     <string name="titulo_registo_diario">Registo Diario</string>
     <string name="alterar_prefil">Alterar dados do  Perfil</string>
-    <string name="doencas_cardiovsaculares">Doenças Cardiovasculares</string>
-    <string name="doencas_respiratorias">Doenças Respiratórias</string>
-    <string name="doencas_oncologicas">Doenças Oncologicas</string>
+    <string name="doencas_cardiovsaculares">Cardiovasculares</string>
+    <string name="doencas_respiratorias">Respiratórias</string>
+    <string name="doencas_oncologicas">Oncologicas</string>
     <string name="guardar_doencas_conhecidas">Guardar</string>
     <string name="nome">Nome</string>
     <string name="titulo_dados_pessoais">Dados Pessoais</string>
@@ -43,7 +43,6 @@
     <string name="editar_perfil">Informações</string>
     <string name="selecionar_perfil">Selecionar Perfil</string>
     <string name="perfil_selecionado">Perfil Selecionado</string>
-    <string name="outras_doencas">Outras Doenças</string>
     <string name="hipertensao">Hipertensão</string>
     <string name="dados_pessoais">Dados Pessoais</string>
     <string name="diabetes">Diabetes</string>

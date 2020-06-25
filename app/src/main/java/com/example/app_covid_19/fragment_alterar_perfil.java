@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,7 +28,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 
 
-public class fragment_altera_dados_pessoais extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class fragment_alterar_perfil extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
 
     private TextView textViewAlteraDataNascimento;
@@ -35,6 +36,11 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
     Button buttonSelecionarDataNascimento;
     private int mAno, mMes, mDia;
     private Perfil perfil;
+    private CheckBox checkBoxCardiovascular;
+    private CheckBox checkBoxDiabetes;
+    private CheckBox checkBoxHipertensao;
+    private CheckBox checkBoxDoencasOncologicas;
+    private CheckBox checkBoxResp;
 
 
     @Override
@@ -64,7 +70,13 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
         textViewAlteraDataNascimento.setText(perfil.getDataNascimento());
 
         buttonSelecionarDataNascimento = (Button)view.findViewById(R.id.buttonSelecionarDataNascimento);
-        textViewAlteraDataNascimento =(TextView)view.findViewById(R.id.textViewAlteraDataNascimento);
+        textViewAlteraDataNascimento = (TextView)view.findViewById(R.id.textViewAlteraDataNascimento);
+        checkBoxCardiovascular = (CheckBox) view.findViewById(R.id.checkBoxCardiovascular);
+        checkBoxDiabetes = (CheckBox) view.findViewById(R.id.checkBoxDiabetes);
+        checkBoxHipertensao = (CheckBox) view.findViewById(R.id.checkBoxHipertensao) ;
+        checkBoxDoencasOncologicas = (CheckBox) view.findViewById(R.id.checkBoxDoencasOncologicas);
+        checkBoxResp = (CheckBox) view.findViewById(R.id.checkBoxResp);
+
         view.findViewById(R.id.buttonSelecionarDataNascimento).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +100,7 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
     }
 
     public void cancelarAlterarDadosPessoais() {
-        NavController navController = NavHostFragment.findNavController(fragment_altera_dados_pessoais.this);
+        NavController navController = NavHostFragment.findNavController(fragment_alterar_perfil.this);
         navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
     }
 
@@ -96,10 +108,51 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
         String nome = editTextAlteraNome.getText().toString();
         String dataNascimento = textViewAlteraDataNascimento.getText().toString();
 
-        MainActivity activity = (MainActivity) getActivity();
-        Perfil perfil = activity.getPerfil();
+        boolean auxCardio = checkBoxCardiovascular.isChecked();
+        int cardio;
+        if(auxCardio){
+            cardio = 1;
+        }
+        else {
+            cardio = 0;
+        }
+        boolean auxDiabetes = checkBoxDiabetes.isChecked();
+        int diabetes;
+        if(auxDiabetes){
+            diabetes = 1;
+        } else{
+            diabetes = 0;
+        }
+        boolean auxHiper = checkBoxHipertensao.isChecked();
+        int hiper;
+        if(auxHiper){
+            hiper = 1;
+        } else{
+            hiper = 0;
+        }
+        boolean auxOnco = checkBoxDoencasOncologicas.isChecked();
+        int onco;
+        if(auxOnco){
+            onco = 1;
+        } else{
+            onco = 0;
+        }
+        boolean auxResp = checkBoxResp.isChecked();
+        int resp;
+        if(auxResp){
+            resp = 1;
+        } else{
+            resp = 0;
+        }
+
+        //Perfil perfil = activity.getPerfil();
         perfil.setNome(nome);
         perfil.setDataNascimento(dataNascimento);
+        perfil.setCardio(cardio);
+        perfil.setDiabetes(diabetes);
+        perfil.setHiper(hiper);
+        perfil.setOnco(onco);
+        perfil.setResp(resp);
 
         try {
             Uri enderecoPerfil = Uri.withAppendedPath(BdCovidContentProvider.ENDERECO_PERFIS, String.valueOf(perfil.getId()));
@@ -107,7 +160,7 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
             int registos = getActivity().getContentResolver().update(enderecoPerfil, Converte.perfilParaContentValues(perfil), BdTabelaPerfis._ID+ "=?", new String[]{String.valueOf(perfil.getId())});
             if(registos == 1){
                 Toast.makeText(getContext(),"Perfil guardado com sucesso", Toast.LENGTH_SHORT).show();
-                NavController navController = NavHostFragment.findNavController(fragment_altera_dados_pessoais.this);
+                NavController navController = NavHostFragment.findNavController(fragment_alterar_perfil.this);
                 navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
                 return;
             }
@@ -115,7 +168,6 @@ public class fragment_altera_dados_pessoais extends Fragment implements LoaderMa
             Snackbar.make(editTextAlteraNome,"Erro: Não foi possivel alterar o perfil! ", Snackbar.LENGTH_INDEFINITE).show();
         }
     }
-
 
     @NonNull
     @Override

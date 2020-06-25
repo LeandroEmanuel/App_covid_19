@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class fragment_editar_perfis extends Fragment {
+public class fragment_editar_menu_perfis extends Fragment {
 
 
     private TextView textViewTituloEditarPerfil;
@@ -53,12 +53,12 @@ public class fragment_editar_perfis extends Fragment {
     }
 
     private void historico() {
-        NavController navController = NavHostFragment.findNavController(fragment_editar_perfis.this);
+        NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
         navController.navigate(R.id.to_historico);
     }
 
     private void testes() {
-        NavController navController = NavHostFragment.findNavController(fragment_editar_perfis.this);
+        NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
         navController.navigate(R.id.to_testes);
     }
 
@@ -74,10 +74,10 @@ public class fragment_editar_perfis extends Fragment {
         int existeRegisto = bdTabelaRegistos.contaRegistos(idPerfilSelecionado);
 
        if(existeRegisto == 0){
-           NavController navController = NavHostFragment.findNavController(fragment_editar_perfis.this);
+           NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
            navController.navigate(R.id.action_fragment_editar_perfis_to_fragment_insere_registo_diario);
        }else {
-           NavController navController = NavHostFragment.findNavController(fragment_editar_perfis.this);
+           NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
            navController.navigate(R.id.action_fragment_editar_perfis_to_fragment_altera_registo);
        }
 

@@ -13,12 +13,11 @@
     <string name="nome">Name</string>
     <string name="guardar_dados_pessoais">Save</string>
     <string name="doencas_conhecidas">Known Diseases</string>
-    <string name="outras_doencas">Other Diseases</string>
     <string name="guardar_doencas_conhecidas">Save</string>
-    <string name="doencas_oncologicas">Oncological Diseases</string>
+    <string name="doencas_oncologicas">Oncological</string>
     <string name="hipertensao">Hypertension</string>
-    <string name="doencas_respiratorias">Respiratory Diseases</string>
-    <string name="doencas_cardiovsaculares">Cardiovascular Diseases</string>
+    <string name="doencas_respiratorias">Respiratory</string>
+    <string name="doencas_cardiovsaculares">Cardiovascular</string>
     <string name="selecionar_perfil">Select Profile</string>
     <string name="gerir_perfil">More Information</string>
     <string name="perfil_selecionado">Selected Profile</string>

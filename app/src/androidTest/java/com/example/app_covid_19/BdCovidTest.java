@@ -50,6 +50,11 @@ public class BdCovidTest {
         Perfil perfil = new Perfil();
         perfil.setNome(nome);
         perfil.setDataNascimento(dataNascimento);
+        perfil.setCardio(0);
+        perfil.setDiabetes(0);
+        perfil.setHiper(0);
+        perfil.setOnco(0);
+        perfil.setResp(0);
 
         return inserePerfil(tabelaPerfis, perfil);
     }
