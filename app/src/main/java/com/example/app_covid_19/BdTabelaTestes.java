@@ -36,7 +36,7 @@ public class BdTabelaTestes implements BaseColumns {
         db.execSQL("CREATE TABLE " + NOME_TABELA + "(" +
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 DATA_TESTE + " TEXT NOT NULL," +
-                RESULTADO_TESTE + " TEXT NOT NULL," +
+                RESULTADO_TESTE + " INTEGER NOT NULL," +
                 CAMPO_ID_PERFIL + " INTEGER NOT NULL," +
                 " FOREIGN KEY(" + CAMPO_ID_PERFIL + ") REFERENCES " +
                 BdTabelaPerfis.NOME_TABELA +"("+ BdTabelaPerfis._ID + ")" +

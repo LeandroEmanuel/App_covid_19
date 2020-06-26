@@ -1,7 +1,9 @@
 package com.example.app_covid_19;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -9,7 +11,9 @@ import androidx.fragment.app.Fragment;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class MainActivity extends AppCompatActivity implements Serializable{
 
     private Fragment fragmentActual = null;
     private int menuActual = R.menu.menu_principal;
@@ -17,6 +21,23 @@ public class MainActivity extends AppCompatActivity {
     private Perfil perfil = null;
     private Registo registo = null;
     private Teste teste = null;
+
+    /*static final String MENU_ATUAL = "menuActual";
+    static final String PERFIL = "perfil";
+    static final String REGISTO = "registo";
+    static final String TESTE = "teste";
+    private static final String FRAGMENTO_ATUAL = "fragmentActual";*/
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle saveInstanceState) {//não funciona
+        /*saveInstanceState.putSerializable(FRAGMENTO_ATUAL, (Serializable) fragmentActual);
+        saveInstanceState.putInt(MENU_ATUAL,menuActual);
+        saveInstanceState.putSerializable(PERFIL, perfil);
+        saveInstanceState.putSerializable(REGISTO, registo);
+        saveInstanceState.putSerializable(TESTE, teste);*/
+
+        super.onSaveInstanceState(saveInstanceState);
+    }
 
     public Perfil getPerfil() {
         return perfil;
@@ -33,9 +54,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);//não  funciona
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        /*if (savedInstanceState != null){
+            savedInstanceState.putSerializable(FRAGMENTO_ATUAL, (Serializable) fragmentActual);
+            menuActual = savedInstanceState.getInt(MENU_ATUAL);
+            savedInstanceState.putSerializable(PERFIL, perfil);
+            savedInstanceState.putSerializable(REGISTO, registo);
+            savedInstanceState.putSerializable(TESTE, teste);
+        }else{
+            fragmentActual = null;
+            menuActual = R.menu.menu_principal;
+            perfil = null;
+            registo = null;
+            teste = null;
+
+        }*/
 
     }
 
@@ -64,9 +99,9 @@ public class MainActivity extends AppCompatActivity {
         this.teste = teste;
 
         boolean mostraEliminarTeste = (teste != null);
-        menu.findItem(R.id.elimina_registo).setVisible(mostraEliminarTeste);
-
+        menu.findItem(R.id.elimina_teste).setVisible(mostraEliminarTeste);
     }
+
 
     public void setFragmentActual(Fragment fragmentActual){
         this.fragmentActual = fragmentActual;
@@ -120,16 +155,20 @@ public class MainActivity extends AppCompatActivity {
             if(gereOpcoesMenuTabelaRegisto(id)) return true;
         }else if (menuActual == R.menu.menu_tabela_testes) {
             if(gereOpcoesMenuTabelaTeste(id)) return true;
+        }else if (menuActual == R.menu.menu_vazio) {
+             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
     private boolean gereOpcoesMenuTabelaTeste(int id) {
         fragment_tabela_resultado_testes fragmentTabelaResultadoTestes = (fragment_tabela_resultado_testes) fragmentActual;
-        if (id == R.id.elimina_teste) {
+        if (id == R.id.elimina_teste) {//aqui
             fragmentTabelaResultadoTestes.EliminarTeste();
+            String a ="";
             return true;
-        } else if (id == R.id.reverteTeste) {
+        } else if (id == R.id.reverteTeste) {//aqui
             fragmentTabelaResultadoTestes.historicoTestes();
             return true;
         }

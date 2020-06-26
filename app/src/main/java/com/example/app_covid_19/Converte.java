@@ -96,7 +96,7 @@ public class Converte {
         Teste teste = new Teste();
         teste.setId(values.getAsLong(BdTabelaTestes._ID));
         teste.setDataTeste(values.getAsString(BdTabelaTestes.DATA_TESTE));
-        teste.setResultadoTeste(values.getAsString(BdTabelaTestes.RESULTADO_TESTE));
+        teste.setResultadoTeste(values.getAsInteger(BdTabelaTestes.RESULTADO_TESTE));
         teste.setIdPerfil(values.getAsLong(BdTabelaTestes.CAMPO_ID_PERFIL));
         return teste;
     }
@@ -107,7 +107,7 @@ public class Converte {
         teste.setIdPerfil(cursor.getLong(cursor.getColumnIndex(BdTabelaTestes.CAMPO_ID_PERFIL)));
         teste.setDataTeste(cursor.getString(cursor.getColumnIndex(String.valueOf(
                 BdTabelaTestes.DATA_TESTE))));
-        teste.setResultadoTeste(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.RESULTADO_TESTE)));
+        teste.setResultadoTeste(cursor.getInt(cursor.getColumnIndex(BdTabelaTestes.RESULTADO_TESTE)));
         teste.setIdPerfil(cursor.getLong(cursor.getColumnIndex(BdTabelaTestes.CAMPO_PERFIL)));
         teste.setPerfil(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.CAMPO_PERFIL)));
         return teste;

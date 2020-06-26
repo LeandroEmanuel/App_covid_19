@@ -73,33 +73,26 @@ public class fragment_inserir_teste extends Fragment {
 
     public void guardarNovoTeste(){
         //todo: guardar o radioButton selecionado
+        //não guarda e so se  o primeiro for true é que é passado algum valor para a ve«ariavel resultado ver como resolver
 
         boolean auxPositivo = radioButtoTestePositivo.isChecked();
-        String resultado = "";
+        boolean auxNegativo = radioButtonTesteNegativo.isChecked();
+        boolean auxInconclusico = radioButtonTesteInconclusivo.isChecked();
+
+        int resultado = 0;
         if(auxPositivo){
-            resultado ="Positivo";
-            return;
-        }
-
-        boolean auxNegativo = radioButtoTestePositivo.isChecked();
-
-        if(auxNegativo){
-            resultado = "Negativo";
-            return;
-        }
-
-        boolean auxInconclusico = radioButtoTestePositivo.isChecked();
-
-        if(auxInconclusico){
-            resultado = "Inconclusivo";
-            return;
+            resultado =1;
+        }else if(auxNegativo){
+            resultado = 2;
+        }else if(auxInconclusico){
+            resultado = 3;
         }
 
 
         long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
         teste = new Teste();
         teste.setDataTeste(sysDate);
-        teste.getResultadoTeste(resultado);
+        teste.setResultadoTeste(resultado);
         teste.setIdPerfil(idPerfilSelecionado);
 
         try {

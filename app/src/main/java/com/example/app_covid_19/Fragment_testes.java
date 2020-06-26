@@ -27,7 +27,7 @@ public class fragment_testes extends Fragment{
 
         MainActivity activity = (MainActivity) getActivity();
         activity.setFragmentActual(this);
-        activity.setMenuActual(R.menu.menu_tabela_testes);
+        activity.setMenuActual(R.menu.menu_vazio);
 
         view.findViewById(R.id.buttonNovoTeste).setOnClickListener(new View.OnClickListener() {
             @Override

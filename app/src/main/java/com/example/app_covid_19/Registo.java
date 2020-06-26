@@ -1,8 +1,9 @@
 package com.example.app_covid_19;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Registo {
+public class Registo implements Serializable {
     private long id;
     private long idPerfil = -1;
     private String dataRegisto;

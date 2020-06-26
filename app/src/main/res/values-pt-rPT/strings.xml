@@ -94,4 +94,6 @@
     <string name="versao">"App_covid_19 V1 concluida a 28/06/2020.                          No ambito da cadeira de Programação Avançada."</string>
     <string name="discricao">"Esta aplicacao destina-se ao uso domiciliario, em que o utilisador pode registar os dados de cada pessoa com que m reside, bem como a situacao patologica de cada um e o historico. Tendo como objetivo final, dar uma informacao mais detalhada, sobre os sintomas que alguma destas pessoas teve e a partir de quando se intensificaram, caso tenha que recorrer ao SNS24 ou a um estabelecimento de saude."</string>
     <string name="configuracoes">Configurations</string>
+    <string name="registo_inserido_sucesso">Registo inserido com sucesso</string>
+    <string name="erro_inserir_registo">Não foi possivel inserir o registo</string>
 </resources>

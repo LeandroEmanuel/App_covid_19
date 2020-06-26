@@ -105,11 +105,11 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
         registo.setIdPerfil(idPerfilSelecionado);
         try{
             getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_REGISTOS, Converte.registoParaContentValues(registo));
-            Toast.makeText(getContext(),"Registo inserido com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.registo_inserido_sucesso, Toast.LENGTH_SHORT).show();
             NavController navController = NavHostFragment.findNavController(fragment_insere_registo_diario.this);
             navController.navigate(R.id.action_fragment_insere_registo_diario_to_fragment_selecionar_perfil2);
         }catch (Exception e){
-            Snackbar.make(editTextTemperatura,"Não foi possivel inserir o registo", Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar.make(editTextTemperatura, R.string.erro_inserir_registo, Snackbar.LENGTH_INDEFINITE).show();
         }
     }
 

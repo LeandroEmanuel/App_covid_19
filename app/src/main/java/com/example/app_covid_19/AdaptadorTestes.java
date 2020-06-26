@@ -57,23 +57,30 @@ public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHo
 
         private final TextView textViewNomeItemTeste;
         private final TextView textViewDataItemTeste;
-        private final TextView textViewResultadoItemTeste;
+        private final TextView textViewResultadoItemTesteResultado;
 
         public ViewHolderTeste(@NonNull View itemView) {
             super(itemView);
 
             textViewNomeItemTeste = (TextView) itemView.findViewById(R.id.textViewNomeItemTeste);
             textViewDataItemTeste = (TextView) itemView.findViewById(R.id.textViewDataResultadoItemTeste);
-            textViewResultadoItemTeste = (TextView) itemView.findViewById(R.id.textViewResultadoItemTeste);
-
+            textViewResultadoItemTesteResultado = (TextView) itemView.findViewById(R.id.textViewResultadoItemTesteResultado);
             itemView.setOnClickListener(this);
         }
 
         public void setTeste(Teste teste) {
             this.teste = teste;
+
             textViewNomeItemTeste.setText(teste.getPerfil());
             textViewDataItemTeste.setText(teste.getDataTeste());
-            textViewResultadoItemTeste.setText(teste.getResultadoTeste());
+
+            if (teste.getResultadoTeste() == 1){
+                textViewResultadoItemTesteResultado.setText(R.string.positivo);
+            }else if (teste.getResultadoTeste() == 2){
+                textViewResultadoItemTesteResultado.setText(R.string.negativo);
+            }else if(teste.getResultadoTeste() == 3){
+                textViewResultadoItemTesteResultado.setText(R.string.inconcclusivo);
+            }
         }
 
         @Override

@@ -1,7 +1,9 @@
 package com.example.app_covid_19;
 
 
-public class Perfil {
+import java.io.Serializable;
+
+public class Perfil implements Serializable {
     private long id;
 
     private String nome;

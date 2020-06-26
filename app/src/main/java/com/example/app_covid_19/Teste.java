@@ -1,12 +1,13 @@
 package com.example.app_covid_19;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Teste {
+public class Teste implements Serializable {
     private long id;
     private long idPerfil = -1;
     private String dataTeste;
-    private String resultadoTeste;
+    private int resultadoTeste;
 
     public String getPerfil() {
         return perfil;
@@ -42,11 +43,11 @@ public class Teste {
         this.dataTeste = dataTeste;
     }
 
-    public String getResultadoTeste() {
+    public int getResultadoTeste() {
         return resultadoTeste;
     }
 
-    public void setResultadoTeste(String resultadoTeste) {
+    public void setResultadoTeste(int resultadoTeste) {
         this.resultadoTeste = resultadoTeste;
     }
 }

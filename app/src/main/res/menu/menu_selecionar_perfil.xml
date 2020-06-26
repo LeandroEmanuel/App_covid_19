@@ -16,7 +16,8 @@
     <item
         android:id="@+id/action_mais_info"
         android:icon="@drawable/ic_baseline_info_24"
-        android:title="@string/mais_informacao" />
+        android:title="@string/mais_informacao"
+        android:visible="false" />
     <item
         android:id="@+id/selecionar_para_eliminar_perfil"
         android:icon="@drawable/ic_round_delete_forever_24"

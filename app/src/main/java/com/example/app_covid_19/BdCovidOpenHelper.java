@@ -86,12 +86,12 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
 
         Teste teste = new Teste();
         teste.setDataTeste("02/06/2020");
-        teste.setResultadoTeste("Negativo");
+        teste.setResultadoTeste(2);
         teste.setIdPerfil(idPerfilLeandro);
         long idTesteLeandro = tabelaTestes.insert(Converte.testeParaContentValues(teste));
 
         teste.setDataTeste("19/06/2020");
-        teste.setResultadoTeste("Inconclusivo");
+        teste.setResultadoTeste(3);
         teste.setIdPerfil(idPerfilLeandro);
         long idTesteLManel = tabelaTestes.insert(Converte.testeParaContentValues(teste));
 

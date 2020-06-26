@@ -31,6 +31,13 @@ public class fragment_configuracoes extends Fragment implements LoaderManager.Lo
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_configuracoes, container, false);
     }
+    public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setFragmentActual(this);
+        activity.setMenuActual(R.menu.menu_vazio);
+    }
 
     @NonNull
     @Override

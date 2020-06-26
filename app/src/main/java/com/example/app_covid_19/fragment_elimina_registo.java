@@ -33,14 +33,13 @@ import org.w3c.dom.Text;
 public class fragment_elimina_registo extends Fragment {
     private TextView textViewEliminaDataRegisto;
     private TextView textViewEliminaTemperatura;
-    private TextView textViewEliminaTosseRegisto;
-    private TextView textViewEliminaDifRespRegisto;
     private TextView textViewNomePerfilEliminar;
     private Registo registo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override

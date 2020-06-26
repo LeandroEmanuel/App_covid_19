@@ -96,7 +96,6 @@
     <string name="configuracoes">Configurations</string>
     <string name="light_theme" translatable="false">Light theme</string>
     <string name="darck_theme" translatable="false">Darck theme</string>
-    <string name="nome_invalido">Nome invalido!\n</string>
-    <string name="preencher_nome_correto">Coloque o seu primeiro e ultimo nome</string>
-    <string name="data_invalida">Data invalida</string>
+    <string name="registo_inserido_sucesso">Registration inserted successfully</string>
+    <string name="erro_inserir_registo">Could not insert record</string>
 </resources>

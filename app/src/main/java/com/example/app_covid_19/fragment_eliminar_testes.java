@@ -27,7 +27,7 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 
 
-public class fragment_eliminar_testes extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class fragment_eliminar_testes extends Fragment {
 
     private TextView textViewEliminarDataTeste;
     private TextView textViewEliminaResultadoTeste;
@@ -52,7 +52,7 @@ public class fragment_eliminar_testes extends Fragment implements LoaderManager.
 
         MainActivity activity =(MainActivity) getActivity();
         activity.setFragmentActual(this);
-        activity.setMenuActual(R.menu.menu_eliminar_registo);
+        activity.setMenuActual(R.menu.menu_eliminar_teste);
 
         textViewNomeTeste = (TextView) view.findViewById(R.id.textViewNomeTeste);
         textViewEliminarDataTeste = (TextView) view.findViewById(R.id.textViewEliminarDataTeste);
@@ -61,8 +61,9 @@ public class fragment_eliminar_testes extends Fragment implements LoaderManager.
         teste = activity.getTest();
 
         textViewNomeTeste.setText(teste.getPerfil());
-        textViewEliminarDataTeste.setText(teste.getResultadoTeste());
-        textViewEliminaResultadoTeste.setText(String.valueOf(teste.getResultadoTeste()));
+        textViewEliminarDataTeste.setText(""+teste.getResultadoTeste());
+        textViewEliminaResultadoTeste.setText(""+teste.getResultadoTeste());
+        String a="";
     }
     public void cancelarEliminarTeste(){
         NavController navController = NavHostFragment.findNavController(fragment_eliminar_testes.this);
@@ -95,29 +96,13 @@ public class fragment_eliminar_testes extends Fragment implements LoaderManager.
             int registosApagados = getActivity().getContentResolver().delete(enderecoPerfil, null, null);
 
             if(registosApagados == 1){
-                Toast.makeText(getContext(), R.string.teste_eliminado_sucesso, Toast.LENGTH_SHORT).show();
                 NavController navController = NavHostFragment.findNavController(fragment_eliminar_testes.this);
-                navController.navigate(R.id.action_fragment_elimina_registo_to_fragment_selecionar_perfil2);
+                navController.navigate(R.id.action_fragment_eliminar_testes_to_fragment_testes);
+                Toast.makeText(getContext(), R.string.teste_eliminado_sucesso, Toast.LENGTH_SHORT).show();
                 return;
             }
         }catch (Exception e){
         }
         Snackbar.make(textViewEliminarDataTeste,"Erro: Não foi possivél eliminar o teste", Snackbar.LENGTH_INDEFINITE).show();
-    }
-
-    @NonNull
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new androidx.loader.content.CursorLoader(getContext(), BdCovidContentProvider.ENDERECO_REGISTOS, BdTabelaRegistos.TODOS_OS_CAMPOS, null, null, BdTabelaPerfis.NOME);
-    }
-
-    @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-
-    }
-
-    @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-
     }
 }
