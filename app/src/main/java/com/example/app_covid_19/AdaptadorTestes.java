@@ -11,9 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHolderTeste> {
-    private final Context context;
+    private Context context;
 
-    private Cursor cursor;
+    private Cursor cursor = null;
 
     public void setCursor(Cursor cursor){
         if(cursor != this.cursor){
@@ -28,7 +28,7 @@ public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHo
 
     @NonNull
     @Override
-    public AdaptadorTestes.ViewHolderTeste onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolderTeste onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemTeste = LayoutInflater.from(context).inflate(R.layout.item_teste, parent, false);
 
         return new ViewHolderTeste(itemTeste);
@@ -54,6 +54,7 @@ public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHo
     public class ViewHolderTeste extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Teste teste = null;
+
         private final TextView textViewNomeItemTeste;
         private final TextView textViewDataItemTeste;
         private final TextView textViewResultadoItemTeste;
@@ -64,6 +65,8 @@ public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHo
             textViewNomeItemTeste = (TextView) itemView.findViewById(R.id.textViewNomeItemTeste);
             textViewDataItemTeste = (TextView) itemView.findViewById(R.id.textViewDataResultadoItemTeste);
             textViewResultadoItemTeste = (TextView) itemView.findViewById(R.id.textViewResultadoItemTeste);
+
+            itemView.setOnClickListener(this);
         }
 
         public void setTeste(Teste teste) {

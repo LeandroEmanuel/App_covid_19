@@ -25,6 +25,10 @@ public class fragment_testes extends Fragment{
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setFragmentActual(this);
+        activity.setMenuActual(R.menu.menu_tabela_testes);
+
         view.findViewById(R.id.buttonNovoTeste).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +38,7 @@ public class fragment_testes extends Fragment{
         view.findViewById(R.id.buttonHistoricoTestes).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resultadoTeste();
+                tabelaTeste();
             }
         });
 
@@ -44,7 +48,7 @@ public class fragment_testes extends Fragment{
         NavController navController = NavHostFragment.findNavController(fragment_testes.this);
         navController.navigate(R.id.action_fragment_testes_to_fragment_resultado_teste2);
     }
-    private void resultadoTeste() {
+    private void tabelaTeste() {
         NavController navController = NavHostFragment.findNavController(fragment_testes.this);
         navController.navigate(R.id.to_tabela_resultado_testes);
     }
