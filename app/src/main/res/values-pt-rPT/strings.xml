@@ -3,9 +3,6 @@
     <string name="app_name">App_covid_19</string>
     <string name="titulo_tabela_testes">Tabela de testes</string>
     <string name="titulo_tabela_registos">Tabela de Registos Diarios</string>
-    <string name="inconcclusivo">Inconclusivo</string>
-    <string name="negativo">Negativo</string>
-    <string name="positivo">Positivo</string>
     <string name="historic">Historico</string>
     <string name="tabela_registos_diarios">Tabela de Registos Diarios</string>
     <string name="dias_consecutivos_dif_resp">Dias consecutivos com dificuldade respiratória</string>
@@ -96,4 +93,5 @@
     <string name="configuracoes">Configurations</string>
     <string name="registo_inserido_sucesso">Registo inserido com sucesso</string>
     <string name="erro_inserir_registo">Não foi possivel inserir o registo</string>
+    <string name="erro_eliminar_teste">Erro: Não foi possivél eliminar o teste</string>
 </resources>

@@ -77,7 +77,6 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
     }
     public void guardar_novo_registo(){
         float temperatura = Float.parseFloat(editTextTemperatura.getText().toString());
-        //String dataRegisto = textViewDataRegistoDiario.getText().toString();
 
         boolean auxtosse = checkBoxTosse.isChecked();
         int tosse;

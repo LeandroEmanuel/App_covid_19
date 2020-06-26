@@ -35,19 +35,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/testes"
-        app:layout_constraintBottom_toTopOf="@+id/buttonHistorico"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTabelaRegistos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonRegistoDiario" />
 
     <Button
-        android:id="@+id/buttonHistorico"
+        android:id="@+id/buttonTabelaRegistos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/historico"
+        android:text="@string/tabela_registos_diarios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonTestes" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -72,8 +72,6 @@ public class fragment_inserir_teste extends Fragment {
     }
 
     public void guardarNovoTeste(){
-        //todo: guardar o radioButton selecionado
-        //não guarda e so se  o primeiro for true é que é passado algum valor para a ve«ariavel resultado ver como resolver
 
         boolean auxPositivo = radioButtoTestePositivo.isChecked();
         boolean auxNegativo = radioButtonTesteNegativo.isChecked();

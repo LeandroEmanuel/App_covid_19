@@ -64,6 +64,7 @@ public class fragment_elimina_registo extends Fragment {
         textViewNomePerfilEliminar.setText(registo.getPerfil());
         textViewEliminaDataRegisto.setText(registo.getDataRegisto());
         textViewEliminaTemperatura.setText(String.valueOf(registo.getTemperatura()));
+
     }
     public void cancelarEliminarRegisto(){
         NavController navController = NavHostFragment.findNavController(fragment_elimina_registo.this);

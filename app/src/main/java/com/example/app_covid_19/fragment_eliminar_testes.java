@@ -30,7 +30,6 @@ import com.google.android.material.snackbar.Snackbar;
 public class fragment_eliminar_testes extends Fragment {
 
     private TextView textViewEliminarDataTeste;
-    private TextView textViewEliminaResultadoTeste;
     private TextView textViewNomeTeste;
     private Teste teste;
 
@@ -56,18 +55,16 @@ public class fragment_eliminar_testes extends Fragment {
 
         textViewNomeTeste = (TextView) view.findViewById(R.id.textViewNomeTeste);
         textViewEliminarDataTeste = (TextView) view.findViewById(R.id.textViewEliminarDataTeste);
-        textViewEliminaResultadoTeste = (TextView) view.findViewById(R.id.textViewEliminaResultadoTeste);
 
         teste = activity.getTest();
 
         textViewNomeTeste.setText(teste.getPerfil());
-        textViewEliminarDataTeste.setText(""+teste.getResultadoTeste());
-        textViewEliminaResultadoTeste.setText(""+teste.getResultadoTeste());
+        textViewEliminarDataTeste.setText(""+teste.getDataTeste());
         String a="";
     }
     public void cancelarEliminarTeste(){
         NavController navController = NavHostFragment.findNavController(fragment_eliminar_testes.this);
-        navController.navigate(R.id.action_fragment_elimina_registo_to_fragment_selecionar_perfil2);
+        navController.navigate(R.id.action_fragment_eliminar_testes_to_fragment_testes);
     }
     public void eliminarTeste(){
 
@@ -103,6 +100,6 @@ public class fragment_eliminar_testes extends Fragment {
             }
         }catch (Exception e){
         }
-        Snackbar.make(textViewEliminarDataTeste,"Erro: Não foi possivél eliminar o teste", Snackbar.LENGTH_INDEFINITE).show();
+        Snackbar.make(textViewEliminarDataTeste, R.string.erro_eliminar_teste, Snackbar.LENGTH_INDEFINITE).show();
     }
 }

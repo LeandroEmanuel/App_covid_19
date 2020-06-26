@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 public class Estatisticas {
     private BdCovidOpenHelper openHelper;
     private SQLiteDatabase db;
-    float mediaTemperatura;
     int totalPerfis;
     int totalTestes;
     int totalTestesPositivos;
@@ -23,15 +22,6 @@ public class Estatisticas {
         totalTestesPositivo();
         totalTestesNegativo();
         totalTestesInconclusivo();
-        mediaTemperaturas();
-    }
-
-    private void mediaTemperaturas(){
-        Cursor cursor = db.rawQuery( "SELECT AVG(" + BdTabelaRegistos.TEMPERATURA + ") " +
-                " FROM " + BdTabelaRegistos.NOME_TABELA + ", " + BdTabelaTestes.NOME_TABELA, null);
-
-        cursor.moveToNext();
-        mediaTemperatura = cursor.getInt(0);
     }
 
     private void totalPerfis(){
@@ -54,7 +44,7 @@ public class Estatisticas {
         Cursor cursor = db.rawQuery( "SELECT COUNT(*) " +
                 " FROM " + BdTabelaTestes.NOME_TABELA + ", " + BdTabelaPerfis.NOME_TABELA +
                 " WHERE " + BdTabelaTestes.CAMPO_ID_PERFIL_COMPLETO + " = " + BdTabelaPerfis.CAMPO_ID_COMPLETO +
-                " AND " + BdTabelaTestes.RESULTADO_TESTE + " = 'Positivo'",null);
+                " AND " + BdTabelaTestes.RESULTADO_TESTE + " = 1",null);
 
         cursor.moveToNext();
         totalTestesPositivos = cursor.getInt(0);
@@ -64,24 +54,20 @@ public class Estatisticas {
         Cursor cursor = db.rawQuery( "SELECT COUNT(*) " +
                 " FROM " + BdTabelaTestes.NOME_TABELA + ", " + BdTabelaPerfis.NOME_TABELA +
                 " WHERE " + BdTabelaTestes.CAMPO_ID_PERFIL_COMPLETO + " = " + BdTabelaPerfis.CAMPO_ID_COMPLETO +
-                " AND " + BdTabelaTestes.RESULTADO_TESTE + " = 'Negativo'",null);
+                " AND " + BdTabelaTestes.RESULTADO_TESTE + " = 2",null);
 
         cursor.moveToNext();
         totalTestesNegativos = cursor.getInt(0);
     }
 
     private void totalTestesInconclusivo(){
-        Cursor cursor = db.rawQuery( "SELECT COUNT(*) " +
+        Cursor cursor = db.rawQuery( "SELECT * " +
                 " FROM " + BdTabelaTestes.NOME_TABELA + ", " + BdTabelaPerfis.NOME_TABELA +
                 " WHERE " + BdTabelaTestes.CAMPO_ID_PERFIL_COMPLETO + " = " + BdTabelaPerfis.CAMPO_ID_COMPLETO +
-                " AND " + BdTabelaTestes.RESULTADO_TESTE + " = 'Inconclusivo'",null);
+                " AND " + BdTabelaTestes.CAMPO_RESULTADO_TESTE_COMPLETO + " = 3",null);
 
         cursor.moveToNext();
         totalTestesInconclusivos = cursor.getInt(0);
-    }
-
-    public float getMediaTemperatura() {
-        return mediaTemperatura;
     }
 
     public int getTotalPessoas() {

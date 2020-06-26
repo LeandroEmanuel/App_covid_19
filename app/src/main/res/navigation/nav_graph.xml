@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_fragment_menu_principal_to_fragment_configuracoes"
             app:destination="@id/fragment_configuracoes" />
+        <action
+            android:id="@+id/to_historico"
+            app:destination="@id/fragment_historico" />
     </fragment>
     <fragment
         android:id="@+id/fragment_dados_pessoais2"
@@ -42,23 +45,20 @@
             android:id="@+id/to_testes"
             app:destination="@id/fragment_testes" />
         <action
-            android:id="@+id/to_historico"
-            app:destination="@id/fragment_historico" />
-        <action
             android:id="@+id/action_fragment_editar_perfis_to_fragment_altera_registo"
             app:destination="@id/fragment_altera_registo" />
         <action
             android:id="@+id/action_fragment_editar_perfis_to_fragment_insere_registo_diario"
             app:destination="@id/fragment_insere_registo_diario" />
+        <action
+            android:id="@+id/to_tabela_registos_diarios"
+            app:destination="@id/fragment_tabela_registos_diarios" />
     </fragment>
     <fragment
         android:id="@+id/fragment_historico"
         android:name="com.example.app_covid_19.fragment_historico"
         android:label="fragment_historico"
         tools:layout="@layout/fragment_historico" >
-        <action
-            android:id="@+id/to_tabela_registos_diarios"
-            app:destination="@id/fragment_tabela_registos_diarios" />
         <action
             android:id="@+id/to_registo_diario"
             app:destination="@id/fragment_insere_registo_diario" />
@@ -111,11 +111,11 @@
         android:label="fragment_tabela_registos_diarios"
         tools:layout="@layout/fragment_tabela_registos_diarios" >
         <action
-            android:id="@+id/to_historico"
-            app:destination="@id/fragment_historico" />
-        <action
             android:id="@+id/action_fragment_tabela_registos_diarios_to_fragment_elimina_registo"
             app:destination="@id/fragment_elimina_registo" />
+        <action
+            android:id="@+id/to_historico"
+            app:destination="@id/fragment_editar_perfis" />
     </fragment>
     <fragment
         android:id="@+id/fragment_tabela_resultado_testes"

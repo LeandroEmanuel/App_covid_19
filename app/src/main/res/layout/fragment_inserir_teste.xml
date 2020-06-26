@@ -53,7 +53,7 @@
             android:id="@+id/radioButtonTesteInconclusivo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/inconcclusivo" />
+            android:text="@string/inconclusivo" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

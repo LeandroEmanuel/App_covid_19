@@ -1,7 +1,5 @@
 package com.example.app_covid_19;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,7 +28,11 @@ public class fragment_editar_menu_perfis extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        textViewTituloEditarPerfil = (TextView) view.findViewById(R.id.textViewTituloEditarPerfil);//aqui
+        MainActivity activity = (MainActivity) getActivity();
+
+        activity.setFragmentActual(this);
+        activity.setMenuActual(R.menu.menu_vazio);
+        textViewTituloEditarPerfil = (TextView) view.findViewById(R.id.textViewTituloEditarPerfil);
 
         view.findViewById(R.id.buttonRegistoDiario).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,17 +46,12 @@ public class fragment_editar_menu_perfis extends Fragment {
                 testes();
             }
         });
-        view.findViewById(R.id.buttonHistorico).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.buttonTabelaRegistos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                historico();
+                tabelaRegistos();
             }
         });
-    }
-
-    private void historico() {
-        NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
-        navController.navigate(R.id.to_historico);
     }
 
     private void testes() {
@@ -65,6 +62,10 @@ public class fragment_editar_menu_perfis extends Fragment {
     private void registoDiario() {
            NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
            navController.navigate(R.id.action_fragment_editar_perfis_to_fragment_insere_registo_diario);
+    }
+    private void tabelaRegistos() {
+        NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
+        navController.navigate(R.id.to_tabela_registos_diarios);
     }
 
 }

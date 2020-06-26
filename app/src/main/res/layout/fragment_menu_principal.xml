@@ -10,7 +10,7 @@
         android:id="@+id/textViewTituloMenuPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="@string/titulo_menu_principal"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -25,10 +25,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/gerir_perfis"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSairApp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonEstatisticas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTituloMenuPrincipal" />
+
+    <Button
+        android:id="@+id/buttonEstatisticas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estatisticas"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSairApp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonProcurarPerfil" />
 
     <Button
         android:id="@+id/buttonSairApp"
@@ -38,6 +48,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonProcurarPerfil" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonEstatisticas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

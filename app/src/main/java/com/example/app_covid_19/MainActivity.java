@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);//não  funciona
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         /*if (savedInstanceState != null){
@@ -164,11 +164,11 @@ public class MainActivity extends AppCompatActivity implements Serializable{
 
     private boolean gereOpcoesMenuTabelaTeste(int id) {
         fragment_tabela_resultado_testes fragmentTabelaResultadoTestes = (fragment_tabela_resultado_testes) fragmentActual;
-        if (id == R.id.elimina_teste) {//aqui
+        if (id == R.id.elimina_teste) {
             fragmentTabelaResultadoTestes.EliminarTeste();
             String a ="";
             return true;
-        } else if (id == R.id.reverteTeste) {//aqui
+        } else if (id == R.id.reverteTeste) {
             fragmentTabelaResultadoTestes.historicoTestes();
             return true;
         }

@@ -79,7 +79,7 @@ public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHo
             }else if (teste.getResultadoTeste() == 2){
                 textViewResultadoItemTesteResultado.setText(R.string.negativo);
             }else if(teste.getResultadoTeste() == 3){
-                textViewResultadoItemTesteResultado.setText(R.string.inconcclusivo);
+                textViewResultadoItemTesteResultado.setText(R.string.inconclusivo);
             }
         }
 

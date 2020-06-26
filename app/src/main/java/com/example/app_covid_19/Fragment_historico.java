@@ -46,28 +46,12 @@ public class fragment_historico extends Fragment {
         TextView textViewMediaTemperaturas = (TextView) view.findViewById(R.id.textViewMediaTemperaturas);
 
         Estatisticas estatisticas = new Estatisticas(context);
-        textViewMediaTemperaturas.setText(""+estatisticas.getMediaTemperatura());
-        textViewTotalPessoas.setText(""+estatisticas.getTotalPessoas());
-        textViewTotalTestes.setText(""+estatisticas.getTotalTestes());
-        textViewTotalTestesPositivos.setText(""+estatisticas.getTotalTestesPositivos());
-        textViewTotalTestesNegativos.setText(""+estatisticas.getTotalTestesNegativos());
-        textViewTotalTestesInconclusivos.setText(""+estatisticas.getTotalTestesInconclusivos());
-
-        view.findViewById(R.id.buttonTabelaRegistos).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tabelaRegistos();
-            }
-        });
+        textViewMediaTemperaturas.setText("");
+        textViewTotalPessoas.setText(" Pessoas registadas: "+estatisticas.getTotalPessoas());
+        textViewTotalTestes.setText(" Testes feitos: "+estatisticas.getTotalTestes());
+        textViewTotalTestesPositivos.setText("Testes positivos: "+estatisticas.getTotalTestesPositivos());
+        textViewTotalTestesNegativos.setText("Testes negativos: "+estatisticas.getTotalTestesNegativos());
+        textViewTotalTestesInconclusivos.setText("Testes Inconclusivos: "+estatisticas.getTotalTestesInconclusivos());
 
     }
-
-    private void tabelaRegistos() {
-        NavController navController = NavHostFragment.findNavController(fragment_historico.this);
-        navController.navigate(R.id.to_tabela_registos_diarios);
-    }
-
-    //teste string to date
-
-
 }

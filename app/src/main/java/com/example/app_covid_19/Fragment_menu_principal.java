@@ -40,6 +40,16 @@ public class fragment_menu_principal extends Fragment{
                 sairApp();
             }
         });
+        view.findViewById(R.id.buttonEstatisticas).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                historico();
+            }
+        });
+    }
+    private void historico() {
+        NavController navController = NavHostFragment.findNavController(fragment_menu_principal.this);
+        navController.navigate(R.id.to_historico);
     }
 
     private void sairApp() {

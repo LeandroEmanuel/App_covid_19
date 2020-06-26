@@ -39,9 +39,8 @@
     <string name="novo_teste">New</string>
     <string name="testes">Tests</string>
     <string name="resultado_teste">Test Result</string>
-    <string name="positivo">Positive</string>
-    <string name="negativo">Negative</string>
-    <string name="inconcclusivo">Inconcclusive</string>
+    <string name="positivo" translatable="false">Positivo</string>
+    <string name="negativo" translatable="false">Negativo</string>
     <string name="guardar">Save</string>
     <string name="titulo_tabela_registos">Daily Record Table</string>
     <string name="titulo_tabela_testes">Tests Table</string>
@@ -98,4 +97,6 @@
     <string name="darck_theme" translatable="false">Darck theme</string>
     <string name="registo_inserido_sucesso">Registration inserted successfully</string>
     <string name="erro_inserir_registo">Could not insert record</string>
+    <string name="erro_eliminar_teste">Erro: Não foi possivél eliminar o teste</string>
+    <string name="inconclusivo" translatable="false">Inconclusivo</string>
 </resources>

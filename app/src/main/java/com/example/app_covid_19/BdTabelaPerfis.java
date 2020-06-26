@@ -7,6 +7,7 @@ import android.provider.BaseColumns;
 
 public class BdTabelaPerfis implements BaseColumns {
     public static final String NOME_TABELA = "perfis";
+    public static final String _ID = "id";
     public static final String NOME = "nome";
     public static final String DATA_NASCIMENTO = "data_nascimento";
     public static final String CARDIO = "cardio";
