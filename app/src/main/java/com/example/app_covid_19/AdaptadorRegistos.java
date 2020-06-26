@@ -69,7 +69,9 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
             textViewDataRegistoItemRegisto = (TextView)itemView.findViewById(R.id.textViewDataRegistoItemRegisto);
             textViewTemperaturaItemRegisto = (TextView)itemView.findViewById(R.id.textViewTemperaturaItemRegisto);
             textViewTosse = (TextView)itemView.findViewById(R.id.textViewTosse);
+
             textViewDifResp =(TextView)itemView.findViewById(R.id.textViewDifResp);
+
 
             itemView.setOnClickListener(this);
         }

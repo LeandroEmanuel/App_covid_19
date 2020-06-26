@@ -61,15 +61,10 @@ public class fragment_elimina_registo extends Fragment {
         textViewEliminaDataRegisto = (TextView) view.findViewById(R.id.textViewEliminaDataRegisto);
         textViewEliminaTemperatura = (TextView) view.findViewById(R.id.textViewEliminaTemperatura);
 
-        textViewEliminaTosseRegisto = (TextView) view.findViewById(R.id.textViewEliminaTosseRegisto);
-        textViewEliminaDifRespRegisto = (TextView) view.findViewById(R.id.textViewEliminaDifRespRegisto);
-
         registo = activity.getRegisto();
         textViewNomePerfilEliminar.setText(registo.getPerfil());
         textViewEliminaDataRegisto.setText(registo.getDataRegisto());
         textViewEliminaTemperatura.setText(String.valueOf(registo.getTemperatura()));
-        textViewEliminaTosseRegisto.setText(""+registo.getTosse());
-        textViewEliminaDifRespRegisto.setText(""+registo.getDifResp());
     }
     public void cancelarEliminarRegisto(){
         NavController navController = NavHostFragment.findNavController(fragment_elimina_registo.this);

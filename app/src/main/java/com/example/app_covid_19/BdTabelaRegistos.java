@@ -57,25 +57,6 @@ public class BdTabelaRegistos implements BaseColumns {
         return db.insert(NOME_TABELA, null, values);
     }
 
-    public int contaRegistos(long idPerfil){//contar os registos de um perfil
-        final Calendar calendario = Calendar.getInstance();
-        int mAno = calendario.get(Calendar.YEAR);
-        int mMes = calendario.get(Calendar.MONTH);
-        int mDia = calendario.get(Calendar.DAY_OF_MONTH);
-        String sysDate = mDia + "/" + (mMes +1) + "/" + mAno;
-
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) from " +
-                NOME_TABELA +
-                " where " +
-                CAMPO_ID_PERFIL + " =? " +
-                " AND " +
-                DATA_REGISTO +
-                " = ? " , new String[]{String.valueOf(idPerfil),sysDate});
-
-        cursor.moveToNext();
-        return cursor.getInt(0);
-        // SELECT COUNT(*) from registos where registos.idPerfil = 1 and dataRegisto = sysdate
-    }
     public Cursor query(String[] columns, String selection,
                         String[] selectionArgs, String groupBy, String having,
                         String orderBy) {

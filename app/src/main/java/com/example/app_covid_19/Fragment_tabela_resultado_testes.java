@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,13 +41,14 @@ public class fragment_tabela_resultado_testes extends Fragment implements Loader
         super.onViewCreated(view, savedInstanceState);
 
         Context context = getContext();
-        RecyclerView recyclerViewTestes = (RecyclerView) view.findViewById(R.id.recyclerViewTestes);
-        adaptadorTestes = new AdaptadorTestes(context);
+
         MainActivity activity =(MainActivity) getActivity();
         activity.setFragmentActual(this);
         activity.setMenuActual(R.menu.menu_historico_registos);
-
         idPerfil = activity.getPerfil().getId();
+
+        RecyclerView recyclerViewTestes = (RecyclerView) view.findViewById(R.id.recyclerViewTestes);
+        adaptadorTestes = new AdaptadorTestes(context);
 
         recyclerViewTestes.setAdapter(adaptadorTestes);
         recyclerViewTestes.setLayoutManager(new LinearLayoutManager(context));
@@ -54,10 +57,20 @@ public class fragment_tabela_resultado_testes extends Fragment implements Loader
         LoaderManager.getInstance(this).initLoader(_CURSOR_LOADER_TESTES, null, this);
     }
 
+    public void EliminarTeste(){
+        NavController navController = NavHostFragment.findNavController(fragment_tabela_resultado_testes.this);
+        navController.navigate(R.id.action_fragment_tabela_resultado_testes_to_fragment_eliminar_testes);
+    }
+
+    public void historicoTestes(){
+        NavController navController = NavHostFragment.findNavController(fragment_tabela_resultado_testes.this);
+        navController.navigate(R.id.to_testes);
+    }
+
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new CursorLoader(getContext(), BdCovidContentProvider.ENDERECO_TESTES, BdTabelaTestes.TODOS_OS_CAMPOS,  BdTabelaRegistos.CAMPO_ID_PERFIL_COMPLETO + "=?", new String[]{String.valueOf(idPerfil)}, BdTabelaTestes.DATA_TESTE);
+        return new CursorLoader(getContext(), BdCovidContentProvider.ENDERECO_TESTES, BdTabelaTestes.TODOS_OS_CAMPOS,  BdTabelaTestes.CAMPO_ID_PERFIL_COMPLETO + "=?", new String[]{String.valueOf(idPerfil)}, BdTabelaTestes.DATA_TESTE);
     }
 
     @Override

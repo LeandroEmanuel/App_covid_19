@@ -92,6 +92,7 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
         
     }
 
+
     public void guardaNovoPerfil() {// não insere dados pessois
         String nome = editTextNome.getText().toString();
         String dataNascimento = textViewDataNascimento.getText().toString();
@@ -133,7 +134,6 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
         } else{
             resp = 0;
         }
-
         if(nome.length() == 0){
             editTextNome.setError(getString(R.string.preencher_nome));
             editTextNome.requestFocus();
@@ -142,7 +142,6 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
             textViewDataNascimento.setError(getString(R.string.selecionar_data));
             textViewDataNascimento.requestFocus();
         }
-
         //todo: acrescentar mais validacoes
 
         Perfil perfil = new Perfil();

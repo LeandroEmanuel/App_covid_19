@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,13 +32,15 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 
 
-public class fragment_inserir_teste extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class fragment_inserir_teste extends Fragment {
 
     TextView textViewDataTesteResultado;
     private int mAno, mMes, mDia;
     private String sysDate;
     private Teste teste;
-    private RadioGroup radioGroupTeste;
+    private RadioButton radioButtoTestePositivo;
+    private RadioButton radioButtonTesteNegativo;
+    private RadioButton radioButtonTesteInconclusivo;
     public static final int _CURSOR_LOADER_PERFIS = 0;
 
 
@@ -70,7 +73,6 @@ public class fragment_inserir_teste extends Fragment implements LoaderManager.Lo
 
         textViewDataTesteResultado.setText(sysDate);
 
-        LoaderManager.getInstance(this).initLoader(_CURSOR_LOADER_PERFIS,null, null);
 
     }
 
@@ -81,7 +83,6 @@ public class fragment_inserir_teste extends Fragment implements LoaderManager.Lo
 
     public void guardarNovoTeste(){
         //todo: guardar o radioButton selecionado
-
 
         long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
         teste = new Teste();
@@ -98,24 +99,5 @@ public class fragment_inserir_teste extends Fragment implements LoaderManager.Lo
         } catch (Exception e) {
             Snackbar.make(textViewDataTesteResultado, R.string.erro_inserir_teste, Snackbar.LENGTH_INDEFINITE).show();
         }
-
-
-    }
-
-
-    @NonNull
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new androidx.loader.content.CursorLoader(getContext(), BdCovidContentProvider.ENDERECO_TESTES, BdTabelaTestes.TODOS_OS_CAMPOS, null, null, BdTabelaTestes.DATA_TESTE);
-    }
-
-    @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-
-    }
-
-    @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-
     }
 }
