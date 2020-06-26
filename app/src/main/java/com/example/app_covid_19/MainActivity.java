@@ -102,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
         }
          else if (menuActual == R.menu.menu_selecionar_perfil) {
             if(gereOpcoesMenuSelecionaPerfil(id)) return true;
-
         } else if (menuActual == R.menu.menu_inserir_perfil) {
             if(gereOpcoesMenuInserirPerfil(id)) return true;
         }else if (menuActual == R.menu.menu_alterar_perfil) {
@@ -130,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.elimina_teste) {
             fragmentTabelaResultadoTestes.EliminarTeste();
             return true;
-        } else if (id == R.id.reverte) {
+        } else if (id == R.id.reverteTeste) {
             fragmentTabelaResultadoTestes.historicoTestes();
             return true;
         }
@@ -165,10 +164,10 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean gereOpcoesMenuEliminarTeste(int id) {
         fragment_eliminar_testes fragment_eliminar_testes = (com.example.app_covid_19.fragment_eliminar_testes) fragmentActual;
-        if(id == R.id.canselar_eliminar_perfil) {
+        if(id == R.id.canselar_eliminar_teste) {
             fragment_eliminar_testes.cancelarEliminarTeste();
             return true;
-        } else if(id == R.id.action_eliminar_perfil){
+        } else if(id == R.id.action_eliminar_teste){
             fragment_eliminar_testes.eliminarTeste();
             return true;
         }
@@ -178,10 +177,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean gereOpcoesMenuInserirTeste(int id) {
         fragment_inserir_teste fragment_inserir_teste = (fragment_inserir_teste) fragmentActual;
 
-        if(id == R.id.action_guardar_registo){
+        if(id == R.id.action_guardar_teste){
             fragment_inserir_teste.guardarNovoTeste();
             return true;
-        } else if(id == R.id.action_cancelar_registo){
+        } else if(id == R.id.action_cancelar_testes){
             fragment_inserir_teste.cancelarInserirTeste();
             return true;
         }

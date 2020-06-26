@@ -53,14 +53,16 @@ public class fragment_eliminar_testes extends Fragment implements LoaderManager.
         MainActivity activity =(MainActivity) getActivity();
         activity.setFragmentActual(this);
         activity.setMenuActual(R.menu.menu_eliminar_registo);
+
+        textViewNomeTeste = (TextView) view.findViewById(R.id.textViewNomeTeste);
         textViewEliminarDataTeste = (TextView) view.findViewById(R.id.textViewEliminarDataTeste);
         textViewEliminaResultadoTeste = (TextView) view.findViewById(R.id.textViewEliminaResultadoTeste);
-        textViewNomeTeste = (TextView) view.findViewById(R.id.textViewNomeTeste);
+
         teste = activity.getTest();
 
         textViewNomeTeste.setText(teste.getPerfil());
         textViewEliminarDataTeste.setText(teste.getResultadoTeste());
-        textViewEliminaResultadoTeste.setText(String.valueOf(teste.getResultadoTeste()));//alterei
+        textViewEliminaResultadoTeste.setText(String.valueOf(teste.getResultadoTeste()));
     }
     public void cancelarEliminarTeste(){
         NavController navController = NavHostFragment.findNavController(fragment_eliminar_testes.this);

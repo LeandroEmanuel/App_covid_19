@@ -1,29 +1,17 @@
 package com.example.app_covid_19;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.CursorLoader;
-import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CursorAdapter;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,8 +50,10 @@ public class fragment_inserir_teste extends Fragment {
         activity.setFragmentActual(this);
         activity.setMenuActual(R.menu.menu_inserir_teste);
 
-        textViewDataTesteResultado =(TextView)view.findViewById(R.id.textViewDataTesteResultado);
-        //radioGroupTeste = (RadioGroup) view.findViewById(R.id.radioGroupTeste);
+        textViewDataTesteResultado = (TextView)view.findViewById(R.id.textViewDataTesteResultado);
+        radioButtoTestePositivo = (RadioButton)view.findViewById(R.id.radioButtoTestePositivo);
+        radioButtonTesteNegativo = (RadioButton)view.findViewById(R.id.radioButtonTesteNegativo);
+        radioButtonTesteInconclusivo = (RadioButton)view.findViewById(R.id.radioButtonTesteInconclusivo);
 
         final Calendar calendario = Calendar.getInstance();
         mAno = calendario.get(Calendar.YEAR);
@@ -84,17 +74,39 @@ public class fragment_inserir_teste extends Fragment {
     public void guardarNovoTeste(){
         //todo: guardar o radioButton selecionado
 
+        boolean auxPositivo = radioButtoTestePositivo.isChecked();
+        String resultado = "";
+        if(auxPositivo){
+            resultado ="Positivo";
+            return;
+        }
+
+        boolean auxNegativo = radioButtoTestePositivo.isChecked();
+
+        if(auxNegativo){
+            resultado = "Negativo";
+            return;
+        }
+
+        boolean auxInconclusico = radioButtoTestePositivo.isChecked();
+
+        if(auxInconclusico){
+            resultado = "Inconclusivo";
+            return;
+        }
+
+
         long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
         teste = new Teste();
         teste.setDataTeste(sysDate);
-        //teste.setResultadoTeste(radiobuton);
+        teste.getResultadoTeste(resultado);
         teste.setIdPerfil(idPerfilSelecionado);
 
         try {
             getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_TESTES, Converte.testeParaContentValues(teste));
             Toast.makeText(getContext(),R.string.teste_guardado_com_sucesso, Toast.LENGTH_SHORT).show();
             NavController navController = NavHostFragment.findNavController(fragment_inserir_teste.this);
-            navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
+            navController.navigate(R.id.action_fragment_resultado_teste_to_fragment_testes);
 
         } catch (Exception e) {
             Snackbar.make(textViewDataTesteResultado, R.string.erro_inserir_teste, Snackbar.LENGTH_INDEFINITE).show();
