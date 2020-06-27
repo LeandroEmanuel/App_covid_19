@@ -102,7 +102,7 @@
     <string name="estatisticas">Statistics</string>
     <string name="nome_invalido"> Invalid Name! \ n Fill in at least first and last name </string>
     <string name="temperatura_invalida">Invalid temperature</string>
-    <string name="certeza_eliminar_perfil">Are you sure you want to delete the profile \ '</string>
+    <string name="certeza_eliminar_perfil">Are you sure you want to delete the profile</string>
     <string name="eliminar_perfil">Delete Profile</string>
     <string name="sucesso_eliminar_perfil">Profile deleted successfully</string>
     <string name="erro_eliminar_perfil">Error: It was not possible to delete the profile</string>
@@ -111,4 +111,5 @@
     <string name="testes_positivos">\ "Positive tests: \"</string>
     <string name="testes_negativos">\ "Negative tests: \""</string>
     <string name="testes_inconclusivos">\ "Inconclusive tests: \"</string>
+    <string name="altera_dados_pessoais">Change Personal Data</string>
 </resources>

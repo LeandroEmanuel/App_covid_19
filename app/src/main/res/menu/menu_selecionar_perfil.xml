@@ -24,4 +24,9 @@
         android:title="@string/acao_eliminar_perfil"
         android:visible="false"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_principal"
+        android:icon="@drawable/ic_baseline_undo_24"
+        android:title="@string/voltar"
+        app:showAsAction="ifRoom" />
 </menu>

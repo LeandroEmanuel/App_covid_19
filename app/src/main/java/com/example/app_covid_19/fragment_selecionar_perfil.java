@@ -68,6 +68,10 @@ public class fragment_selecionar_perfil extends Fragment implements LoaderManage
         NavController navController = NavHostFragment.findNavController(fragment_selecionar_perfil.this);
         navController.navigate(R.id.action_eliminar_perfil);
     }
+    public void voltarMenuPrincipal(){
+        NavController navController = NavHostFragment.findNavController(fragment_selecionar_perfil.this);
+        navController.navigate(R.id.action_fragment_selecionar_perfil2_to_fragment_menu_principal);
+    }
 
     @NonNull
     @Override

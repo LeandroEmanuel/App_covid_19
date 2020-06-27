@@ -1,6 +1,5 @@
 package com.example.app_covid_19;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -157,16 +156,28 @@ public class MainActivity extends AppCompatActivity implements Serializable{
             if(gereOpcoesMenuTabelaTeste(id)) return true;
         }else if (menuActual == R.menu.menu_vazio) {
              return true;
+        }else if (menuActual == R.menu.menu_voltar) {
+            if(gereOpcoesMenuvoltar(id)) return true;
         }
 
+
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean gereOpcoesMenuvoltar(int id) {
+        fragment_editar_menu_perfis fragment_editar_menu_perfis = (fragment_editar_menu_perfis) fragmentActual;
+        if (id == R.id.action_voltar_menu_anterior) {
+            fragment_editar_menu_perfis.selecionar_perfil();
+            return true;
+        }
+        return false;
     }
 
     private boolean gereOpcoesMenuTabelaTeste(int id) {
         fragment_tabela_resultado_testes fragmentTabelaResultadoTestes = (fragment_tabela_resultado_testes) fragmentActual;
         if (id == R.id.elimina_teste) {
             fragmentTabelaResultadoTestes.EliminarTeste();
-            String a ="";
             return true;
         } else if (id == R.id.reverteTeste) {
             fragmentTabelaResultadoTestes.historicoTestes();
@@ -303,6 +314,9 @@ public class MainActivity extends AppCompatActivity implements Serializable{
             return true;
         }else if(id == R.id.action_mais_info){
             fragment_selecionar_perfil.maisInformacao();
+            return true;
+        }else if(id == R.id.menu_principal){
+            fragment_selecionar_perfil.voltarMenuPrincipal();
             return true;
         }
         return false;

@@ -44,7 +44,7 @@ public class fragment_tabela_resultado_testes extends Fragment implements Loader
 
         MainActivity activity =(MainActivity) getActivity();
         activity.setFragmentActual(this);
-        activity.setMenuActual(R.menu.menu_tabela_testes);//aqui se colocar o menu correto nem sequer seleciona um teste
+        activity.setMenuActual(R.menu.menu_tabela_testes);
         idPerfil = activity.getPerfil().getId();
 
         RecyclerView recyclerViewTestes = (RecyclerView) view.findViewById(R.id.recyclerViewTestes);

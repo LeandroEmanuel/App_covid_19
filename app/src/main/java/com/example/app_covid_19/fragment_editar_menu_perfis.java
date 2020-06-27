@@ -31,7 +31,7 @@ public class fragment_editar_menu_perfis extends Fragment {
         MainActivity activity = (MainActivity) getActivity();
 
         activity.setFragmentActual(this);
-        activity.setMenuActual(R.menu.menu_vazio);
+        activity.setMenuActual(R.menu.menu_voltar);
         textViewTituloEditarPerfil = (TextView) view.findViewById(R.id.textViewTituloEditarPerfil);
 
         view.findViewById(R.id.buttonRegistoDiario).setOnClickListener(new View.OnClickListener() {
@@ -66,6 +66,10 @@ public class fragment_editar_menu_perfis extends Fragment {
     private void tabelaRegistos() {
         NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
         navController.navigate(R.id.to_tabela_registos_diarios);
+    }
+    public void selecionar_perfil() {
+        NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
+        navController.navigate(R.id.to_Selecionar_perfil);
     }
 
 }

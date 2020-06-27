@@ -64,11 +64,6 @@ public class fragment_alterar_perfil extends Fragment implements LoaderManager.L
 
         editTextAlteraNome = (EditText) view.findViewById(R.id.editTextNome);
         textViewAlteraDataNascimento =(TextView) view.findViewById(R.id.textViewAlteraDataNascimento);
-
-        perfil = activity.getPerfil();
-        editTextAlteraNome.setText(perfil.getNome());
-        textViewAlteraDataNascimento.setText(perfil.getDataNascimento());
-
         buttonSelecionarDataNascimento = (Button)view.findViewById(R.id.buttonSelecionarDataNascimento);
         textViewAlteraDataNascimento = (TextView)view.findViewById(R.id.textViewAlteraDataNascimento);
         checkBoxCardiovascular = (CheckBox) view.findViewById(R.id.checkBoxCardiovascular);
@@ -76,6 +71,25 @@ public class fragment_alterar_perfil extends Fragment implements LoaderManager.L
         checkBoxHipertensao = (CheckBox) view.findViewById(R.id.checkBoxHipertensao) ;
         checkBoxDoencasOncologicas = (CheckBox) view.findViewById(R.id.checkBoxDoencasOncologicas);
         checkBoxResp = (CheckBox) view.findViewById(R.id.checkBoxResp);
+
+        perfil = activity.getPerfil();
+        editTextAlteraNome.setText(perfil.getNome());
+        textViewAlteraDataNascimento.setText(perfil.getDataNascimento());
+        if (perfil.getCardio() == 1){
+            checkBoxCardiovascular.setChecked(true);
+        }
+        if (perfil.getDiabetes() ==1){
+            checkBoxDiabetes.setChecked(true);
+        }
+        if (perfil.getHiper() == 1){
+            checkBoxHipertensao.setChecked(true);
+        }
+        if (perfil.getOnco() == 1){
+            checkBoxDoencasOncologicas.setChecked(true);
+        }
+        if (perfil.getResp() == 1){
+            checkBoxResp.setChecked(true);
+        }
 
         view.findViewById(R.id.buttonSelecionarDataNascimento).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +110,7 @@ public class fragment_alterar_perfil extends Fragment implements LoaderManager.L
                 }
             }
         });
-        
+
     }
 
     public void cancelarAlterarDadosPessoais() {

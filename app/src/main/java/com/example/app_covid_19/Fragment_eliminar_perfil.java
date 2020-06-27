@@ -67,16 +67,16 @@ public class fragment_eliminar_perfil extends Fragment {
     public void eliminar(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-        builder.setTitle("Eliminar Perfil");
-        builder.setMessage("Tem a certeza que pretende eliminar o perfil'" + perfil.getNome() + "'");
+        builder.setTitle(R.string.eliminar_perfil);
+        builder.setMessage(getString(R.string.certeza_eliminar_perfil) + perfil.getNome() + "'");
         builder.setIcon(R.drawable.ic_round_delete_forever_24);
-        builder.setPositiveButton("Sim",  new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.sim,  new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 confirmarEliminar();
             }
         });
-        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.nao, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 cancelar();
@@ -91,13 +91,13 @@ public class fragment_eliminar_perfil extends Fragment {
             int registosApagados = getActivity().getContentResolver().delete(enderecoPerfil, null, null);
 
             if(registosApagados == 1){
-                Toast.makeText(getContext(),"Perfil eliminado com sucesso", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.sucesso_eliminar_perfil, Toast.LENGTH_SHORT).show();
                 NavController navController = NavHostFragment.findNavController(fragment_eliminar_perfil.this);
                 navController.navigate(R.id.cancelar_eliminar_perfil);
                 return;
             }
         }catch (Exception e){
         }
-        Snackbar.make(editTextNomePerfilEliminar,"Erro: Não foi possivél eliminar o perfil", Snackbar.LENGTH_INDEFINITE).show();
+        Snackbar.make(editTextNomePerfilEliminar, R.string.erro_eliminar_perfil, Snackbar.LENGTH_INDEFINITE).show();
     }
 }

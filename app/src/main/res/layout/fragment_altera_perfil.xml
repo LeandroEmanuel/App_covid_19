@@ -11,7 +11,7 @@
         android:id="@+id/textViewTituloDadosPessoais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change Personal Data"
+        android:text="@string/altera_dados_pessoais"
         android:textColor="@color/titulos"
         android:textSize="24sp"
         android:textStyle="bold"
