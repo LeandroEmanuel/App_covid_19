@@ -94,6 +94,11 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
         } else{
             difResp = 0;
         }
+        if(temperatura <= 34.0 || temperatura > 50.0){
+            editTextTemperatura.setError(getString(R.string.temperatura_invalida));
+            editTextTemperatura.requestFocus();
+            return;
+        }
 
         long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();// ir buscar o id de um perfil
         Registo registo = new Registo();

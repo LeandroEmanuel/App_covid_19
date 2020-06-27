@@ -134,15 +134,47 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
         } else{
             resp = 0;
         }
+        // validacoes
+
+        if ((nome.length() != 0) ){
+            String aux = "";
+            String aux2 = nome;
+            int pos = 0;
+
+            for(int i = 0; i < nome.length();i++) {// correr a string caracter a caracter
+
+                if(pos == 0)//if de controlo para maiuscula
+                {
+                    aux = aux + aux2.substring(0, 1).toUpperCase();
+                    aux2=aux2.substring(1);// remover do aux2 a letra introduzida em aux
+                    pos++;
+                }
+                else
+                {
+                    if(i == nome.indexOf(" ",i))// descobrir o espaco a partir da posicao i
+                    {
+                        pos=0;
+                    }
+                    aux = aux + aux2.substring(0, 1);
+                    aux2 = aux2.substring(1);
+                }
+            }
+            nome = aux;
+        }
         if(nome.length() == 0){
             editTextNome.setError(getString(R.string.preencher_nome));
             editTextNome.requestFocus();
             return;
-        } else if(dataNascimento.length() == 0){
+        } else if (!nome.matches("^([A-z][a-z]*((\\s)))+[A-z][a-z]*$")){//https://stackoverflow.com/questions/7362567/java-regex-for-full-name
+            editTextNome.setError(getString(R.string.nome_invalido));
+            editTextNome.requestFocus();
+            return;
+        }
+        if(dataNascimento.length() == 0){
             textViewDataNascimento.setError(getString(R.string.selecionar_data));
             textViewDataNascimento.requestFocus();
+            return;
         }
-        //todo: acrescentar mais validacoes
 
         Perfil perfil = new Perfil();
         perfil.setNome(nome);

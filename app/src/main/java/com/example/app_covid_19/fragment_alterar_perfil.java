@@ -145,7 +145,46 @@ public class fragment_alterar_perfil extends Fragment implements LoaderManager.L
             resp = 0;
         }
 
-        //Perfil perfil = activity.getPerfil();
+        // validacoes
+        if ((nome.length() != 0) ){
+            String aux = "";
+            String aux2 = nome;
+            int pos = 0;
+
+            for(int i = 0; i < nome.length();i++) {// correr a string caracter a caracter
+
+                if(pos == 0)//if de controlo para maiuscula
+                {
+                    aux = aux + aux2.substring(0, 1).toUpperCase();
+                    aux2=aux2.substring(1);// remover do aux2 a letra introduzida em aux
+                    pos++;
+                }
+                else
+                {
+                    if(i == nome.indexOf(" ",i))// descobrir o espaco a partir da posicao i
+                    {
+                        pos=0;
+                    }
+                    aux = aux + aux2.substring(0, 1);
+                    aux2 = aux2.substring(1);
+                }
+            }
+            nome = aux;
+        }
+        if(nome.length() == 0){
+            editTextAlteraNome.setError(getString(R.string.preencher_nome));
+            editTextAlteraNome.requestFocus();
+            return;
+        } else if (!nome.matches("^([A-z][a-z]*((\\s)))+[A-z][a-z]*$")){//https://stackoverflow.com/questions/7362567/java-regex-for-full-name
+            editTextAlteraNome.setError(getString(R.string.nome_invalido));
+            editTextAlteraNome.requestFocus();
+            return;
+        }
+        if(dataNascimento.length() == 0){
+            textViewAlteraDataNascimento.setError(getString(R.string.selecionar_data));
+            textViewAlteraDataNascimento.requestFocus();
+        }
+
         perfil.setNome(nome);
         perfil.setDataNascimento(dataNascimento);
         perfil.setCardio(cardio);

@@ -59,11 +59,12 @@
 
     <TextView
         android:id="@+id/textViewAlteraDataNascimento"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:text="@string/data_nascimento"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
         android:textColor="@color/texto"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonSelecionarDataNascimento"
         app:layout_constraintEnd_toEndOf="parent"

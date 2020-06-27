@@ -95,4 +95,15 @@
     <string name="erro_inserir_registo">Não foi possivel inserir o registo</string>
     <string name="erro_eliminar_teste">Erro: Não foi possivél eliminar o teste</string>
     <string name="estatisticas">Estatisticas</string>
+    <string name="nome_invalido">Nome Invalido! \n Preencha pelo menos com primeiro e ultimo nome</string>
+    <string name="temperatura_invalida">Temperatura invalida</string>
+    <string name="certeza_eliminar_perfil">Tem a certeza que pretende eliminar o perfil\'</string>
+    <string name="eliminar_perfil">Eliminar Perfil</string>
+    <string name="sucesso_eliminar_perfil">Perfil eliminado com sucesso</string>
+    <string name="erro_eliminar_perfil">Erro: Não foi possivél eliminar o perfil</string>
+    <string name="pessoas_registadas">\" Pessoas registadas: \"</string>
+    <string name="testes_feitos">\" Testes feitos: \"</string>
+    <string name="testes_positivos">\"Testes positivos: \"</string>
+    <string name="testes_negativos">\"Testes negativos: \"</string>
+    <string name="testes_inconclusivos">\"Testes Inconclusivos: \"</string>
 </resources>

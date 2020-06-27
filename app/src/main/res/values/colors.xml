@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimaryDefault">#6200EE</color>
+    <color name="colorPrimaryDarkDefault">#3700B3</color>
+    <color name="colorAccentDefault">#03DAC5</color>
     <!--   color for the app bar and other primary UI elements -->
     <color name="colorPrimary">#344955</color>
     <!--   a darker variant of the primary color, used for
@@ -7,6 +10,7 @@
     <color name="colorPrimaryDark">#033A82AC</color>
     <!--   a secondary color for controls like checkboxes and text fields -->
     <color name="colorAccent">#B17722</color>
+
     <color name="colorItemSelected">#344955</color>
     <color name="fundos">#6e7b91</color>
     <color name="titulos">#d1d8e3</color>
