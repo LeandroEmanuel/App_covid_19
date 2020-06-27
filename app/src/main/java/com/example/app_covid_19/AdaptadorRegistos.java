@@ -113,11 +113,11 @@ public class AdaptadorRegistos extends RecyclerView.Adapter<AdaptadorRegistos.Vi
         }
 
         private void seleciona() {
-            itemView.setBackgroundResource(R.color.colorSelected);
+            itemView.setBackgroundResource(R.color.colorItemSelected);
         }
 
         private void desSeleciona() {
-            itemView.setBackgroundResource(android.R.color.white);
+            itemView.setBackgroundResource(R.color.fundos);
         }
     }
 }

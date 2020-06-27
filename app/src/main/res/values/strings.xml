@@ -99,4 +99,5 @@
     <string name="erro_inserir_registo">Could not insert record</string>
     <string name="erro_eliminar_teste">Erro: Não foi possivél eliminar o teste</string>
     <string name="inconclusivo" translatable="false">Inconclusivo</string>
+    <string name="estatisticas">Statistics</string>
 </resources>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@color/fundos"
     tools:context=".fragment_eliminar_perfil">
 
     <TextView
@@ -18,7 +19,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/nome" />
+        android:text="@string/nome"
+        android:textColor="@color/texto"/>
 
     <TextView
         android:id="@+id/editTextNomePerfilEliminar"
@@ -30,7 +32,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/texto"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -42,7 +45,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/data_nascimento" />
+        android:text="@string/data_nascimento"
+        android:textColor="@color/texto"/>
 
     <EditText
         android:id="@+id/textViewDataNascimentoPerfilEliminar"
@@ -54,6 +58,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:textColor="@color/textInputLayoutText"
         android:enabled="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fundos"
     tools:context=".fragment_inserir_teste" >
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/resultado_teste"
+        android:textColor="@color/titulos"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewDataTesteResultado"
@@ -23,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/data_resultado_teste"
+        android:textColor="@color/texto"
         app:layout_constraintBottom_toTopOf="@+id/radioGroupTeste"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,18 +44,21 @@
             android:id="@+id/radioButtoTestePositivo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/chekcBoxRbuttonText"
             android:text="@string/positivo" />
 
         <RadioButton
             android:id="@+id/radioButtonTesteNegativo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/chekcBoxRbuttonText"
             android:text="@string/negativo" />
 
         <RadioButton
             android:id="@+id/radioButtonTesteInconclusivo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/chekcBoxRbuttonText"
             android:text="@string/inconclusivo" />
     </RadioGroup>
 

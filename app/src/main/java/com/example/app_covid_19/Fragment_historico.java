@@ -43,10 +43,8 @@ public class fragment_historico extends Fragment {
         TextView textViewTotalTestesPositivos = (TextView) view.findViewById(R.id.textViewTotalTestesPositivos);
         TextView textViewTotalTestesNegativos = (TextView) view.findViewById(R.id.textViewTotalTestesNegativos);
         TextView textViewTotalTestesInconclusivos = (TextView) view.findViewById(R.id.textViewTotalTestesInconclusivos);
-        TextView textViewMediaTemperaturas = (TextView) view.findViewById(R.id.textViewMediaTemperaturas);
 
         Estatisticas estatisticas = new Estatisticas(context);
-        textViewMediaTemperaturas.setText("");
         textViewTotalPessoas.setText(" Pessoas registadas: "+estatisticas.getTotalPessoas());
         textViewTotalTestes.setText(" Testes feitos: "+estatisticas.getTotalTestes());
         textViewTotalTestesPositivos.setText("Testes positivos: "+estatisticas.getTotalTestesPositivos());

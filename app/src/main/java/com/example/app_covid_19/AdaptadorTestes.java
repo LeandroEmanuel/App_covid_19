@@ -101,11 +101,11 @@ public class AdaptadorTestes extends RecyclerView.Adapter<AdaptadorTestes.ViewHo
         }
 
         private void seleciona() {
-            itemView.setBackgroundResource(R.color.colorSelected);
+            itemView.setBackgroundResource(R.color.colorItemSelected);
         }
 
         private void desSeleciona() {
-            itemView.setBackgroundResource(android.R.color.white);
+            itemView.setBackgroundResource(R.color.fundos);
         }
     }
 }

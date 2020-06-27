@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fundos"
     tools:context=".fragment_insere_registo_diario">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titulo_registo_diario"
+        android:textColor="@color/titulos"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewDataRegistoDiario"
@@ -24,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/daily_date"
+        android:textColor="@color/texto"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayoutTemperatura"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.469"
@@ -38,6 +41,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+
         app:layout_constraintBottom_toTopOf="@+id/checkBoxTosse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -48,6 +52,7 @@
             android:id="@+id/editTextTemperatura"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColor="@color/textInputLayoutText"
             android:hint="@string/temperatura" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,6 +63,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
         android:text="@string/tosse"
+        android:textColor="@color/chekcBoxRbuttonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTemperatura" />
@@ -69,6 +75,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="@string/dificuldade_respiratoria"
+        android:textColor="@color/chekcBoxRbuttonText"
         app:layout_constraintBaseline_toBaselineOf="@+id/checkBoxTosse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

@@ -4,26 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fundos"
     tools:context=".fragment_historico" >
-
-    <TextView
-        android:id="@+id/textViewMediaTemperaturas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/media_temperaturas"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTotalPessoas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloHistorico" />
 
     <TextView
         android:id="@+id/textViewTituloHistorico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Estatisticas"
+        android:text="@string/estatisticas"
+        android:textColor="@color/titulos"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textViewMediaTemperaturas"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTotalPessoas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,17 +24,17 @@
         android:id="@+id/textViewTotalPessoas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:textColor="@color/texto"
         app:layout_constraintBottom_toTopOf="@+id/textViewTotalTestes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMediaTemperaturas" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTituloHistorico" />
 
     <TextView
         android:id="@+id/textViewTotalTestes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:textColor="@color/texto"
         app:layout_constraintBottom_toTopOf="@+id/textViewTotalTestesPositivos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +44,7 @@
         android:id="@+id/textViewTotalTestesPositivos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:textColor="@color/texto"
         app:layout_constraintBottom_toTopOf="@+id/textViewTotalTestesNegativos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +54,7 @@
         android:id="@+id/textViewTotalTestesNegativos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:textColor="@color/texto"
         app:layout_constraintBottom_toTopOf="@+id/textViewTotalTestesInconclusivos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +64,7 @@
         android:id="@+id/textViewTotalTestesInconclusivos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:textColor="@color/texto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fundos"
     tools:context=".fragment_testes" >
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/testes"
+        android:textColor="@color/titulos"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/buttonNovoTeste"
@@ -23,6 +25,8 @@
         android:id="@+id/buttonNovoTeste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/titulosButoes"
+        android:backgroundTint="@color/butoes"
         android:text="@string/novo_teste"
         app:layout_constraintBottom_toTopOf="@+id/buttonHistoricoTestes"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +38,8 @@
         android:id="@+id/buttonHistoricoTestes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/titulosButoes"
+        android:backgroundTint="@color/butoes"
         android:text="@string/historic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
