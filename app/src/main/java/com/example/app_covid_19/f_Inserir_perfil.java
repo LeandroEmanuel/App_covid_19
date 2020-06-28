@@ -93,7 +93,7 @@ public class f_Inserir_perfil extends Fragment implements LoaderManager.LoaderCa
     }
 
 
-    public void guardaNovoPerfil() {// não insere dados pessois
+    public void guardaNovoPerfil() {
         String nome = editTextNome.getText().toString();
         String dataNascimento = editTextViewDataNascimento.getText().toString();
 

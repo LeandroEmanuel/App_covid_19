@@ -29,7 +29,6 @@ public class f_Inserir_teste extends Fragment {
     private RadioButton radioButtoTestePositivo;
     private RadioButton radioButtonTesteNegativo;
     private RadioButton radioButtonTesteInconclusivo;
-    public static final int _CURSOR_LOADER_PERFIS = 0;
 
     @Override
     public View onCreateView(
