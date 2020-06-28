@@ -58,20 +58,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNome" />
 
-    <TextView
-        android:id="@+id/textViewAlteraDataNascimento"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:textColor="@color/texto"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonSelecionarDataNascimento"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.994"
-        app:layout_constraintStart_toEndOf="@+id/buttonSelecionarDataNascimento" />
-
     <CheckBox
         android:id="@+id/checkBoxCardiovascular"
         android:layout_width="wrap_content"
@@ -95,7 +81,7 @@
         app:layout_constraintBottom_toTopOf="@+id/checkBoxDoencasOncologicas"
         app:layout_constraintEnd_toEndOf="@+id/checkBoxDoencasOncologicas"
         app:layout_constraintStart_toStartOf="@+id/checkBoxDoencasOncologicas"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAlteraDataNascimento" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSelecionarDataNascimento" />
 
     <CheckBox
         android:id="@+id/checkBoxHipertensao"
@@ -136,4 +122,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxHipertensao" />
+
+    <EditText
+        android:id="@+id/textViewAlteraDataNascimento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@color/fundos"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@color/texto"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonSelecionarDataNascimento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonSelecionarDataNascimento" />
 </androidx.constraintlayout.widget.ConstraintLayout>

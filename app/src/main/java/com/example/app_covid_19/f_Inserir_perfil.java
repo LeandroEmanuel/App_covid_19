@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -30,7 +29,7 @@ import java.util.Calendar;
 
 public class f_Inserir_perfil extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private TextView textViewDataNascimento;
+    private EditText editTextViewDataNascimento;
     Button buttonSelecionarDataNascimento;
     private int mAno, mMes, mDia;
     private EditText editTextNome;
@@ -60,10 +59,10 @@ public class f_Inserir_perfil extends Fragment implements LoaderManager.LoaderCa
 
 
         editTextNome = view.findViewById(R.id.editTextNome);
-        textViewDataNascimento = view.findViewById(R.id.textViewAlteraDataNascimento);
+        editTextViewDataNascimento = view.findViewById(R.id.textViewAlteraDataNascimento);
 
         buttonSelecionarDataNascimento = (Button)view.findViewById(R.id.buttonSelecionarDataNascimento);
-        textViewDataNascimento =(TextView)view.findViewById(R.id.textViewAlteraDataNascimento);
+        editTextViewDataNascimento =(EditText) view.findViewById(R.id.textViewAlteraDataNascimento);
         checkBoxCardiovascular = (CheckBox) view.findViewById(R.id.checkBoxCardiovascular);
         checkBoxDiabetes = (CheckBox) view.findViewById(R.id.checkBoxDiabetes);
         checkBoxHipertensao = (CheckBox) view.findViewById(R.id.checkBoxHipertensao);
@@ -82,20 +81,21 @@ public class f_Inserir_perfil extends Fragment implements LoaderManager.LoaderCa
                     DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            textViewDataNascimento.setText(dayOfMonth+ "/" +(month + 1) + "/" + year);
+                            editTextViewDataNascimento.setText(dayOfMonth+ "/" +(month + 1) + "/" + year);
+                            retirarFocus();
                         }
                     }, mAno, mMes, mDia);
                     datePickerDialog.show();
                 }
             }
         });
-        
+
     }
 
 
     public void guardaNovoPerfil() {// não insere dados pessois
         String nome = editTextNome.getText().toString();
-        String dataNascimento = textViewDataNascimento.getText().toString();
+        String dataNascimento = editTextViewDataNascimento.getText().toString();
 
         boolean auxCardio = checkBoxCardiovascular.isChecked();
         int cardio;
@@ -171,8 +171,8 @@ public class f_Inserir_perfil extends Fragment implements LoaderManager.LoaderCa
             return;
         }
         if(dataNascimento.length() == 0){
-            textViewDataNascimento.setError(getString(R.string.selecionar_data));
-            textViewDataNascimento.requestFocus();
+            editTextViewDataNascimento.setError(getString(R.string.selecionar_data));
+            editTextViewDataNascimento.requestFocus();
             return;
         }
 
@@ -193,6 +193,10 @@ public class f_Inserir_perfil extends Fragment implements LoaderManager.LoaderCa
         } catch (Exception e){
             Snackbar.make(editTextNome, R.string.erro_inserir_perfil, Snackbar.LENGTH_INDEFINITE).show();
         }
+    }
+    public void retirarFocus(){
+        editTextViewDataNascimento.clearFocus();
+        editTextViewDataNascimento.setError(null);
     }
 
     public void cancelarInserirPerfil() {
