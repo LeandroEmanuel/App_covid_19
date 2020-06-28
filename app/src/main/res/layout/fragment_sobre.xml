@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundos"
-    tools:context=".fragment_sobre" >
+    tools:context=".f_Sobre" >
 
     <TextView
         android:id="@+id/textViewAutor"
@@ -17,8 +17,8 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:gravity="center"
-        android:textColor="@color/texto"
         android:text="@string/autor"
+        android:textColor="@color/texto"
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="monospace"

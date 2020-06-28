@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_menu_principal"
-        android:name="com.example.app_covid_19.fragment_menu_principal"
+        android:name="com.example.app_covid_19.f_Menu_principal"
         android:label="fragment_menu_principal"
         tools:layout="@layout/fragment_menu_principal">
 
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_dados_pessoais2"
-        android:name="com.example.app_covid_19.fragment_inserir_perfil"
+        android:name="com.example.app_covid_19.f_Inserir_perfil"
         android:label="fragment_dados_pessoais"
         tools:layout="@layout/fragment_insere_perfil" >
         <action
@@ -35,55 +35,55 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_editar_perfis"
-        android:name="com.example.app_covid_19.fragment_editar_menu_perfis"
+        android:name="com.example.app_covid_19.f_Informacao_perfis"
         android:label="fragment_editar_perfis"
-        tools:layout="@layout/fragment_editar_menu_perfis" >
+        tools:layout="@layout/fragment_informacao_perfis" >
         <action
             android:id="@+id/to_Selecionar_perfil"
             app:destination="@id/fragment_selecionar_perfil2" />
-        <action
-            android:id="@+id/to_testes"
-            app:destination="@id/fragment_testes" />
-        <action
-            android:id="@+id/action_fragment_editar_perfis_to_fragment_altera_registo"
-            app:destination="@id/fragment_altera_registo" />
         <action
             android:id="@+id/action_fragment_editar_perfis_to_fragment_insere_registo_diario"
             app:destination="@id/fragment_insere_registo_diario" />
         <action
             android:id="@+id/to_tabela_registos_diarios"
             app:destination="@id/fragment_tabela_registos_diarios" />
+        <action
+            android:id="@+id/action_fragment_editar_perfis_to_fragment_resultado_teste"
+            app:destination="@id/fragment_resultado_teste" />
+        <action
+            android:id="@+id/action_fragment_editar_perfis_to_fragment_tabela_resultado_testes"
+            app:destination="@id/fragment_tabela_resultado_testes" />
     </fragment>
     <fragment
         android:id="@+id/fragment_historico"
-        android:name="com.example.app_covid_19.fragment_estatisticas"
+        android:name="com.example.app_covid_19.f_Estatisticas"
         android:label="fragment_historico"
         tools:layout="@layout/fragment_estatisticas" >
         <action
-            android:id="@+id/to_registo_diario"
-            app:destination="@id/fragment_insere_registo_diario" />
+            android:id="@+id/action_fragment_historico_to_fragment_menu_principal"
+            app:destination="@id/fragment_menu_principal" />
     </fragment>
     <fragment
         android:id="@+id/fragment_insere_registo_diario"
-        android:name="com.example.app_covid_19.fragment_insere_registo_diario"
+        android:name="com.example.app_covid_19.f_Inserir_registo"
         android:label="fragment_registo_diario"
-        tools:layout="@layout/fragment_insere_registo_diario" >
+        tools:layout="@layout/fragment_inserir_registo" >
         <action
-            android:id="@+id/action_fragment_insere_registo_diario_to_fragment_selecionar_perfil2"
-            app:destination="@id/fragment_selecionar_perfil2" />
+            android:id="@+id/action_fragment_insere_registo_diario_to_fragment_editar_perfis"
+            app:destination="@id/fragment_editar_perfis" />
     </fragment>
     <fragment
         android:id="@+id/fragment_resultado_teste"
-        android:name="com.example.app_covid_19.fragment_inserir_teste"
+        android:name="com.example.app_covid_19.f_Inserir_teste"
         android:label="fragment_resultado_teste"
         tools:layout="@layout/fragment_inserir_teste" >
         <action
-            android:id="@+id/action_fragment_resultado_teste_to_fragment_testes"
-            app:destination="@id/fragment_testes" />
+            android:id="@+id/action_fragment_resultado_teste_to_fragment_editar_perfis"
+            app:destination="@id/fragment_editar_perfis" />
     </fragment>
     <fragment
         android:id="@+id/fragment_selecionar_perfil2"
-        android:name="com.example.app_covid_19.fragment_selecionar_perfil"
+        android:name="com.example.app_covid_19.f_Selecionar_perfil"
         android:label="fragment_selecionar_perfil"
         tools:layout="@layout/fragment_selecionar_perfil" >
         <action
@@ -107,9 +107,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_tabela_registos_diarios"
-        android:name="com.example.app_covid_19.fragment_tabela_registos_diarios"
+        android:name="com.example.app_covid_19.f_Historico_registos"
         android:label="fragment_tabela_registos_diarios"
-        tools:layout="@layout/fragment_tabela_registos_diarios" >
+        tools:layout="@layout/fragment_historico_registos" >
         <action
             android:id="@+id/action_fragment_tabela_registos_diarios_to_fragment_elimina_registo"
             app:destination="@id/fragment_elimina_registo" />
@@ -119,34 +119,19 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_tabela_resultado_testes"
-        android:name="com.example.app_covid_19.fragment_tabela_resultado_testes"
+        android:name="com.example.app_covid_19.f_Historico_testes"
         android:label="fragment_tabela_resultado_testes"
-        tools:layout="@layout/fragment_tabela_resultado_testes" >
-        <action
-            android:id="@+id/to_testes"
-            app:destination="@id/fragment_testes" />
+        tools:layout="@layout/fragment_historico_testes" >
         <action
             android:id="@+id/action_fragment_tabela_resultado_testes_to_fragment_eliminar_testes"
             app:destination="@id/fragment_eliminar_testes" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragment_testes"
-        android:name="com.example.app_covid_19.fragment_testes"
-        android:label="fragment_testes"
-        tools:layout="@layout/fragment_testes" >
         <action
-            android:id="@+id/to_tabela_resultado_testes"
-            app:destination="@id/fragment_tabela_resultado_testes" />
-        <action
-            android:id="@+id/to_editar_perfil"
+            android:id="@+id/action_fragment_tabela_resultado_testes_to_fragment_editar_perfis2"
             app:destination="@id/fragment_editar_perfis" />
-        <action
-            android:id="@+id/action_fragment_testes_to_fragment_resultado_teste2"
-            app:destination="@id/fragment_resultado_teste" />
     </fragment>
     <fragment
         android:id="@+id/fragment_altera_dados_pessoais"
-        android:name="com.example.app_covid_19.fragment_alterar_perfil"
+        android:name="com.example.app_covid_19.f_Alterar_perfil"
         android:label="fragment_altera_dados_pessoais"
         tools:layout="@layout/fragment_altera_perfil" >
         <action
@@ -155,7 +140,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_eliminar_perfil"
-        android:name="com.example.app_covid_19.fragment_eliminar_perfil"
+        android:name="com.example.app_covid_19.f_Eliminar_perfil"
         android:label="fragment_eliminar_perfil"
         tools:layout="@layout/fragment_eliminar_perfil" >
         <action
@@ -163,13 +148,8 @@
             app:destination="@id/fragment_selecionar_perfil2" />
     </fragment>
     <fragment
-        android:id="@+id/fragment_altera_registo"
-        android:name="com.example.app_covid_19.fragment_altera_registo"
-        android:label="fragment_altera_registo"
-        tools:layout="@layout/fragment_altera_registo" />
-    <fragment
         android:id="@+id/fragment_elimina_registo"
-        android:name="com.example.app_covid_19.fragment_elimina_registo"
+        android:name="com.example.app_covid_19.f_Elimina_registo"
         android:label="fragment_elimina_registo"
         tools:layout="@layout/fragment_elimina_registo" >
         <action
@@ -181,16 +161,16 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_eliminar_testes"
-        android:name="com.example.app_covid_19.fragment_eliminar_testes"
+        android:name="com.example.app_covid_19.f_Eliminar_testes"
         android:label="fragment_eliminar_testes"
         tools:layout="@layout/fragment_eliminar_testes" >
         <action
-            android:id="@+id/action_fragment_eliminar_testes_to_fragment_testes"
-            app:destination="@id/fragment_testes" />
+            android:id="@+id/action_fragment_eliminar_testes_to_fragment_tabela_resultado_testes"
+            app:destination="@id/fragment_tabela_resultado_testes" />
     </fragment>
     <fragment
         android:id="@+id/fragment_sobre"
-        android:name="com.example.app_covid_19.fragment_sobre"
+        android:name="com.example.app_covid_19.f_Sobre"
         android:label="fragment_sobre"
         tools:layout="@layout/fragment_sobre" >
         <action
@@ -199,7 +179,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_configuracoes"
-        android:name="com.example.app_covid_19.fragment_configuracoes"
+        android:name="com.example.app_covid_19.f_Configuracoes"
         android:label="fragment_configuracoes"
         tools:layout="@layout/fragment_configuracoes" >
         <action

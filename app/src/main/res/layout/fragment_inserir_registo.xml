@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundos"
-    tools:context=".fragment_insere_registo_diario">
+    tools:context=".f_Inserir_registo">
 
     <TextView
         android:id="@+id/textViewTituloRegistoDiario"
@@ -51,8 +51,9 @@
             android:id="@+id/editTextTemperatura"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/textInputLayoutText"
-            android:hint="@string/temperatura" />
+            android:hint="@string/temperatura"
+            android:inputType="numberDecimal"
+            android:textColor="@color/textInputLayoutText" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox

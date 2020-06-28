@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class fragment_editar_menu_perfis extends Fragment {
+public class f_Informacao_perfis extends Fragment {
 
 
     private TextView textViewTituloEditarPerfil;
@@ -23,7 +23,7 @@ public class fragment_editar_menu_perfis extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_editar_menu_perfis, container, false);
+        return inflater.inflate(R.layout.fragment_informacao_perfis, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -40,36 +40,45 @@ public class fragment_editar_menu_perfis extends Fragment {
                 registoDiario();
             }
         });
-        view.findViewById(R.id.buttonTestes).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                testes();
-            }
-        });
         view.findViewById(R.id.buttonTabelaRegistos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tabelaRegistos();
             }
         });
-    }
-
-    private void testes() {
-        NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
-        navController.navigate(R.id.to_testes);
+        view.findViewById(R.id.buttonNovoTeste).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                novoTeste();
+            }
+        });
+        view.findViewById(R.id.buttonHistoricoTestes).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabelaTeste();
+            }
+        });
     }
 
     private void registoDiario() {
-           NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
+           NavController navController = NavHostFragment.findNavController(f_Informacao_perfis.this);
            navController.navigate(R.id.action_fragment_editar_perfis_to_fragment_insere_registo_diario);
     }
     private void tabelaRegistos() {
-        NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
+        NavController navController = NavHostFragment.findNavController(f_Informacao_perfis.this);
         navController.navigate(R.id.to_tabela_registos_diarios);
     }
     public void selecionar_perfil() {
-        NavController navController = NavHostFragment.findNavController(fragment_editar_menu_perfis.this);
+        NavController navController = NavHostFragment.findNavController(f_Informacao_perfis.this);
         navController.navigate(R.id.to_Selecionar_perfil);
+    }
+    private void novoTeste() {
+        NavController navController = NavHostFragment.findNavController(f_Informacao_perfis.this);
+        navController.navigate(R.id.action_fragment_editar_perfis_to_fragment_resultado_teste);
+    }
+    private void tabelaTeste() {
+        NavController navController = NavHostFragment.findNavController(f_Informacao_perfis.this);
+        navController.navigate(R.id.action_fragment_editar_perfis_to_fragment_tabela_resultado_testes);
     }
 
 }

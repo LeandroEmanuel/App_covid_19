@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundos"
-    tools:context=".fragment_selecionar_perfil" >
+    tools:context=".f_Selecionar_perfil" >
 
     <TextView
         android:id="@+id/textViewTituloSelecionarPerfil"

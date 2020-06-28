@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-public class fragment_menu_principal extends Fragment{
+public class f_Menu_principal extends Fragment{
 
     @Override
     public View onCreateView(
@@ -48,8 +48,8 @@ public class fragment_menu_principal extends Fragment{
         });
     }
     private void historico() {
-        NavController navController = NavHostFragment.findNavController(fragment_menu_principal.this);
-        navController.navigate(R.id.to_historico);
+        NavController navController = NavHostFragment.findNavController(f_Menu_principal.this);
+        navController.navigate(R.id.action_fragment_menu_principal_to_fragment_historico);
     }
 
     private void sairApp() {
@@ -57,17 +57,17 @@ public class fragment_menu_principal extends Fragment{
     }
 
     private void selecionarPerfil() {
-        NavController navController = NavHostFragment.findNavController(fragment_menu_principal.this);
+        NavController navController = NavHostFragment.findNavController(f_Menu_principal.this);
         navController.navigate(R.id.to_selecionar_perfil);
     }
 
     public void configuracoes() {
-        NavController navController = NavHostFragment.findNavController(fragment_menu_principal.this);
+        NavController navController = NavHostFragment.findNavController(f_Menu_principal.this);
         navController.navigate(R.id.action_fragment_menu_principal_to_fragment_configuracoes);
     }
 
     public void sobre() {
-        NavController navController = NavHostFragment.findNavController(fragment_menu_principal.this);
+        NavController navController = NavHostFragment.findNavController(f_Menu_principal.this);
         navController.navigate(R.id.action_fragment_menu_principal_to_fragment_sobre);
     }
 

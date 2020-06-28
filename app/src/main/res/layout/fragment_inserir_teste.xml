@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundos"
-    tools:context=".fragment_inserir_teste" >
+    tools:context=".f_Inserir_teste" >
 
     <TextView
         android:id="@+id/textView2"
@@ -44,22 +44,22 @@
             android:id="@+id/radioButtoTestePositivo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/chekcBoxRbuttonText"
-            android:text="@string/positivo" />
+            android:text="@string/positivo"
+            android:textColor="@color/chekcBoxRbuttonText" />
 
         <RadioButton
             android:id="@+id/radioButtonTesteNegativo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/chekcBoxRbuttonText"
-            android:text="@string/negativo" />
+            android:text="@string/negativo"
+            android:textColor="@color/chekcBoxRbuttonText" />
 
         <RadioButton
             android:id="@+id/radioButtonTesteInconclusivo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/chekcBoxRbuttonText"
-            android:text="@string/inconclusivo" />
+            android:text="@string/inconclusivo"
+            android:textColor="@color/chekcBoxRbuttonText" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

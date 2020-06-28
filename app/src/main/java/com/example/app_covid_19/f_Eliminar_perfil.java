@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 
 
-public class fragment_eliminar_perfil extends Fragment {
+public class f_Eliminar_perfil extends Fragment {
 
     private TextView textViewDataNascimentoPerfilEliminar;
     private TextView editTextNomePerfilEliminar;
@@ -60,7 +60,7 @@ public class fragment_eliminar_perfil extends Fragment {
     }
 
     public void cancelar(){
-        NavController navController = NavHostFragment.findNavController(fragment_eliminar_perfil.this);
+        NavController navController = NavHostFragment.findNavController(f_Eliminar_perfil.this);
         navController.navigate(R.id.cancelar_eliminar_perfil);
     }
 
@@ -68,7 +68,7 @@ public class fragment_eliminar_perfil extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
         builder.setTitle(R.string.eliminar_perfil);
-        builder.setMessage(getString(R.string.certeza_eliminar_perfil) + perfil.getNome() + "'");
+        builder.setMessage(getString(R.string.certeza_eliminar_perfil) + "\n'"+ perfil.getNome() + "'"+ "\n "+ "'"+ perfil.getDataNascimento() + "'");
         builder.setIcon(R.drawable.ic_round_delete_forever_24);
         builder.setPositiveButton(R.string.sim,  new DialogInterface.OnClickListener() {
             @Override
@@ -92,7 +92,7 @@ public class fragment_eliminar_perfil extends Fragment {
 
             if(registosApagados == 1){
                 Toast.makeText(getContext(), R.string.sucesso_eliminar_perfil, Toast.LENGTH_SHORT).show();
-                NavController navController = NavHostFragment.findNavController(fragment_eliminar_perfil.this);
+                NavController navController = NavHostFragment.findNavController(f_Eliminar_perfil.this);
                 navController.navigate(R.id.cancelar_eliminar_perfil);
                 return;
             }

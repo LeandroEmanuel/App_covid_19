@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class fragment_selecionar_perfil extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class f_Selecionar_perfil extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public static final int _CURSOR_LOADER_PERFIS = 0;
     private AdaptadorPerfis adaptadorPerfis;
@@ -52,24 +52,24 @@ public class fragment_selecionar_perfil extends Fragment implements LoaderManage
         LoaderManager.getInstance(this).initLoader(_CURSOR_LOADER_PERFIS, null, this);
     }
     public void maisInformacao() {
-        NavController navController = NavHostFragment.findNavController(fragment_selecionar_perfil.this);
+        NavController navController = NavHostFragment.findNavController(f_Selecionar_perfil.this);
         navController.navigate(R.id.fragment_editar_perfis);
     }
 
     public void novoPerfil() {
-        NavController navController = NavHostFragment.findNavController(fragment_selecionar_perfil.this);
+        NavController navController = NavHostFragment.findNavController(f_Selecionar_perfil.this);
         navController.navigate(R.id.action_novoPerfil);
     }
     public void editarPerfil(){
-        NavController navController = NavHostFragment.findNavController(fragment_selecionar_perfil.this);
+        NavController navController = NavHostFragment.findNavController(f_Selecionar_perfil.this);
         navController.navigate(R.id.action_editar_perfil);
     }
     public void eliminarPerfil(){
-        NavController navController = NavHostFragment.findNavController(fragment_selecionar_perfil.this);
+        NavController navController = NavHostFragment.findNavController(f_Selecionar_perfil.this);
         navController.navigate(R.id.action_eliminar_perfil);
     }
     public void voltarMenuPrincipal(){
-        NavController navController = NavHostFragment.findNavController(fragment_selecionar_perfil.this);
+        NavController navController = NavHostFragment.findNavController(f_Selecionar_perfil.this);
         navController.navigate(R.id.action_fragment_selecionar_perfil2_to_fragment_menu_principal);
     }
 

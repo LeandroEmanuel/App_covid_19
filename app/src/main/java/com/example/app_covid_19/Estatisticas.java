@@ -61,7 +61,7 @@ public class Estatisticas {
     }
 
     private void totalTestesInconclusivo(){
-        Cursor cursor = db.rawQuery( "SELECT * " +
+        Cursor cursor = db.rawQuery( "SELECT COUNT(*) " +
                 " FROM " + BdTabelaTestes.NOME_TABELA + ", " + BdTabelaPerfis.NOME_TABELA +
                 " WHERE " + BdTabelaTestes.CAMPO_ID_PERFIL_COMPLETO + " = " + BdTabelaPerfis.CAMPO_ID_COMPLETO +
                 " AND " + BdTabelaTestes.CAMPO_RESULTADO_TESTE_COMPLETO + " = 3",null);

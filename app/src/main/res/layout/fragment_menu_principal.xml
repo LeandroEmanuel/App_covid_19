@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundos"
-    tools:context=".fragment_menu_principal">
+    tools:context=".f_Menu_principal">
 
     <TextView
         android:id="@+id/textViewTituloMenuPrincipal"

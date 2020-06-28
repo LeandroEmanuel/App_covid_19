@@ -20,7 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 
 
-public class fragment_inserir_teste extends Fragment {
+public class f_Inserir_teste extends Fragment {
 
     TextView textViewDataTesteResultado;
     private int mAno, mMes, mDia;
@@ -30,8 +30,6 @@ public class fragment_inserir_teste extends Fragment {
     private RadioButton radioButtonTesteNegativo;
     private RadioButton radioButtonTesteInconclusivo;
     public static final int _CURSOR_LOADER_PERFIS = 0;
-
-
 
     @Override
     public View onCreateView(
@@ -67,8 +65,8 @@ public class fragment_inserir_teste extends Fragment {
     }
 
     public void cancelarInserirTeste() {
-        NavController navController = NavHostFragment.findNavController(fragment_inserir_teste.this);
-        navController.navigate(R.id.action_fragment_resultado_teste_to_fragment_testes);
+        NavController navController = NavHostFragment.findNavController(f_Inserir_teste.this);
+        navController.navigate(R.id.action_fragment_resultado_teste_to_fragment_editar_perfis);
     }
 
     public void guardarNovoTeste(){
@@ -85,6 +83,12 @@ public class fragment_inserir_teste extends Fragment {
         }else if(auxInconclusico){
             resultado = 3;
         }
+        if (resultado == 0){
+            radioButtoTestePositivo.setError("");
+            radioButtonTesteNegativo.setError("");
+            radioButtonTesteInconclusivo.setError("");
+            return;
+        }
 
 
         long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();
@@ -96,8 +100,8 @@ public class fragment_inserir_teste extends Fragment {
         try {
             getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_TESTES, Converte.testeParaContentValues(teste));
             Toast.makeText(getContext(),R.string.teste_guardado_com_sucesso, Toast.LENGTH_SHORT).show();
-            NavController navController = NavHostFragment.findNavController(fragment_inserir_teste.this);
-            navController.navigate(R.id.action_fragment_resultado_teste_to_fragment_testes);
+            NavController navController = NavHostFragment.findNavController(f_Inserir_teste.this);
+            navController.navigate(R.id.action_fragment_resultado_teste_to_fragment_editar_perfis);
 
         } catch (Exception e) {
             Snackbar.make(textViewDataTesteResultado, R.string.erro_inserir_teste, Snackbar.LENGTH_INDEFINITE).show();

@@ -20,7 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class fragment_tabela_registos_diarios extends Fragment implements LoaderCallbacks<Cursor> {
+public class f_Historico_registos extends Fragment implements LoaderCallbacks<Cursor> {
 
     public static final int _CURSOR_LOADER_REGISTOS = 0;
     private AdaptadorRegistos adaptadorRegistos;
@@ -32,7 +32,7 @@ public class fragment_tabela_registos_diarios extends Fragment implements Loader
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tabela_registos_diarios, container, false);
+        return inflater.inflate(R.layout.fragment_historico_registos, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -57,12 +57,12 @@ public class fragment_tabela_registos_diarios extends Fragment implements Loader
     }
 
     public void EliminarRegisto(){
-        NavController navController = NavHostFragment.findNavController(fragment_tabela_registos_diarios.this);
+        NavController navController = NavHostFragment.findNavController(f_Historico_registos.this);
         navController.navigate(R.id.action_fragment_tabela_registos_diarios_to_fragment_elimina_registo);
     }
 
     public void historico(){
-        NavController navController = NavHostFragment.findNavController(fragment_tabela_registos_diarios.this);
+        NavController navController = NavHostFragment.findNavController(f_Historico_registos.this);
         navController.navigate(R.id.to_historico);
     }
 

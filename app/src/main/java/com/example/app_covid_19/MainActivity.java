@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
             if(gereOpcoesMenuAlteraPerfil(id)) return true;
         }else if (menuActual == R.menu.menu_eliminar_perfil) {
             if(gereOpcoesMenuEliminarPerfil(id)) return true;
-        }else if (menuActual == R.menu.menu_inserir_registo_diario) {
+        }else if (menuActual == R.menu.menu_inserir_registo) {
             if(gereOpcoesMenuInsereRegisto(id)) return true;
         }else if (menuActual == R.menu.menu_eliminar_registo) {
             if(gereOpcoesMenuEliminarRegisto(id)) return true;
@@ -157,16 +157,46 @@ public class MainActivity extends AppCompatActivity implements Serializable{
         }else if (menuActual == R.menu.menu_vazio) {
              return true;
         }else if (menuActual == R.menu.menu_voltar) {
-            if(gereOpcoesMenuvoltar(id)) return true;
+            if(gereOpcoesMenuVoltar(id)) return true;
+        }else if (menuActual == R.menu.menu_sobre) {
+            if(gereOpcoesMenuSobre(id)) return true;
+        }else if (menuActual == R.menu.menu_configuracoes) {
+            if(gereOpcoesMenuConfiguracoes(id)) return true;
+        }else if (menuActual == R.menu.menu_estatisticas) {
+            if(gereOpcoesMenuEstatisticas(id)) return true;
         }
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
-    private boolean gereOpcoesMenuvoltar(int id) {
-        fragment_editar_menu_perfis fragment_editar_menu_perfis = (fragment_editar_menu_perfis) fragmentActual;
+    private boolean gereOpcoesMenuEstatisticas(int id) {
+        f_Estatisticas fragment_estatisticas = (f_Estatisticas) fragmentActual;
+        if (id == R.id.action_voltar_menu_principal) {
+            fragment_estatisticas.menuPrincipal();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean gereOpcoesMenuConfiguracoes(int id) {
+        f_Configuracoes fragment_configuracoes = (f_Configuracoes) fragmentActual;
+        if (id == R.id.action_voltar_menu_principal_config) {
+            fragment_configuracoes.menuPrincipal();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean gereOpcoesMenuSobre(int id) {
+        f_Sobre fragment_sobre = (f_Sobre) fragmentActual;
+        if (id == R.id.action_voltar_menu_principal) {
+            fragment_sobre.menuPrincipal();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean gereOpcoesMenuVoltar(int id) {
+        f_Informacao_perfis fragment_editar_menu_perfis = (f_Informacao_perfis) fragmentActual;
         if (id == R.id.action_voltar_menu_anterior) {
             fragment_editar_menu_perfis.selecionar_perfil();
             return true;
@@ -175,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuTabelaTeste(int id) {
-        fragment_tabela_resultado_testes fragmentTabelaResultadoTestes = (fragment_tabela_resultado_testes) fragmentActual;
+        f_Historico_testes fragmentTabelaResultadoTestes = (f_Historico_testes) fragmentActual;
         if (id == R.id.elimina_teste) {
             fragmentTabelaResultadoTestes.EliminarTeste();
             return true;
@@ -187,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuTabelaRegisto(int id) {
-        fragment_tabela_registos_diarios fragment_tabela_registos_diarios = (com.example.app_covid_19.fragment_tabela_registos_diarios) fragmentActual;
+        f_Historico_registos fragment_tabela_registos_diarios = (f_Historico_registos) fragmentActual;
         if (id == R.id.elimina_registo) {
             fragment_tabela_registos_diarios.EliminarRegisto();
             return true;
@@ -199,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuPrincipal(int id) {
-        fragment_menu_principal fragment_menu_principal = (com.example.app_covid_19.fragment_menu_principal)fragmentActual;
+        f_Menu_principal fragment_menu_principal = (f_Menu_principal)fragmentActual;
 
         if(id == R.id.go_conf) {
             fragment_menu_principal.configuracoes();
@@ -213,7 +243,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuEliminarTeste(int id) {
-        fragment_eliminar_testes fragment_eliminar_testes = (com.example.app_covid_19.fragment_eliminar_testes) fragmentActual;
+        f_Eliminar_testes fragment_eliminar_testes = (f_Eliminar_testes) fragmentActual;
         if(id == R.id.canselar_eliminar_teste) {
             fragment_eliminar_testes.cancelarEliminarTeste();
             return true;
@@ -225,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuInserirTeste(int id) {
-        fragment_inserir_teste fragment_inserir_teste = (fragment_inserir_teste) fragmentActual;
+        f_Inserir_teste fragment_inserir_teste = (f_Inserir_teste) fragmentActual;
 
         if(id == R.id.action_guardar_teste){
             fragment_inserir_teste.guardarNovoTeste();
@@ -238,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuEliminarRegisto(int id) {
-        fragment_elimina_registo fragment_elimina_registo = (fragment_elimina_registo) fragmentActual;
+        f_Elimina_registo fragment_elimina_registo = (f_Elimina_registo) fragmentActual;
         if (id == R.id.action_eliminar_registo) {
             fragment_elimina_registo.eliminarRegisto();
             return true;
@@ -250,7 +280,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuInsereRegisto(int id) {
-        fragment_insere_registo_diario fragment_insere_registo_diario = (fragment_insere_registo_diario) fragmentActual;
+        f_Inserir_registo fragment_insere_registo_diario = (f_Inserir_registo) fragmentActual;
 
         if(id == R.id.action_guardar_registo){
             fragment_insere_registo_diario.guardar_novo_registo();
@@ -263,7 +293,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuEliminarPerfil(int id) {
-        fragment_eliminar_perfil fragment_eliminar_perfil =(fragment_eliminar_perfil) fragmentActual;
+        f_Eliminar_perfil fragment_eliminar_perfil =(f_Eliminar_perfil) fragmentActual;
 
         if(id == R.id.canselar_eliminar_perfil) {
             fragment_eliminar_perfil.cancelar();
@@ -276,7 +306,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuInserirPerfil(int id) {
-        fragment_inserir_perfil fragment_dados_pessoais = (fragment_inserir_perfil) fragmentActual;
+        f_Inserir_perfil fragment_dados_pessoais = (f_Inserir_perfil) fragmentActual;
         if(id == R.id.action_guardar){
             fragment_dados_pessoais.guardaNovoPerfil();
             return true;
@@ -288,7 +318,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuAlteraPerfil(int id) {
-        fragment_alterar_perfil fragment_altera_dados_pessoais =(fragment_alterar_perfil) fragmentActual;
+        f_Alterar_perfil fragment_altera_dados_pessoais =(f_Alterar_perfil) fragmentActual;
 
         if(id == R.id.action_guardar){
             fragment_altera_dados_pessoais.guardaAlteraPerfil();
@@ -301,7 +331,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     private boolean gereOpcoesMenuSelecionaPerfil(int id) {
-        fragment_selecionar_perfil fragment_selecionar_perfil = (com.example.app_covid_19.fragment_selecionar_perfil) fragmentActual;
+        f_Selecionar_perfil fragment_selecionar_perfil = (f_Selecionar_perfil) fragmentActual;
 
         if(id == R.id.action_novoPerfil){
             fragment_selecionar_perfil.novoPerfil();

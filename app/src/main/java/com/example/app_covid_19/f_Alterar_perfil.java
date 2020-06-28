@@ -3,16 +3,8 @@ package com.example.app_covid_19;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,17 +15,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 
 
-public class fragment_inserir_perfil extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class f_Alterar_perfil extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private TextView textViewDataNascimento;
+
+    private TextView textViewAlteraDataNascimento;
+    private EditText editTextAlteraNome;
     Button buttonSelecionarDataNascimento;
     private int mAno, mMes, mDia;
-    private EditText editTextNome;
+    private Perfil perfil;
     private CheckBox checkBoxCardiovascular;
     private CheckBox checkBoxDiabetes;
     private CheckBox checkBoxHipertensao;
@@ -47,8 +49,9 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_insere_perfil, container, false);
+        return inflater.inflate(R.layout.fragment_altera_perfil, container, false);
     }
+
 
     public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -56,19 +59,37 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
 
         MainActivity activity = (MainActivity) getActivity();
         activity.setFragmentActual(this);
-        activity.setMenuActual(R.menu.menu_inserir_perfil);
+        activity.setMenuActual(R.menu.menu_alterar_perfil);
 
 
-        editTextNome = view.findViewById(R.id.editTextNome);
-        textViewDataNascimento = view.findViewById(R.id.textViewAlteraDataNascimento);
-
+        editTextAlteraNome = (EditText) view.findViewById(R.id.editTextNome);
+        textViewAlteraDataNascimento =(TextView) view.findViewById(R.id.textViewAlteraDataNascimento);
         buttonSelecionarDataNascimento = (Button)view.findViewById(R.id.buttonSelecionarDataNascimento);
-        textViewDataNascimento =(TextView)view.findViewById(R.id.textViewAlteraDataNascimento);
+        textViewAlteraDataNascimento = (TextView)view.findViewById(R.id.textViewAlteraDataNascimento);
         checkBoxCardiovascular = (CheckBox) view.findViewById(R.id.checkBoxCardiovascular);
         checkBoxDiabetes = (CheckBox) view.findViewById(R.id.checkBoxDiabetes);
-        checkBoxHipertensao = (CheckBox) view.findViewById(R.id.checkBoxHipertensao);
+        checkBoxHipertensao = (CheckBox) view.findViewById(R.id.checkBoxHipertensao) ;
         checkBoxDoencasOncologicas = (CheckBox) view.findViewById(R.id.checkBoxDoencasOncologicas);
         checkBoxResp = (CheckBox) view.findViewById(R.id.checkBoxResp);
+
+        perfil = activity.getPerfil();
+        editTextAlteraNome.setText(perfil.getNome());
+        textViewAlteraDataNascimento.setText(perfil.getDataNascimento());
+        if (perfil.getCardio() == 1){
+            checkBoxCardiovascular.setChecked(true);
+        }
+        if (perfil.getDiabetes() ==1){
+            checkBoxDiabetes.setChecked(true);
+        }
+        if (perfil.getHiper() == 1){
+            checkBoxHipertensao.setChecked(true);
+        }
+        if (perfil.getOnco() == 1){
+            checkBoxDoencasOncologicas.setChecked(true);
+        }
+        if (perfil.getResp() == 1){
+            checkBoxResp.setChecked(true);
+        }
 
         view.findViewById(R.id.buttonSelecionarDataNascimento).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,20 +103,24 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
                     DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            textViewDataNascimento.setText(dayOfMonth+ "/" +(month + 1) + "/" + year);
+                            textViewAlteraDataNascimento.setText(dayOfMonth+ "/" +(month + 1) + "/" + year);
                         }
                     }, mAno, mMes, mDia);
                     datePickerDialog.show();
                 }
             }
         });
-        
+
     }
 
+    public void cancelarAlterarDadosPessoais() {
+        NavController navController = NavHostFragment.findNavController(f_Alterar_perfil.this);
+        navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
+    }
 
-    public void guardaNovoPerfil() {// não insere dados pessois
-        String nome = editTextNome.getText().toString();
-        String dataNascimento = textViewDataNascimento.getText().toString();
+    public void guardaAlteraPerfil() {
+        String nome = editTextAlteraNome.getText().toString();
+        String dataNascimento = textViewAlteraDataNascimento.getText().toString();
 
         boolean auxCardio = checkBoxCardiovascular.isChecked();
         int cardio;
@@ -105,7 +130,6 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
         else {
             cardio = 0;
         }
-
         boolean auxDiabetes = checkBoxDiabetes.isChecked();
         int diabetes;
         if(auxDiabetes){
@@ -134,8 +158,8 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
         } else{
             resp = 0;
         }
-        // validacoes
 
+        // validacoes
         if ((nome.length() != 0) ){
             String aux = "";
             String aux2 = nome;
@@ -162,21 +186,19 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
             nome = aux;
         }
         if(nome.length() == 0){
-            editTextNome.setError(getString(R.string.preencher_nome));
-            editTextNome.requestFocus();
+            editTextAlteraNome.setError(getString(R.string.preencher_nome));
+            editTextAlteraNome.requestFocus();
             return;
         } else if (!nome.matches("^([A-z][a-z]*((\\s)))+[A-z][a-z]*$")){//https://stackoverflow.com/questions/7362567/java-regex-for-full-name
-            editTextNome.setError(getString(R.string.nome_invalido));
-            editTextNome.requestFocus();
+            editTextAlteraNome.setError(getString(R.string.nome_invalido));
+            editTextAlteraNome.requestFocus();
             return;
         }
         if(dataNascimento.length() == 0){
-            textViewDataNascimento.setError(getString(R.string.selecionar_data));
-            textViewDataNascimento.requestFocus();
-            return;
+            textViewAlteraDataNascimento.setError(getString(R.string.selecionar_data));
+            textViewAlteraDataNascimento.requestFocus();
         }
 
-        Perfil perfil = new Perfil();
         perfil.setNome(nome);
         perfil.setDataNascimento(dataNascimento);
         perfil.setCardio(cardio);
@@ -186,20 +208,19 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
         perfil.setResp(resp);
 
         try {
-            getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_PERFIS, Converte.perfilParaContentValues(perfil));
-            Toast.makeText(getContext(), R.string.perfil_inserido_sucesso, Toast.LENGTH_SHORT).show();
-            NavController navController = NavHostFragment.findNavController(fragment_inserir_perfil.this);
-            navController.navigate(R.id.fragment_selecionar_perfil2);
+            Uri enderecoPerfil = Uri.withAppendedPath(BdCovidContentProvider.ENDERECO_PERFIS, String.valueOf(perfil.getId()));
+
+            int registos = getActivity().getContentResolver().update(enderecoPerfil, Converte.perfilParaContentValues(perfil), BdTabelaPerfis._ID+ "=?", new String[]{String.valueOf(perfil.getId())});
+            if(registos == 1){
+                Toast.makeText(getContext(),R.string.perfil_inserido_sucesso, Toast.LENGTH_SHORT).show();
+                NavController navController = NavHostFragment.findNavController(f_Alterar_perfil.this);
+                navController.navigate(R.id.actionaltera_dados_pessoais_to__selecionar_perfil);
+                return;
+            }
         } catch (Exception e){
-            Snackbar.make(editTextNome, R.string.erro_inserir_perfil, Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar.make(editTextAlteraNome, R.string.erro_alterar_perfil, Snackbar.LENGTH_INDEFINITE).show();
         }
     }
-
-    public void cancelarInserirPerfil() {
-        NavController navController = NavHostFragment.findNavController(fragment_inserir_perfil.this);
-        navController.navigate(R.id.fragment_selecionar_perfil2);
-    }
-
 
     @NonNull
     @Override
@@ -216,6 +237,5 @@ public class fragment_inserir_perfil extends Fragment implements LoaderManager.L
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-
     }
 }

@@ -3,8 +3,8 @@
     <string name="app_name">App_covid_19</string>
     <string name="titulo_tabela_testes">Tabela de testes</string>
     <string name="titulo_tabela_registos">Tabela de Registos Diarios</string>
-    <string name="historic">Historico</string>
-    <string name="tabela_registos_diarios">Tabela de Registos Diarios</string>
+    <string name="historic">Historico de Testes</string>
+    <string name="tabela_registos_diarios">Histórico de Registos</string>
     <string name="dias_consecutivos_dif_resp">Dias consecutivos com dificuldade respiratória</string>
     <string name="dias_consecutivos_tosse">Dias consecutivos com tosse</string>
     <string name="media_temperaturas">Media de temperaturas</string>
@@ -32,11 +32,11 @@
     <string name="guardar_dados_pessoais">Guardar</string>
     <string name="guardar">Guardar</string>
     <string name="resultado_teste">Resultado do Teste</string>
-    <string name="novo_teste">Novo</string>
+    <string name="novo_teste">Novo teste</string>
     <string name="testes">Testes</string>
     <string name="temperatura">Temperatura</string>
     <string name="historico">Histórico</string>
-    <string name="registo_diario">Registo Diario</string>
+    <string name="registo_diario">Novo Registo Diario</string>
     <string name="editar_perfil">Informações</string>
     <string name="selecionar_perfil">Selecionar Perfil</string>
     <string name="perfil_selecionado">Perfil Selecionado</string>
@@ -97,13 +97,14 @@
     <string name="estatisticas">Estatisticas</string>
     <string name="nome_invalido">Nome Invalido! \n Preencha pelo menos com primeiro e ultimo nome</string>
     <string name="temperatura_invalida">Temperatura invalida</string>
-    <string name="certeza_eliminar_perfil">Tem a certeza que pretende eliminar o perfil\'</string>
+    <string name="certeza_eliminar_perfil">Tem a certeza que pretende eliminar o perfil?</string>
     <string name="eliminar_perfil">Eliminar Perfil</string>
     <string name="sucesso_eliminar_perfil">Perfil eliminado com sucesso</string>
     <string name="erro_eliminar_perfil">Erro: Não foi possivél eliminar o perfil</string>
-    <string name="pessoas_registadas">\" Pessoas registadas: \"</string>
-    <string name="testes_feitos">\" Testes feitos: \"</string>
-    <string name="testes_positivos">\"Testes positivos: \"</string>
-    <string name="testes_negativos">\"Testes negativos: \"</string>
-    <string name="testes_inconclusivos">\"Testes Inconclusivos: \"</string>
+    <string name="pessoas_registadas">" Pessoas registadas"</string>
+    <string name="testes_feitos">Testes feitos</string>
+    <string name="testes_positivos">Testes positivos</string>
+    <string name="testes_negativos">Testes negativos</string>
+    <string name="testes_inconclusivos">Testes Inconclusivos</string>
+    <string name="altera_dados_pessoais">Change Personal Data</string>
 </resources>

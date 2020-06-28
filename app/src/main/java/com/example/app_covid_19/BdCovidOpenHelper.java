@@ -12,7 +12,7 @@ public class BdCovidOpenHelper extends SQLiteOpenHelper {
 
     public static final String BD_NOME = "covid.db";
     public static final int VERSAO_BD = 1;
-    private static boolean DESENVOLVIMENTO = false;
+    private static boolean DESENVOLVIMENTO = true;
 
     private int mAno, mMes, mDia;
 

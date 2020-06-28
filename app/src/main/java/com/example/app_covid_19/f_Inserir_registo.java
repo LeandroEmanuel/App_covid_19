@@ -1,7 +1,5 @@
 package com.example.app_covid_19;
 
-import android.app.DatePickerDialog;
-import android.app.usage.StorageStats;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,14 +11,11 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +25,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Calendar;
 
 
-public class fragment_insere_registo_diario extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class f_Inserir_registo extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     EditText editTextTemperatura;
     TextView textViewDataRegistoDiario;
     CheckBox checkBoxTosse;
@@ -46,7 +41,7 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_insere_registo_diario, container, false);
+        return inflater.inflate(R.layout.fragment_inserir_registo, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -55,7 +50,7 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
 
         MainActivity activity = (MainActivity) getActivity();
         activity.setFragmentActual(this);
-        activity.setMenuActual(R.menu.menu_inserir_registo_diario);
+        activity.setMenuActual(R.menu.menu_inserir_registo);
 
         editTextTemperatura = view.findViewById(R.id.editTextTemperatura);
         textViewDataRegistoDiario =(TextView)view.findViewById(R.id.textViewDataRegistoDiario);
@@ -72,12 +67,11 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
     }
 
     public void cancelarRegistoDiario() {
-        NavController navController = NavHostFragment.findNavController(fragment_insere_registo_diario.this);
-        navController.navigate(R.id.action_fragment_insere_registo_diario_to_fragment_selecionar_perfil2);
+        NavController navController = NavHostFragment.findNavController(f_Inserir_registo.this);
+        navController.navigate(R.id.action_fragment_insere_registo_diario_to_fragment_editar_perfis);
     }
     public void guardar_novo_registo(){
-        float temperatura = Float.parseFloat(editTextTemperatura.getText().toString());
-
+        float temperatura;
         boolean auxtosse = checkBoxTosse.isChecked();
         int tosse;
         if(auxtosse){
@@ -94,12 +88,22 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
         } else{
             difResp = 0;
         }
-        if(temperatura <= 34.0 || temperatura > 50.0){
+        try {
+            temperatura = Float.parseFloat(editTextTemperatura.getText().toString());
+            if (("" + temperatura).length() == 0) {
+                editTextTemperatura.setError(getString(R.string.temperatura_invalida));
+                editTextTemperatura.requestFocus();
+                return;
+            } else if (temperatura <= 34.0 || temperatura > 50.0) {
+                editTextTemperatura.setError(getString(R.string.temperatura_invalida));
+                editTextTemperatura.requestFocus();
+                return;
+            }
+        }catch(Exception e){
             editTextTemperatura.setError(getString(R.string.temperatura_invalida));
             editTextTemperatura.requestFocus();
             return;
         }
-
         long idPerfilSelecionado = ((MainActivity) getActivity()).getPerfil().getId();// ir buscar o id de um perfil
         Registo registo = new Registo();
         registo.setDataRegisto(sysDate);
@@ -110,8 +114,8 @@ public class fragment_insere_registo_diario extends Fragment implements LoaderMa
         try{
             getActivity().getContentResolver().insert(BdCovidContentProvider.ENDERECO_REGISTOS, Converte.registoParaContentValues(registo));
             Toast.makeText(getContext(), R.string.registo_inserido_sucesso, Toast.LENGTH_SHORT).show();
-            NavController navController = NavHostFragment.findNavController(fragment_insere_registo_diario.this);
-            navController.navigate(R.id.action_fragment_insere_registo_diario_to_fragment_selecionar_perfil2);
+            NavController navController = NavHostFragment.findNavController(f_Inserir_registo.this);
+            navController.navigate(R.id.action_fragment_insere_registo_diario_to_fragment_editar_perfis);
         }catch (Exception e){
             Snackbar.make(editTextTemperatura, R.string.erro_inserir_registo, Snackbar.LENGTH_INDEFINITE).show();
         }

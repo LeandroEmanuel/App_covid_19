@@ -2,35 +2,25 @@ package com.example.app_covid_19;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.CursorLoader;
 import android.content.DialogInterface;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CursorAdapter;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import org.w3c.dom.Text;
 
-
-public class fragment_elimina_registo extends Fragment {
+public class f_Elimina_registo extends Fragment {
     private TextView textViewEliminaDataRegisto;
     private TextView textViewEliminaTemperatura;
     private TextView textViewNomePerfilEliminar;
@@ -67,8 +57,8 @@ public class fragment_elimina_registo extends Fragment {
 
     }
     public void cancelarEliminarRegisto(){
-        NavController navController = NavHostFragment.findNavController(fragment_elimina_registo.this);
-        navController.navigate(R.id.action_fragment_elimina_registo_to_fragment_selecionar_perfil2);
+        NavController navController = NavHostFragment.findNavController(f_Elimina_registo.this);
+        navController.navigate(R.id.action_fragment_elimina_registo_to_fragment_tabela_registos_diarios);
     }
 
     public void eliminarRegisto(){
@@ -76,7 +66,7 @@ public class fragment_elimina_registo extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
         builder.setTitle(R.string.eliminar_registo_dialog);
-        builder.setMessage(getString(R.string.certeza_eliminar_registo) + registo.getPerfil() + "'");
+        builder.setMessage(getString(R.string.certeza_eliminar_registo) + "\n'"+ registo.getPerfil() + "'"+ "\n "+ "'"+ registo.getDataRegisto() + "'");
         builder.setIcon(R.drawable.ic_round_delete_forever_24);
         builder.setPositiveButton(R.string.sim,  new DialogInterface.OnClickListener() {
             @Override
@@ -101,7 +91,7 @@ public class fragment_elimina_registo extends Fragment {
 
             if(registosApagados == 1){
                 Toast.makeText(getContext(), R.string.registo_eliminado_sucesso, Toast.LENGTH_SHORT).show();
-                NavController navController = NavHostFragment.findNavController(fragment_elimina_registo.this);
+                NavController navController = NavHostFragment.findNavController(f_Elimina_registo.this);
                 navController.navigate(R.id.action_fragment_elimina_registo_to_fragment_tabela_registos_diarios);
                 return;
             }

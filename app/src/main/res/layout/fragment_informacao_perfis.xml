@@ -5,35 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundos"
-    tools:context=".fragment_testes" >
+    tools:context=".f_Informacao_perfis" >
 
     <TextView
-        android:id="@+id/textViewTituloTestes"
+        android:id="@+id/textViewTituloEditarPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/testes"
+        android:layout_marginTop="16dp"
+        android:text="@string/editar_perfil"
         android:textColor="@color/titulos"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegistoDiario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRegistoDiario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/butoes"
+        android:text="@string/registo_diario"
+        android:textColor="@color/titulosButoes"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTabelaRegistos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTituloEditarPerfil" />
+
+    <Button
+        android:id="@+id/buttonTabelaRegistos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/butoes"
+        android:text="@string/tabela_registos_diarios"
+        android:textColor="@color/titulosButoes"
         app:layout_constraintBottom_toTopOf="@+id/buttonNovoTeste"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegistoDiario" />
 
     <Button
         android:id="@+id/buttonNovoTeste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/titulosButoes"
         android:backgroundTint="@color/butoes"
         android:text="@string/novo_teste"
+        android:textColor="@color/titulosButoes"
         app:layout_constraintBottom_toTopOf="@+id/buttonHistoricoTestes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloTestes" />
-
+        app:layout_constraintTop_toBottomOf="@+id/buttonTabelaRegistos" />
     <Button
         android:id="@+id/buttonHistoricoTestes"
         android:layout_width="wrap_content"
@@ -45,5 +70,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonNovoTeste" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

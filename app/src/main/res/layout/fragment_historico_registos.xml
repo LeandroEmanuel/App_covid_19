@@ -5,25 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundos"
-    tools:context=".fragment_tabela_resultado_testes" >
+    tools:context=".f_Historico_registos" >
 
     <TextView
-        android:id="@+id/textViewTituloTabelaTestes"
+        android:id="@+id/textViewTabelaRegistosDiarios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/titulo_tabela_testes"
+        android:text="@string/titulo_tabela_registos"
         android:textColor="@color/titulos"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewTestes"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewRegistos"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewTestes"
+        android:id="@+id/recyclerViewRegistos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
@@ -35,5 +36,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloTabelaTestes" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTabelaRegistosDiarios" />
 </androidx.constraintlayout.widget.ConstraintLayout>

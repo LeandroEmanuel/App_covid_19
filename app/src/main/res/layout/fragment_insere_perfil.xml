@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundos"
-    tools:context=".fragment_inserir_perfil" >
+    tools:context=".f_Inserir_perfil" >
 
     <TextView
         android:id="@+id/textViewTituloDadosPessoais"
@@ -38,7 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nome"
-            android:textColor="@color/textInputLayoutText"/>
+            android:singleLine="true"
+            android:textColor="@color/textInputLayoutText" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,8 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginRight="70dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:textColor="@color/texto"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonSelecionarDataNascimento"
         app:layout_constraintEnd_toEndOf="parent"

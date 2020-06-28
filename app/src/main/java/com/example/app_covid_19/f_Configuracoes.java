@@ -1,24 +1,22 @@
 package com.example.app_covid_19;
 
-import android.content.Context;
-import android.content.CursorLoader;
 import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CursorAdapter;
 
 
-public class fragment_configuracoes extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class f_Configuracoes extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,11 @@ public class fragment_configuracoes extends Fragment implements LoaderManager.Lo
 
         MainActivity activity = (MainActivity) getActivity();
         activity.setFragmentActual(this);
-        activity.setMenuActual(R.menu.menu_vazio);
+        activity.setMenuActual(R.menu.menu_configuracoes);
+    }
+    public void menuPrincipal(){
+        NavController navController = NavHostFragment.findNavController(f_Configuracoes.this);
+        navController.navigate(R.id.action_fragment_configuracoes_to_fragment_menu_principal);
     }
 
     @NonNull
